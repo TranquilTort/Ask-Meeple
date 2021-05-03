@@ -7,7 +7,7 @@ const {check,validationResult} = require('express-validator')
 const bcrypt = require('bcryptjs');
 const { Sequelize } = require('sequelize');
 const Op = Sequelize.Op;
-const {loginUser,logoutUser} = require('../auth.js');
+const {loginUser,logoutUser,requireAuth} = require('../auth.js');
 
 /* GET users listing. */
 router.get('/register', csrfProtection, (req, res)=> {
@@ -164,5 +164,8 @@ router.post('/sign-out', (req, res) => {
   logoutUser(req, res);
   res.redirect('/');
 });
+router.get('/test',requireAuth,(req,res)=>{
+  res.send('test');
+})
 
 module.exports = router;
