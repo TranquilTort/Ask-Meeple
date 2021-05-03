@@ -7,6 +7,7 @@ const {check,validationResult} = require('express-validator')
 const bcrypt = require('bcryptjs');
 const { Sequelize } = require('sequelize');
 const Op = Sequelize.Op;
+const {loginUser,logoutUser} = require('../auth.js');
 
 /* GET users listing. */
 router.get('/register', csrfProtection, (req, res)=> {
@@ -76,7 +77,7 @@ router.post('/register',  csrfProtection, userValidators, asyncHandler(async(req
     const hashedPassword = await bcrypt.hash(password,10);
     user.hashedPassword = hashedPassword;
     await user.save();
-    //login User
+    loginUser(req, res, user);
     res.redirect('/');
   }else{
     const errors = validatorErrors.array().map((error) => error.msg);
@@ -92,14 +93,14 @@ router.post('/register',  csrfProtection, userValidators, asyncHandler(async(req
 
 
 }))
-router.get('/sign-in', csrfProtection, (req, res) => {
-  const user = db.User.build();
-  res.render('sign-in', {
-    title: 'User Sign-In',
-    token: req.csrfToken(),
-    user,
-  });
-});
+// router.get('/sign-in', csrfProtection, (req, res) => {
+//   const user = db.User.build();
+//   res.render('sign-in', {
+//     title: 'User Sign-In',
+//     token: req.csrfToken(),
+//     user,
+//   });
+// });
 
 router.get('/sign-in', csrfProtection, (req, res)=> {
   const user = db.User.build();
@@ -140,7 +141,8 @@ router.post('/sign-in', csrfProtection, signInValidators, async (req, res) => {
   if(validatorErrors.isEmpty()) {
     const matchesPassword = await bcrypt.compare(password, user.hashedPassword.toString());
     if(matchesPassword) {
-      console.log('Log in user.');
+      // console.log('user', user);
+      loginUser(req, res, user);
       return res.redirect('/');
     } else {
       errors.push('Password does not match any username or email address in database.')
@@ -156,6 +158,11 @@ router.post('/sign-in', csrfProtection, signInValidators, async (req, res) => {
     token: req.csrfToken(),
   });
 
+});
+
+router.post('/sign-out', (req, res) => {
+  logoutUser(req, res);
+  res.redirect('/');
 });
 
 module.exports = router;
