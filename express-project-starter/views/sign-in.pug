@@ -6,13 +6,7 @@ block content
   +validationErrorSummary(errors)
   form(action='/users/sign-in' method='post')
     input(type='hidden' name='_csrf' value=token)
-    if user.username
-      +field('Username/Email', 'identifier', user.username)
-    else if user.email
-      +field('Username/Email', 'identifier', user.email)
-    else
-      +field('Username/Email', 'identifier', '')
-
+    +field('Username/Email', 'identifier', identifier)
     +field('Password', 'password', '', 'password')
     div
       button(type='submit' ) Sign-In

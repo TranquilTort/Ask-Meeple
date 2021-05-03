@@ -5,8 +5,8 @@ const {sessionSecret} = require('../config');
 const db = require('../db/models');
 const {check,validationResult} = require('express-validator')
 const bcrypt = require('bcryptjs');
-// const { Sequelize } = require('sequelize');
-// const Op = Sequelize.Op;
+const { Sequelize } = require('sequelize');
+const Op = Sequelize.Op;
 
 /* GET users listing. */
 router.get('/register', csrfProtection, (req, res)=> {
@@ -89,73 +89,73 @@ router.post('/register',  csrfProtection, userValidators, asyncHandler(async(req
   }
 
 
-  // User Login Page/Route
-  // router.get('/sign-in', csrfProtection, (req, res) => {
-  //   const user = db.User.build();
-  //   res.render('sign-in', {
-  //     title: 'User Sign-In',
-  //     token: req.csrfToken(),
-  //     user,
-  //   });
-  // });
-
-  router.get('/sign-in', csrfProtection, (req, res)=> {
-    const user = db.User.build();
-    res.render('sign-in',{
-      user,
-      title:'User Sign-In',
-      token: req.csrfToken()
-    });
-  });
-
-  // const signInValidators = [
-
-  //   check("identifier")
-  //     .exists({ checkFalsy: true })
-  //     .withMessage('Please provide an username or email address.')
-  //     .custom(async (value) => {
-  //       return await db.User.findOne({ where: { [Op.or]: [{email: value}, {username: value}] }})
-  //         .then((user) => {
-  //           if (!user) {
-  //             return Promise.reject('Username or email does not exist.');
-  //           }
-  //         });
-  //     }),
-  //   check("password")
-  //     .exists({ checkFalsy: true })
-  //     .withMessage('Please provide a password.')
-
-  // ];
-
-  // router.post('/sign-in', csrfProtection, signInValidators, async (req, res) => {
-  //   const {password, identifier} = req.body;
-
-  //   const user = await db.User.findOne({ where: { [Op.or]: [{email: identifier}, {username: identifier}] }});
-  //   const validatorErrors = validationResult(req);
-  //   let errors = [];
-
-  //   if(validatorErrors.isEmpty()) {
-  //     const matchesPassword = await bcrypt.compare(password, user.hashedPassword.toString());
-  //     if(matchesPassword) {
-  //       console.log('Log in user.');
-  //       return res.redirect('/');
-  //     } else {
-  //       errors.push('Password does not match any username or email address in database.')
-  //     }
-  //   } else {
-  //     errors = validatorErrors.array().map((error) => error.msg);
-  //   }
-
-  //   res.render('sign-in', {
-  //     title: 'User Sign-In',
-  //     user,
-  //     errors,
-  //     token: req.csrfToken(),
-  //   });
-
-  // });
 
 
 }))
+router.get('/sign-in', csrfProtection, (req, res) => {
+  const user = db.User.build();
+  res.render('sign-in', {
+    title: 'User Sign-In',
+    token: req.csrfToken(),
+    user,
+  });
+});
+
+router.get('/sign-in', csrfProtection, (req, res)=> {
+  const user = db.User.build();
+  res.render('sign-in',{
+    user,
+    title:'User Sign-In',
+    token: req.csrfToken(),
+    identifier:''
+  });
+});
+
+const signInValidators = [
+
+  check("identifier")
+    .exists({ checkFalsy: true })
+    .withMessage('Please provide an username or email address.')
+    .custom(async (value) => {
+      return await db.User.findOne({ where: { [Op.or]: [{email: value}, {username: value}] }})
+        .then((user) => {
+          if (!user) {
+            return Promise.reject('Username or email does not exist.');
+          }
+        });
+    }),
+  check("password")
+    .exists({ checkFalsy: true })
+    .withMessage('Please provide a password.')
+
+];
+
+router.post('/sign-in', csrfProtection, signInValidators, async (req, res) => {
+  const {password, identifier} = req.body;
+
+  const user = await db.User.findOne({ where: { [Op.or]: [{email: identifier}, {username: identifier}] }});
+  const validatorErrors = validationResult(req);
+  let errors = [];
+
+  if(validatorErrors.isEmpty()) {
+    const matchesPassword = await bcrypt.compare(password, user.hashedPassword.toString());
+    if(matchesPassword) {
+      console.log('Log in user.');
+      return res.redirect('/');
+    } else {
+      errors.push('Password does not match any username or email address in database.')
+    }
+  } else {
+    errors = validatorErrors.array().map((error) => error.msg);
+  }
+
+  res.render('sign-in', {
+    title: 'User Sign-In',
+    identifier,
+    errors,
+    token: req.csrfToken(),
+  });
+
+});
 
 module.exports = router;
