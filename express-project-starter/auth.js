@@ -28,7 +28,6 @@ const restoreUser = async (req, res, next) => {
     // Log the session object to the console
     // to assist with debugging.
     console.log('inside restoreUser: req.session', req.session);
-    console.log('inside restoreUser: req.session.auth', req.session.auth)
 
     if (req.session.auth) {
       const { userId } = req.session.auth;

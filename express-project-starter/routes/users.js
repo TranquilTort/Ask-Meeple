@@ -82,8 +82,8 @@ router.post('/register',  csrfProtection, userValidators, asyncHandler(async(req
     loginUser(req, res, user);
     // console.log('after logIn, req.session.auth', req.session.auth);
     // return res.redirect('/');
-    req.session.save( () => res.redirect("/") );
-    return;
+    return req.session.save( () => res.redirect("/") );
+    // return;
   }else{
     const errors = validatorErrors.array().map((error) => error.msg);
     res.render('register', {
@@ -150,8 +150,8 @@ router.post('/sign-in', csrfProtection, signInValidators, async (req, res) => {
       loginUser(req, res, user);
       // console.log('after logIn, req.session.auth', req.session.auth);
       // return res.redirect('/');
-      req.session.save( () => res.redirect("/") );
-      return;
+      return req.session.save( () => res.redirect("/") );
+      // return;
     } else {
       errors.push('Password does not match any username or email address in database.')
     }
@@ -170,13 +170,33 @@ router.post('/sign-in', csrfProtection, signInValidators, async (req, res) => {
 
 router.post('/sign-out', (req, res) => {
   logoutUser(req, res);
-  req.session.save( () => res.redirect("/") );
-  return;
+  return req.session.save( () => res.redirect("/") );
+  // return;
   // res.redirect('/');
   console.log('THIS SHOULD BE LAST');
 });
 router.get('/test',requireAuth,(req,res)=>{
   res.send('test');
 })
+
+router.get('/danny-test', csrfProtection, asyncHandler(async (req, res) => {
+
+  const post = db.Post.build();
+
+  // const tags = await db.Tag.findAll({})
+  const tags = [
+                {name: 'Strategy'},
+                {name: 'Recommendation'},
+                {name: 'Rules Clarification'},
+                {name: 'Review'}
+                ];
+
+  res.render('post-form', {
+    post,
+    tags,
+    title: 'Post Creation',
+    token: req.csrfToken(),
+  });
+}));
 
 module.exports = router;
