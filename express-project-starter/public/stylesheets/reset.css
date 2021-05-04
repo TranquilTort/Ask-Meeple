@@ -1,7 +1,8 @@
 /* Glabal Styles */
 body {
-  padding: 50px;
   font: 16px  'Open Sans', sans-serif;
+  height: 100%;
+  margin: 0px;
 }
 
 a {
@@ -36,6 +37,7 @@ h1 {
 
 /* Navigation Bar Styles */
 nav {
+  position: fixed;
   background: #0059b3;
   color: #fff;
   width: 100%;
@@ -43,6 +45,7 @@ nav {
   flex-flow: row;
   justify-content: space-between;
   padding: 10px;
+  box-shadow: 0px 1px 10px black;
 }
 
 nav img {
@@ -77,10 +80,10 @@ form label {
 }
 
 form input {
-  margin-bottom: 10px;
   border: 2px solid #0059b3;
+  background-color: #eee;
+  margin-bottom: 10px;
   border-radius: 3px;
-
 }
 
 form button {

@@ -1,17 +1,23 @@
 extends layout.pug
 
+append head
+  link(rel='stylesheet' href='/stylesheets/sign-in.css')
+
 include utils.pug
 
 block content
-  +validationErrorSummary(errors)
-  form(action='/users/register' method='post')
-    input(type='hidden' name='_csrf' value=token)
-    +field('Username', 'username', user.username)
-    +field('Email Address', 'email', user.email)
-    +field('Password', 'password', '', 'password')
-    +field('Confirm Password', 'confirmPassword', '', 'password')
-    div
-      button(type='submit' ) Register
-      a(href='/' ) Cancel
-  div
-    p: a(href='/user/login') Already have an account?
+
+  #content-block
+    #form-body
+      +validationErrorSummary(errors)
+      form(action='/users/register' method='post')
+        input(type='hidden' name='_csrf' value=token)
+        +field('Username', 'username', user.username)
+        +field('Email Address', 'email', user.email)
+        +field('Password', 'password', '', 'password')
+        +field('Confirm Password', 'confirmPassword', '', 'password')
+        div
+          button(type='submit' ) Register
+          a(href='/' ) Cancel
+      div
+        p: a(href='/users/sign-in') Already have an account?
