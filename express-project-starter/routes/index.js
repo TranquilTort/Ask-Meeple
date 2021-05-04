@@ -5,8 +5,7 @@ var router = express.Router();
 router.get('/', function(req, res) {
   res.render('index', {
     title: 'a/A Express Skeleton Home',
-    // authenticated: res.locals.authenticated,
-    // user: res.locals.user
+    authenticated: res.locals.authenticated,
   });
 });
 

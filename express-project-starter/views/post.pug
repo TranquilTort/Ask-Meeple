@@ -1,0 +1,17 @@
+extends layout.pug
+
+include utils.pug
+
+block content
+    div
+        h2 Title: #{post.title}
+            div= post.createdAt
+        div
+            p= post.body
+        div
+            h3 Created By: #{post.User.username}
+    div
+        each comment in comments
+            div
+                div= comment.dataValues.body
+                div= comment.User.username
