@@ -6,7 +6,7 @@ html
         link(rel='stylesheet' href='/stylesheets/reset.css')
   body
     nav
-      div auth#{locals.authenticated}
+    div auth#{locals.authenticated}
       if locals.authenticated
 
         span Welcome #{user.username}!
