@@ -1,5 +1,19 @@
 
 
-.comments-list, .post-body, . {
+.comments-list, .post-body, .new-comment {
     margin: 20px;
+    padding: 15px;
+}
+
+.comment-body{
+    margin: 5px;
+    padding:5px;
+    display:flex;
+    align-content:space-between;
+    border: 2px solid;
+    background-color:beige
+}
+
+.delete-comment{
+   justify-content: flex-end;
 }
