@@ -29,14 +29,14 @@ const requireAuth = (req, res, next) => {
 const restoreUser = async (req, res, next) => {
     // Log the session object to the console
     // to assist with debugging.
-    console.log('req.session', req.session);
-    console.log('req.session.auth', req.session.auth)
+    console.log('inside restoreUser: req.session', req.session);
 
     if (req.session.auth) {
       const { userId } = req.session.auth;
 
       try {
         const user = await db.User.findByPk(userId);
+        // console.log('user', user);
 
         if (user) {
           res.locals.authenticated = true;
