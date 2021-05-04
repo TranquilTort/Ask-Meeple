@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     Post.hasMany(models.Comment,{foreignKey:'post_id'});
     Post.belongsTo(models.User,{foreignKey:'user_id'});
     const throughObj = {foreignKey:'post_id',through:'Post_Tags',otherKey:'tag_id'}
-    Post.hasMany(models.Tag,throughObj);
+    Post.belongsToMany(models.Tag,throughObj);
   };
   return Post;
 };

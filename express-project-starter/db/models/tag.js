@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Tag.associate = function(models) {
     const throughObj = {foreignKey:'tag_id',through:'Post_Tags',otherKey:'post_id'}
-    Tag.hasMany(models.Post,throughObj);
+    Tag.belongsToMany(models.Post,throughObj);
   };
   return Tag;
 };
