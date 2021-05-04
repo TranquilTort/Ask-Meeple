@@ -81,6 +81,7 @@ router.post('/register',  csrfProtection, userValidators, asyncHandler(async(req
     res.redirect('/');
   }else{
     const errors = validatorErrors.array().map((error) => error.msg);
+    
     res.render('register', {
       title: 'User Registration',
       user,

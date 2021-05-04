@@ -16,7 +16,7 @@ html
         if locals.authenticated
           span Welcome #{user.username}!
           form(action='/users/sign-out' method='post')
-            button(type='submit') Sign-out
+            button(type='submit') Sign-Out
         else
           span()
             a.navBtn(href='/users/sign-in') Sign-In

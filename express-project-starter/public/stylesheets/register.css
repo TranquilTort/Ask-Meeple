@@ -1,20 +1,22 @@
 /* Page Specific Styles */
-html {
-    background:linear-gradient(0deg, rgba(0,0,0,.5), rgba(0,0,0,.5)), url('../imgs/askMeeple-signIn-background.jpg');
-    background-repeat: no-repeat;
+html, body {
+    height: 100%;
+    background-color: #000;
+}
+
+
+.full-screen {
+    height: 100%;
+  }
+
+
+#content-block {
+    background:linear-gradient(0deg, rgba(0,0,0,1), rgba(0,0,0,.4)), url('../imgs/askMeeple-register-background.jpg');
     background-position: center center;
     background-size: cover;
     height: 100%;
-}
-
-body {
     width: 100%;
-}
-
-#content-block {
-    height: 80%;
     display: flex;
-    align-items: center;
 }
 
 /* Form Specific Style */
@@ -23,7 +25,7 @@ body {
     box-shadow: 1px 1px 10px black;
     width: 25%;
     margin: auto;
-    padding: 2% 0px 2% 0px;
+    margin-top: 8%;
     display: flex;
     flex-direction: column;
 }
@@ -32,7 +34,7 @@ body {
     width: 100%;
 }
 
-#account-link {
+#sign-in-link {
     margin: 0 auto;
 }
 
@@ -46,24 +48,16 @@ p a:hover {
 
 /* Responsive Styles */
 @media screen and (max-width: 1024px) {
-    #content-block {
-        height: 50%;
-        display: flex;
-        align-items: center;
-    }
-
     #form-body {
-        margin-top: 15%;
+        margin-top: 10%;
         width: 40%;
-        padding: 3%;
     }
 }
 
 @media screen and (max-width: 767px) {
     #form-body {
-        margin-top: 14%;
-        width: 60%;
-        padding: 2%;
+        margin-top: 18%;
+        width: 80%;
     }
 }
 
@@ -71,15 +65,11 @@ p a:hover {
 @media screen and (max-width: 415px) {
     #form-body {
         margin-top: 30%;
-        width: 60%;
-        padding: 3%;
     }
 }
 
 @media screen and (max-width: 280px) {
     #form-body {
         margin-top: 30%;
-        width: 75%;
-        padding: 3%;
     }
 }

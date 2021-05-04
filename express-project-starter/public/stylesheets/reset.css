@@ -20,7 +20,6 @@ h1, h2, h3 {
 h1, h2, h3, h4, h5, h6, a, ol, li, ul, div, span,
 body, header, nav {
   font-size: 1rem;
-  /* color: inherit; */
   background-color: transparent;
   margin: 0;
   padding: 0;
@@ -37,6 +36,7 @@ h1 {
 
 /* Navigation Bar Styles */
 nav {
+  z-index: 9999;
   position: fixed;
   background: #0059b3;
   color: #fff;
@@ -59,8 +59,18 @@ nav a {
 nav#left {
 }
 
-nav#right a.navBt {
+a.navBtn {
   display: block;
+  background-color: #f56522;
+  text-decoration: none;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  padding: 2px 5px;
+  margin-bottom: 5px;
+}
+
+a.navBtn:hover {
+  background-color: #c75520;
 }
 
 
@@ -105,4 +115,27 @@ form button:hover {
 
 form a:hover  {
   color: #f56522;
+}
+
+/* Error Styles */
+.alert, .alert li {
+  font-family: 'Open Sans', sans-serif;
+  margin: 3px;
+}
+
+.alert {
+  background-color: rgba(255, 15, 15, .5);
+  text-align: center;
+  font-size: 14px;
+}
+
+.alert ul {
+  margin: 8px;
+  padding: 12px;
+}
+
+.alert li {
+  width: 90%;
+  text-align: left;
+  font-size: 12px;
 }
