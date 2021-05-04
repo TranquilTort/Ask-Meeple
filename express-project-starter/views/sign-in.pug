@@ -3,13 +3,15 @@ extends layout.pug
 include utils.pug
 
 block content
-  +validationErrorSummary(errors)
-  form(action='/users/sign-in' method='post')
-    input(type='hidden' name='_csrf' value=token)
-    +field('Username/Email', 'identifier', identifier)
-    +field('Password', 'password', '', 'password')
-    div
-      button(type='submit' ) Sign-In
-      a(href='/' ) Cancel
-  div
-    p: a(href='/users/register') Need to create an account?
+  link(rel='stylesheet' href='/stylesheets/sign-in.css')
+  #form-body
+    +validationErrorSummary(errors)
+    form(action='/users/sign-in' method='post')
+      input(type='hidden' name='_csrf' value=token)
+      +field('Username/Email', 'identifier', identifier)
+      +field('Password', 'password', '', 'password')
+      div
+        button(type='submit' ) Sign-In
+        a(href='/' ) Cancel
+    #account-link
+      p: a(href='/users/register') Need to create an account?

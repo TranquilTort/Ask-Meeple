@@ -1,20 +1,25 @@
+/* Glabal Styles */
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 16px  'Open Sans', sans-serif;
 }
 
 a {
-  color: #00B7FF;
+  color: #0059b3;
 }
 
 * {
   box-sizing: border-box;
 }
 
+h1, h2, h3 {
+  font-family: 'Josefin Sans', sans-serif;
+}
+
 h1, h2, h3, h4, h5, h6, a, ol, li, ul, div, span,
 body, header, nav {
   font-size: 1rem;
-  color: inherit;
+  /* color: inherit; */
   background-color: transparent;
   margin: 0;
   padding: 0;
@@ -24,4 +29,77 @@ body, header, nav {
 
 h1 {
   font-size: 2rem;
+  line-height: 2.5rem;
+  font-weight: 700;
+  color: #0059b3;
+}
+
+/* Navigation Bar Styles */
+nav {
+  background: #0059b3;
+  color: #fff;
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+nav img {
+  width: 200px;
+}
+
+nav a {
+  color: #fff;
+}
+
+nav#left {
+}
+
+nav#right a.navBt {
+  display: block;
+}
+
+
+/* Form Styles */
+
+form {
+  margin: 0 auto;
+}
+
+form label {
+  display: block;
+  padding: 1px;
+  padding-top: 10px;
+  font-size: 14px;
+  font-family: 'Josefin Sans', sans-serif;
+
+}
+
+form input {
+  margin-bottom: 10px;
+  border: 2px solid #0059b3;
+  border-radius: 3px;
+
+}
+
+form button {
+  background-color: #0059b3;
+  color: #fff;
+  border: 0px solid;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  margin-top: 5px;
+  margin-right: 8px;
+  padding: 1px 8px 2px 8px;
+}
+
+form button:hover {
+  background-color: #f56522;
+}
+
+form a:hover  {
+  color: #f56522;
 }

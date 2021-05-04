@@ -1,0 +1,35 @@
+body {
+    background-image: url('../imgs/askMeeple-signIn-background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: auto;
+}
+
+#form-body {
+    background: #fff;
+    box-shadow: 2px 2px 2px black;
+    width: 25%;
+    height: auto;
+    margin: 5% auto;
+    padding: 3%;
+    display: flex;
+    flex-direction: column;
+}
+
+#account-link {
+    margin: 0 auto;
+}
+
+p a {
+    font-size: 12px;
+}
+
+p a:hover {
+    color: #f56522;
+}
+
+@media screen and (max-width: 1265px) {
+
+
+}

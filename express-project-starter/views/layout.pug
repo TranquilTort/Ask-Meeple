@@ -4,14 +4,19 @@ html
       block head
         title="Express Starter App"
         link(rel='stylesheet' href='/stylesheets/reset.css')
+        link(rel="preconnect" href="https://fonts.gstatic.com")
+        link(href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&family=Open+Sans&display=swap" rel="stylesheet")
   body
     nav
-      if locals.authenticated
-        span Welcome #{user.username}!
-        form(action='/users/sign-out' method='post')
-          button(type='submit') Sign-out
-      else
-        span()
-          a(href='/users/sign-in') Sign-In
-          a(href='/users/register') Register
+      #left
+        a(href="/"): img(src="../imgs/askMeeple_logo_orange.png" alt="Ask Meeple Logo")
+      #right
+        if locals.authenticated
+          span Welcome #{user.username}!
+          form(action='/users/sign-out' method='post')
+            button(type='submit') Sign-out
+        else
+          span()
+            a.navBtn(href='/users/sign-in') Sign-In
+            a.navBtn(href='/users/register') Register
     block content
