@@ -163,6 +163,7 @@ router.post('/sign-in', csrfProtection, signInValidators, async (req, res) => {
 router.post('/sign-out', (req, res) => {
   logoutUser(req, res);
   res.redirect('/');
+  console.log('THIS SHOULD BE LAST');
 });
 router.get('/test',requireAuth,(req,res)=>{
   res.send('test');

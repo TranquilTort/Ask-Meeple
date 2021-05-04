@@ -10,7 +10,12 @@ function loginUser(req,res,user){
 };
 
 function logoutUser(req,res){
+   console.log('req.session.auth');
+    console.log(req.session.auth);
     delete req.session.auth;
+    console.log('deleted');
+    res.locals.authenticated = false;
+    console.log(req.session.auth);
 };
 const requireAuth = (req, res, next) => {
     if (!res.locals.authenticated) {
