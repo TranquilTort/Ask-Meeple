@@ -9,7 +9,7 @@ const { Sequelize } = require('sequelize');
 const Op = Sequelize.Op;
 const {loginUser,logoutUser,requireAuth} = require('../auth.js');
 
-router.get('/:id',csrfProtection,asyncHandler(async(req,res)=>{
+router.get('/:id', csrfProtection, asyncHandler(async(req,res)=>{
     const postId = req.params.id;
     const post = await db.Post.findByPk(postId,{include: db.User});
     //potential route for a post that doesnt exist?
@@ -17,10 +17,14 @@ router.get('/:id',csrfProtection,asyncHandler(async(req,res)=>{
     res.render('post',{
         token:req.csrfToken(),
         post,
-        comments
+        comments,
+        postId:postId
     });
 }));
 
+router.post('/:id/new-comment', csrfProtection, asyncHandler(async(req,res)=>{
+
+}));
 
 
 

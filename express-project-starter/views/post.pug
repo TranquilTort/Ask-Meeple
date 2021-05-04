@@ -1,18 +1,30 @@
 extends layout.pug
+append head
+    script(src="/javascripts/posts.js" type='module')
 
 include utils.pug
 
 block content
-    div
+
+    div(class='post-body')
         div
             h3 Created By: #{post.User.username}
-        h2 Title: #{post.title}
+        h2(class='post-title') Title: #{post.title}
             div= post.createdAt
         div
             p= post.body
-    div 
+
+    div(class='new-comment')
+        button(id='create-comment' ) Post New Comment
+        form(action="/posts/#{postId}/new-comment",method='post')
+            input(type='hidden' name='_csrf' value=token)
+            label(class='hidden-input') What do you have to say?
+            textarea(class='hidden-input' name='body')
+            input(type='hidden' name='post_id' value= postId)
+            div
+                button(id='comment-submit' type='submit' class='hidden-input') Post Comment
     div
         each comment in comments
-            div
+            div(class='comment-body')
                 div= comment.dataValues.body
                 div= comment.User.username
