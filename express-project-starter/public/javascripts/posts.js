@@ -3,9 +3,18 @@ window.addEventListener('DOMContentLoaded',(event)=>{
     hiddenItems.forEach(element => {
         element.style.display='none'
     });
-    document.getElementById('create-comment').addEventListener('click',(event)=>{
-        hiddenItems.forEach(element => {
-            element.style.display='block';
-        });
+    const newCommentBtn = document.getElementById('create-comment')
+    newCommentBtn.addEventListener('click',(event)=>{
+        if(hiddenItems[0].style.display === 'block'){
+            hiddenItems.forEach(element => {
+                element.style.display='none';
+            });
+            newCommentBtn.innerText= 'Post New Comment'
+        }else{
+            hiddenItems.forEach(element => {
+                element.style.display='block';
+            });
+            newCommentBtn.innerText= 'Cancel Comment'
+        }
     })
 })

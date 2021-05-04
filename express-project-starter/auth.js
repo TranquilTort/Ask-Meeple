@@ -19,9 +19,11 @@ function logoutUser(req,res){
 };
 const requireAuth = (req, res, next) => {
     if (!res.locals.authenticated) {
-      return res.redirect('/users/sign-in');
+      return res.save(res.redirect('/users/sign-in'));
+    }else{
+      return next();
     }
-    return next();
+
   };
 
 const restoreUser = async (req, res, next) => {
