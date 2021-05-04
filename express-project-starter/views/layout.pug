@@ -4,21 +4,27 @@ html
       block head
         title="Ask Meeple"
         link(rel="icon" type="image/ico" href="/favicon.ico")
+        script(src="https://kit.fontawesome.com/783707dd26.js" crossorigin="anonymous")
         link(rel="stylesheet" href="/stylesheets/reset.css")
         link(rel="preconnect" href="https://fonts.gstatic.com")
         link(href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&family=Open+Sans&display=swap" rel="stylesheet")
         meta(content="width=device-width, initial-scale=1" name="viewport")
   body
     nav
-      #left
-        a(href="/"): img(src="../imgs/askMeeple_logo_orange.png" alt="Ask Meeple Logo")
-      #right
-        if locals.authenticated
-          span Welcome #{user.username}!
+      a(href="/"): img(src="../imgs/askMeeple_logo_orange.png" alt="Ask Meeple Logo")
+      a.navBtn.new-post(href="/new-post" title="Create a new post"): i(class="far fa-edit")
+      form(action="/search/:search-results", method="get")
+        input(type="text" name="search" placeholder="Search")
+        button(type="submit"): i(class="fas fa-search")
+      if locals.authenticated
+        .loggedIn
+          span Welcome, #{user.username}!
           form(action='/users/sign-out' method='post')
             button(type='submit') Sign-Out
-        else
-          span()
-            a.navBtn(href='/users/sign-in') Sign-In
-            a.navBtn(href='/users/register') Register
+      else
+        span()
+          a.navBtn(href='/users/sign-in' title="Sign-in to an existing account") Sign-In
+          a.navBtn(href='/users/register' title="Create a new account") Register
+      span#mobile
+        a.navBtn(href="#"): i(class="fas fa-bars")
     block content

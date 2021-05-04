@@ -10,7 +10,7 @@ html, body {
   }
 
 #content-block {
-    background:linear-gradient(0deg, rgba(0,0,0,1), rgba(0,0,0,.4)), url('../imgs/askMeeple-signIn-background.jpg');
+    background:linear-gradient(0deg, rgba(0,0,0,1), rgba(0,0,0,.3)), url('../imgs/askMeeple-signIn-background.jpg');
     background-position: center center;
     background-size: cover;
     height: 100%;
