@@ -77,8 +77,13 @@ router.post('/register',  csrfProtection, userValidators, asyncHandler(async(req
     const hashedPassword = await bcrypt.hash(password,10);
     user.hashedPassword = hashedPassword;
     await user.save();
+    // console.log('>>>>>>>> User is OK, start authorization')
+    // console.log('before logIn, req.session.auth', req.session.auth);
     loginUser(req, res, user);
-    res.redirect('/');
+    // console.log('after logIn, req.session.auth', req.session.auth);
+    // return res.redirect('/');
+    return req.session.save( () => res.redirect("/") );
+    // return;
   }else{
     const errors = validatorErrors.array().map((error) => error.msg);
     res.render('register', {
@@ -137,13 +142,16 @@ router.post('/sign-in', csrfProtection, signInValidators, async (req, res) => {
   const user = await db.User.findOne({ where: { [Op.or]: [{email: identifier}, {username: identifier}] }});
   const validatorErrors = validationResult(req);
   let errors = [];
-
   if(validatorErrors.isEmpty()) {
     const matchesPassword = await bcrypt.compare(password, user.hashedPassword.toString());
     if(matchesPassword) {
-      // console.log('user', user);
+      // console.log('>>>>>>>> Password is OK, start authorization')
+      // console.log('before logIn, req.session.auth', req.session.auth);
       loginUser(req, res, user);
-      return res.redirect('/');
+      // console.log('after logIn, req.session.auth', req.session.auth);
+      // return res.redirect('/');
+      return req.session.save( () => res.redirect("/") );
+      // return;
     } else {
       errors.push('Password does not match any username or email address in database.')
     }
@@ -162,11 +170,33 @@ router.post('/sign-in', csrfProtection, signInValidators, async (req, res) => {
 
 router.post('/sign-out', (req, res) => {
   logoutUser(req, res);
-  res.redirect('/');
+  return req.session.save( () => res.redirect("/") );
+  // return;
+  // res.redirect('/');
   console.log('THIS SHOULD BE LAST');
 });
 router.get('/test',requireAuth,(req,res)=>{
   res.send('test');
 })
+
+router.get('/danny-test', csrfProtection, asyncHandler(async (req, res) => {
+
+  const post = db.Post.build();
+
+  // const tags = await db.Tag.findAll({})
+  const tags = [
+                {name: 'Strategy'},
+                {name: 'Recommendation'},
+                {name: 'Rules Clarification'},
+                {name: 'Review'}
+                ];
+
+  res.render('post-form', {
+    post,
+    tags,
+    title: 'Post Creation',
+    token: req.csrfToken(),
+  });
+}));
 
 module.exports = router;

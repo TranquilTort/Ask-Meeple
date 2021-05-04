@@ -1,0 +1,22 @@
+extends layout.pug
+
+include utils.pug
+
+//- mixin field(labelText, fieldName, fieldValue, fieldType = 'text', placeholder = null)
+
+block content
+  +validationErrorSummary(errors)
+  form(action='/posts/new-post' method='post')
+    input(type='hidden' name='_csrf' value=token)
+    +field('Title:', 'title', '', 'text', post.title)
+    div(class='') Tags:
+      each tag in tags
+        input(type="checkbox" class="" name=`tag-${tag.name}`)
+        label(for=`tag-${tag.name}`)=tag.name
+    +field('Body:', 'body', '', 'textarea', post.body)
+    +field('Add Image URL:', 'image_url', '', 'text', post.image_url)
+    div
+      //- button(type='button' id='' class='') Delete Post
+      button(type='submit' class='') Create Post
+      button(type='submit' class='') Edit Post
+      a(href='/' ) Cancel
