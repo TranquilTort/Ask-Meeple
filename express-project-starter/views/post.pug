@@ -4,12 +4,13 @@ include utils.pug
 
 block content
     div
+        div
+            h3 Created By: #{post.User.username}
         h2 Title: #{post.title}
             div= post.createdAt
         div
             p= post.body
-        div
-            h3 Created By: #{post.User.username}
+    div 
     div
         each comment in comments
             div
