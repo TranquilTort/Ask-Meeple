@@ -1,4 +1,4 @@
-extends layout
+extends layout.pug
 
 append head
   //- add page specific styles by appending to the head
@@ -7,20 +7,31 @@ append head
   script(src="/javascripts/index.js" type="module" defer)
 
 block content
-  h1= title
-  if (posts.length)
-    each post in posts
-      div(class='post-block')
-        h1= post.title
-        div By: #{post.User.username}
-        p= post.body
-        img(class='post-img' src=post.image_url)
-        button(class='go-to-post' onclick=`document.location='/posts/${post.id}'`) View Comments
-  else
-    div THERE DOESN'T SEEM TO BE ANYTHING HERE...
+  //- h1= title
+  #content-block
+    #side-bar
+      div
+       p PLACEHOLDER FOR SIDEBAR
+       ul
+         li Tag
+         li Tag
+         li Tag
+         li Tag
+         li Tag
+    #post-area
+      if (posts.length)
+        each post in posts
+          div(class='post-block')
+            h1= post.title
+            div By: #{post.User.username}
+            p= post.body
+            img(class='post-img' src=post.image_url)
+            button(class='go-to-post' onclick=`document.location='/posts/${post.id}'`) View Comments
+      else
+        div THERE DOESN'T SEEM TO BE ANYTHING HERE...
 
-  if (page == 2)
-    button(class='next/prev' onclick=`document.location='/'`) Previous Page
-  else if (page > 2)
-    button(class='next/prev' onclick=`document.location='/${page-1}'`) Previous Page
-  button(class='next/prev' onclick=`document.location='/${page+1}'`) Next Page
+      if (page == 2)
+        button(class='next/prev' onclick=`document.location='/'`) Previous Page
+      else if (page > 2)
+        button(class='next/prev' onclick=`document.location='/${page-1}'`) Previous Page
+      button(class='next/prev' onclick=`document.location='/${page+1}'`) Next Page

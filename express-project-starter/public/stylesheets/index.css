@@ -1,3 +1,17 @@
-/* h1 {
-    color: #555555;
-} */
+#content-block {
+  display: flex;
+  flex-direction: row;
+}
+
+#side-bar {
+    display: flex;
+    width: 25%;
+}
+
+#post-area {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    background-color: #fff;
+    margin: 2%;
+}
