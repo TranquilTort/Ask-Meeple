@@ -7,7 +7,7 @@
 
 #side-bar {
     margin-top: 20px;
-    max-width: 20%;
+    width: 20%;
 }
 
 #side-bar h3 {
@@ -28,6 +28,7 @@
     display: block;
 }
 
+
 #about {
     border-top: 1px solid #bbb;
 }
@@ -38,11 +39,8 @@
 
 #post-area {
     flex-direction: column;
-    max-width: 60%;
+    width: 60%;
     margin: 1%;
-    /* background-color: #fff;
-    margin: 2%;
-    padding: 2%; */
 }
 
 #post-area h1 {
@@ -67,6 +65,15 @@
     font-size: 11px;
 }
 
+#no-content {
+    padding: 20px;
+    border: 1px solid #bbb;
+    background-color: #fff;
+    margin-bottom: 1%;
+    font-size: 14px;
+}
+
+
 /* --- Responsive Layout */
 @media screen and (max-width: 767px) {
     #content-block {
@@ -74,16 +81,20 @@
     }
 
     #side-bar, #post-area {
-        max-width: 90%;
+        width: 90%;
         margin: 0 auto;
     }
 
-    #side-bar {
-        margin-top: 50px;
-        width: 100%;
+    #post-area {
+        margin-top: 20px;
     }
 
     .post-block {
        margin: 2% 0;
     }
+
+    #side-bar {
+        margin-top: 40px;
+    }
+
 }

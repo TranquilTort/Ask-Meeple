@@ -36,7 +36,7 @@ block content
             img(class='post-img' src=post.image_url)
             button(class='go-to-post' onclick=`document.location='/posts/${post.id}'`) View Comments
       else
-        div THERE DOESN'T SEEM TO BE ANYTHING HERE...
+        #no-content THERE DOESN'T SEEM TO BE ANYTHING HERE...
 
       if (page == 2)
         button(class='next/prev' onclick=`document.location='/'`) Previous Page
