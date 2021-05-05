@@ -8,4 +8,19 @@ append head
 
 block content
   h1= title
-  //- p Welcome to your Project Skeleton
+  if (posts.length)
+    each post in posts
+      div(class='post-block')
+        h1= post.title
+        div By: #{post.User.username}
+        p= post.body
+        img(class='post-img' src=post.image_url)
+        button(class='go-to-post' onclick=`document.location='/posts/${post.id}'`) View Comments
+  else
+    div THERE DOESN'T SEEM TO BE ANYTHING HERE...
+
+  if (page == 2)
+    button(class='next/prev' onclick=`document.location='/'`) Previous Page
+  else if (page > 2)
+    button(class='next/prev' onclick=`document.location='/${page-1}'`) Previous Page
+  button(class='next/prev' onclick=`document.location='/${page+1}'`) Next Page
