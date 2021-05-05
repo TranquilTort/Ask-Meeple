@@ -1,17 +1,89 @@
+/* Layout Styles */
 #content-block {
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
 }
 
 #side-bar {
-    display: flex;
-    width: 25%;
+    margin-top: 20px;
+    max-width: 20%;
+}
+
+#side-bar h3 {
+    color: #0059b3;
+    font-weight: 700;
+    border-bottom: 1px solid #000;
+}
+
+#search-tags {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#search-tags a {
+    font-size: 14px;
+    line-height: 21px;
+    text-decoration: none;
+    display: block;
+}
+
+#about {
+    border-top: 1px solid #bbb;
+}
+
+#about, #about a, #about span {
+    font-size: 10px;
 }
 
 #post-area {
-    display: flex;
     flex-direction: column;
-    width: 75%;
-    background-color: #fff;
+    max-width: 60%;
+    margin: 1%;
+    /* background-color: #fff;
     margin: 2%;
+    padding: 2%; */
+}
+
+#post-area h1 {
+    font-size: 16px;
+}
+
+.post-block {
+    padding: 20px;
+    border: 1px solid #bbb;
+    background-color: #fff;
+    margin-bottom: 1%;
+    font-size: 14px;
+}
+
+.post-block > h2 {
+    font-size: 18px;
+    color: #0059b3;
+    font-weight: 700;
+}
+
+.post-block > div {
+    font-size: 11px;
+}
+
+/* --- Responsive Layout */
+@media screen and (max-width: 767px) {
+    #content-block {
+        flex-direction: column-reverse;
+    }
+
+    #side-bar, #post-area {
+        max-width: 90%;
+        margin: 0 auto;
+    }
+
+    #side-bar {
+        margin-top: 50px;
+        width: 100%;
+    }
+
+    .post-block {
+       margin: 2% 0;
+    }
 }
