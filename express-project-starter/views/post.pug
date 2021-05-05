@@ -22,7 +22,7 @@ block content
         form(action=`/posts/${post_id}/new-comment`,method='post')
             input(type='hidden' name='_csrf' value=token)
             label(class='hidden-input') What do you have to say?
-            textarea(class='hidden-input' name='body')
+            textarea(class='hidden-input' name='body' placeholder="Comment...")
             if user
                 input(type='hidden' name='user_id' value= user.id)
             div

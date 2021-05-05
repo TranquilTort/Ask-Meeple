@@ -130,7 +130,7 @@ a.navBtn:hover {
     display: inline-block;
   }
 
-  a.navBtn.hideOnMobile, form.hideOnMobile {
+  a.navBtn.hideOnMobile, form.hideOnMobile, .loggedIn {
     display: none;
   }
 }

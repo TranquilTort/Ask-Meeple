@@ -41,7 +41,7 @@
     padding: 20px;
     border: 1px solid #bbb;
     background-color: #fff;
-    margin-bottom: 1%;
+    margin-bottom: 5px;
     font-size: 14px;
 }
 
@@ -59,14 +59,40 @@
 /* --- Responsive Layout */
 @media screen and (max-width: 767px) {
     #content-block {
+        margin-top: 20px;
         max-width: 90%;
+    }
+
+    .comments-list, .post-body, .new-comment {
+        margin: 2%;
     }
 
     .new-comment {
         padding-left: 0px;
     }
+}
 
-    .comments-list, .post-body, .new-comment {
-        margin: 2%;
+
+
+/* Comment Form Styles */
+textarea ::placeholder {
+    font-weight: 700;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+}
+
+textarea {
+   width: 500px;
+   height: 100px;
+   padding: 2px;
+   border-radius: 3px;
+   padding: 3px;
+   font-size: 14px;
+}
+
+/* --- Responsive Comments */
+@media screen and (max-width: 767px) {
+    textarea {
+        width: 100%;
     }
 }
