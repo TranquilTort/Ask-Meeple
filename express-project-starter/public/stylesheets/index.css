@@ -51,7 +51,7 @@
     padding: 20px;
     border: 1px solid #bbb;
     background-color: #fff;
-    margin-bottom: 1%;
+    margin-bottom: 5px;
     font-size: 14px;
 }
 
@@ -89,9 +89,9 @@
         margin-top: 20px;
     }
 
-    .post-block {
+    /* .post-block {
        margin: 2% 0;
-    }
+    } */
 
     #side-bar {
         margin-top: 40px;
