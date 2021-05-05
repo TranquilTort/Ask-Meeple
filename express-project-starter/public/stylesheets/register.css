@@ -25,7 +25,8 @@ html, body {
     box-shadow: 1px 1px 10px black;
     width: 25%;
     margin: auto;
-    margin-top: 10%;
+    margin-top: 8%;
+    border-radius: 3px;
     display: flex;
     flex-direction: column;
 }
@@ -49,27 +50,14 @@ p a:hover {
 /* Responsive Styles */
 @media screen and (max-width: 1024px) {
     #form-body {
-        margin-top: 12%;
+        margin-top: 5%;
         width: 40%;
     }
 }
 
 @media screen and (max-width: 767px) {
     #form-body {
-        margin-top: 18%;
+        margin-top: 12%;
         width: 80%;
-    }
-}
-
-
-@media screen and (max-width: 415px) {
-    #form-body {
-        margin-top: 30%;
-    }
-}
-
-@media screen and (max-width: 280px) {
-    #form-body {
-        margin-top: 30%;
     }
 }
