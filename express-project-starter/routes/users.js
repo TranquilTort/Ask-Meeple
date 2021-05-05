@@ -181,4 +181,25 @@ router.get('/test',requireAuth,(req,res)=>{
 })
 
 
+router.get('/danny-test', csrfProtection, asyncHandler(async (req, res) => {
+
+  const post = db.Post.build();
+
+  // const tags = await db.Tag.findAll({})
+  const tags = [
+                {name: 'Strategy'},
+                {name: 'Recommendation'},
+                {name: 'Rules Clarification'},
+                {name: 'Review'}
+              ];
+
+  res.render('post-form', {
+    post,
+    tags,
+    title: 'Post Creation',
+    token: req.csrfToken(),
+  });
+}));
+
+
 module.exports = router;
