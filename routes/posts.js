@@ -70,6 +70,7 @@ router.post('/:id/comment/:commentid/delete', csrfProtection, requireAuth,asyncH
     }catch{
 
     }
+    console.log('comment destroyed')
     const post_id = req.params.id;
     res.save(res.redirect(`/posts/${post_id}`));
 }));
