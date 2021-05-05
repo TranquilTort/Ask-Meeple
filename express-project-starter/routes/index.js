@@ -27,7 +27,7 @@ router.get('/', asyncHandler(async function(req, res) {
     // res.send('wahaoo');
 }));
 
-router.get('/:id',  asyncHandler(async function(req, res) {
+router.get('/:id(\\d)+',  asyncHandler(async function(req, res) {
   const page = parseInt(req.params.id)
   const posts = await db.Post.findAll({order:[['createdAt','DESC']],include:db.User, offset:page*5, limit:5})
   res.render('index', {
@@ -55,7 +55,7 @@ const postValidators = [
 ];
 
 
-router.get('/new-post', csrfProtection, asyncHandler(async (req, res) => {
+router.get('/new-post', csrfProtection, requireAuth, asyncHandler(async (req, res) => {
 
   const post = db.Post.build();
 
@@ -68,10 +68,13 @@ router.get('/new-post', csrfProtection, asyncHandler(async (req, res) => {
     title: 'Post Creation',
     token: req.csrfToken(),
   });
+  // res.send('blah');
 }));
 
 router.post('/new-post', csrfProtection, postValidators, requireAuth, asyncHandler(async (req, res) => {
   const { title, body, image_url } = req.body;
+
+  //console.log(req.body['title']);
 
   const tags = await db.Tag.findAll({});
 
@@ -85,7 +88,12 @@ router.post('/new-post', csrfProtection, postValidators, requireAuth, asyncHandl
       user_id: req.session.auth.userId,
     }
   );
-
+  console.log('>>>>>>>', tags.length);
+  let strTagName;
+  for (let i = 1; i <= tags.length; i++) {
+    strTagName = `tag-${i}`;
+    console.log('i', i, ': ', req.body[strTagName]);
+  }
   // console.log(JSON.stringify(post,null,4));
 
   //need to extract and save tags to database
@@ -95,6 +103,8 @@ router.post('/new-post', csrfProtection, postValidators, requireAuth, asyncHandl
   let errors = [];
 
   if(validatorErrors.isEmpty()) {
+
+
     await post.save();
     return res.redirect('/');
   }
