@@ -15,7 +15,7 @@ const {loginUser,logoutUser,requireAuth} = require('../auth.js');
 /* GET home page. */
 
 router.get('/', asyncHandler(async function(req, res) {
-  const posts = await db.Post.findAll({order:[['createdAt','DESC']],include:db.User, limit:5})
+  const posts = await db.Post.findAll({order:[['createdAt','DESC']],include:[db.User, db.Tag], limit:5})
   res.render('index', {
 
     page: 1,
@@ -24,12 +24,12 @@ router.get('/', asyncHandler(async function(req, res) {
 
 
   });
-    // res.send('wahaoo');
+
 }));
 
 router.get('/:id(\\d)+',  asyncHandler(async function(req, res) {
   const page = parseInt(req.params.id)
-  const posts = await db.Post.findAll({order:[['createdAt','DESC']],include:db.User, offset:page*5, limit:5})
+  const posts = await db.Post.findAll({order:[['createdAt','DESC']],include:[db.User, db.Tag], offset:page*5, limit:5})
   res.render('index', {
     page:page,
     title: 'Ask Meeple',
@@ -38,7 +38,6 @@ router.get('/:id(\\d)+',  asyncHandler(async function(req, res) {
 
   });
 
-    // res.send('wahaoo');
 }));
 
 
@@ -60,7 +59,6 @@ router.get('/new-post', csrfProtection, requireAuth, asyncHandler(async (req, re
   const post = db.Post.build();
 
   const tags = await db.Tag.findAll({});
-  // const tags = [{name: 'Ask for Recommendations for Buying'}, {name:'Rules Clarification'},{name:'Review'},{name:'Strategy'}];
 
   res.render('post-form', {
     post,
@@ -68,45 +66,54 @@ router.get('/new-post', csrfProtection, requireAuth, asyncHandler(async (req, re
     title: 'Post Creation',
     token: req.csrfToken(),
   });
-  // res.send('blah');
+
 }));
 
 router.post('/new-post', csrfProtection, postValidators, requireAuth, asyncHandler(async (req, res) => {
   const { title, body, image_url } = req.body;
-
-  //console.log(req.body['title']);
+  const user_id = req.session.auth.userId;
 
   const tags = await db.Tag.findAll({});
-
-  // const tags = [{name: 'Ask for Recommendations for Buying'}, {name:'Rules Clarification'},{name:'Review'},{name:'Strategy'}];
 
   const post = db.Post.build(
     {
       body,
       image_url,
       title,
-      user_id: req.session.auth.userId,
+      user_id,
     }
   );
-  console.log('>>>>>>>', tags.length);
-  let strTagName;
-  for (let i = 1; i <= tags.length; i++) {
-    strTagName = `tag-${i}`;
-    console.log('i', i, ': ', req.body[strTagName]);
-  }
-  // console.log(JSON.stringify(post,null,4));
 
-  //need to extract and save tags to database
-  //tags.push(req.body[tag-i]), use for loop to iterate i
+  const arrTags = [];
+
+  for (let i = 1; i <= tags.length; i++) {
+    let strTagName = `tag-${i}`;
+    if (req.body[strTagName]==='on') {arrTags.push(i)};
+  }
 
   const validatorErrors = validationResult(req);
   let errors = [];
 
   if(validatorErrors.isEmpty()) {
 
-
     await post.save();
-    return res.redirect('/');
+
+    const samePost = await db.Post.findOne(
+      {
+        where: {user_id},
+        order: [['createdAt', 'DESC']],
+      });
+
+    for (let i = 0; i < arrTags.length; i++) {
+      let postTag = db.Post_Tag.build({
+        tag_id: arrTags[i],
+        post_id: samePost.id,
+      });
+      await postTag.save();
+    }
+
+    return req.session.save( () => res.redirect("/") );
+
   }
   else {
     errors = validatorErrors.array().map((error) => error.msg);
