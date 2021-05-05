@@ -10,26 +10,33 @@ function loginUser(req,res,user){
 };
 
 function logoutUser(req,res){
+   console.log('req.session.auth');
+    console.log(req.session.auth);
     delete req.session.auth;
+    console.log('deleted');
+    res.locals.authenticated = false;
+    console.log(req.session.auth);
 };
 const requireAuth = (req, res, next) => {
     if (!res.locals.authenticated) {
-      return res.redirect('/users/sign-in');
+      return res.save(res.redirect('/users/sign-in'));
+    }else{
+      return next();
     }
-    return next();
+
   };
 
 const restoreUser = async (req, res, next) => {
     // Log the session object to the console
     // to assist with debugging.
-    console.log('req.session', req.session);
-    console.log('req.session.auth', req.session.auth)
+    console.log('inside restoreUser: req.session', req.session);
 
     if (req.session.auth) {
       const { userId } = req.session.auth;
 
       try {
         const user = await db.User.findByPk(userId);
+        // console.log('user', user);
 
         if (user) {
           res.locals.authenticated = true;
