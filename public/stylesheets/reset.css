@@ -1,4 +1,4 @@
-/* Glabal Base Styles */
+/* Global Base Styles */
 body {
   font: 16px  'Open Sans', sans-serif;
   height: 100%;
@@ -22,7 +22,7 @@ h1, h2, h3 {
   font-family: 'Josefin Sans', sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6, a, ol, li, ul, div, span, header, nav {
+h1, h2, h3, h4, h5, h6, a, ol, li, ul, header, nav {
   font-size: 1rem;
   background-color: transparent;
   margin: 0;
@@ -130,7 +130,7 @@ a.navBtn:hover {
     display: inline-block;
   }
 
-  a.navBtn.hideOnMobile, form.hideOnMobile {
+  a.navBtn.hideOnMobile, form.hideOnMobile, .loggedIn {
     display: none;
   }
 }
@@ -151,6 +151,15 @@ form label {
 }
 
 form input {
+  border: 2px solid #0059b3;
+  background-color: #eee;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  padding: 3px;
+  font-size: 14px;
+}
+
+textarea {
   border: 2px solid #0059b3;
   background-color: #eee;
   margin-bottom: 10px;
