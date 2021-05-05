@@ -8,21 +8,21 @@ module.exports = {
         {
         user_id: 1,
         body: "COMMENT 1 ",
-        post_id:4,
+        post_id: 2,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        user_id: 4,
+        user_id: 2,
         body: "COMMENT 2",
-        post_id:4,
+        post_id: 2,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        user_id: 3,
+        user_id: 2,
         body: "COMMENT 3",
-        post_id:4,
+        post_id: 1,
         createdAt: new Date(),
         updatedAt: new Date()
       },
