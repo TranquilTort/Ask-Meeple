@@ -88,7 +88,12 @@ router.post('/new-post', csrfProtection, postValidators, requireAuth, asyncHandl
       user_id: req.session.auth.userId,
     }
   );
-
+  console.log('>>>>>>>', tags.length);
+  let strTagName;
+  for (let i = 1; i <= tags.length; i++) {
+    strTagName = `tag-${i}`;
+    console.log('i', i, ': ', req.body[strTagName]);
+  }
   // console.log(JSON.stringify(post,null,4));
 
   //need to extract and save tags to database
@@ -98,10 +103,7 @@ router.post('/new-post', csrfProtection, postValidators, requireAuth, asyncHandl
   let errors = [];
 
   if(validatorErrors.isEmpty()) {
-    let strTagName;
-    for (let i = 0; i < tags.length; i++)
-      strTagName = `tag-${i}`;
-      console.log('i', i, ': ', req.body[strTagName]);
+
 
     await post.save();
     return res.redirect('/');
