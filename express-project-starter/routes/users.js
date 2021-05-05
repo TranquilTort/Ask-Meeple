@@ -189,7 +189,7 @@ router.get('/danny-test', csrfProtection, asyncHandler(async (req, res) => {
                 {name: 'Recommendation'},
                 {name: 'Rules Clarification'},
                 {name: 'Review'}
-                ];
+              ];
 
   res.render('post-form', {
     post,
