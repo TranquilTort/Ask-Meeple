@@ -1,0 +1,40 @@
+extends layout.pug
+append head
+    script(src="/javascripts/posts.js" type='module')
+    link(rel='stylesheet' href='/stylesheets/post.css')
+include utils.pug
+
+block content
+    div(class='post-body')
+        div
+            h3 Created By: #{post.User.username}
+        h2(class='post-title') Title: #{post.title}
+            div= post.createdAt
+        div
+            p= post.body
+    +validationErrorSummary(errors)
+    div(class='new-comment')
+        if locals.authenticated
+            button(id='create-comment' class='create-comment' ) Post New Comment
+        else
+            button(class='create-comment' onclick="document.location='/users/sign-in'") Login in to Post a Comment
+        form(action=`/posts/${post_id}/new-comment`,method='post')
+            input(type='hidden' name='_csrf' value=token)
+            label(class='hidden-input') What do you have to say?
+            textarea(class='hidden-input' name='body')
+            if user
+                input(type='hidden' name='user_id' value= user.id)
+            div
+                button(id='comment-submit' type='submit' class='hidden-input') Post Comment
+    div(class='comments-list')
+        each comment in comments
+            div(class='comment-body')
+                span()
+                    div Username:
+                    h2= comment.User.username
+                div= comment.dataValues.body
+                if user
+                    if (user.username == comment.User.username)
+                        form(action=`/posts/${post_id}/comment/${comment.id}/delete` method='post')
+                            input(type='hidden' name='_csrf' value=token)
+                            button(class='delete-comment' type='submit') Delete Comment

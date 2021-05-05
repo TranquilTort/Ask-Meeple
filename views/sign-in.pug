@@ -1,0 +1,20 @@
+extends layout.pug
+
+append head
+  link(rel='stylesheet' href='/stylesheets/sign-in.css')
+
+include utils.pug
+
+block content
+  #content-block
+    #form-body
+      +validationErrorSummary(errors)
+      form(action='/users/sign-in' method='post')
+        input(type='hidden' name='_csrf' value=token)
+        +field('Username/Email', 'identifier', identifier)
+        +field('Password', 'password', '', 'password')
+        div
+          button(type='submit' ) Sign-In
+          a(href='/' ) Cancel
+      #register-link
+        p: a(href='/users/register') Need to create an account?

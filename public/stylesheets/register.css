@@ -1,0 +1,63 @@
+/* Page Specific Styles */
+html, body {
+    height: 100%;
+    background-color: #000;
+}
+
+
+.full-screen {
+    height: 100%;
+  }
+
+
+#content-block {
+    background:linear-gradient(0deg, rgba(0,0,0,1), rgba(0,0,0,.3)), url('../imgs/askMeeple-register-background.jpg');
+    background-position: center center;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+/* Form Specific Style */
+#form-body {
+    background: #fff;
+    box-shadow: 1px 1px 10px black;
+    width: 25%;
+    margin: auto;
+    margin-top: 8%;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-control {
+    width: 100%;
+}
+
+#sign-in-link {
+    margin: 0 auto;
+}
+
+p a {
+    font-size: 12px;
+}
+
+p a:hover {
+    color: #f56522;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 1024px) {
+    #form-body {
+        margin-top: 5%;
+        width: 40%;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    #form-body {
+        margin-top: 12%;
+        width: 80%;
+    }
+}

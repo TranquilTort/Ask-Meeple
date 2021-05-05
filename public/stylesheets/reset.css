@@ -1,0 +1,225 @@
+/* Glabal Base Styles */
+body {
+  font: 16px  'Open Sans', sans-serif;
+  height: 100%;
+  margin: 0px;
+  background-color: #eee;
+}
+
+a {
+  color: #0059b3;
+}
+
+a:hover {
+  color: #f56522;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1, h2, h3 {
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, a, ol, li, ul, div, span, header, nav {
+  font-size: 1rem;
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  font-weight: normal;
+}
+
+h1 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 700;
+  color: #0059b3;
+}
+
+/* Navigation Bar Styles */
+nav {
+  z-index: 9999;
+
+  background: #0059b3;
+  color: #fff;
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  box-shadow: 0px 1px 10px black;
+}
+
+nav img {
+  width: 200px;
+}
+
+nav a {
+  color: #fff;
+}
+
+a.new-post {
+  margin-left: 10px;
+  margin-top: 5px;
+}
+
+/* --- Nav Form */
+nav form {
+  padding-top: 0px;
+}
+
+nav form input {
+  padding: 2px;
+  border-radius: 3px;
+  padding: 3px;
+  font-size: 14px;
+}
+
+nav form ::placeholder {
+  font-weight: 600;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+}
+
+nav form button {
+  background-color: #f56522;
+}
+
+nav form button:hover {
+  background-color: #c75520;
+}
+
+/* --- Nav Buttons */
+a.navBtn {
+  display: inline-block;
+  background-color: #f56522;
+  text-decoration: none;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  padding: 2px 5px;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  border-radius: 3px;
+  max-height: 25px;
+}
+
+a.navBtn:hover {
+  background-color: #c75520;
+  color: #fff;
+}
+
+.loggedIn {
+  display: inline-block;
+  text-align: center;
+}
+
+.loggedIn span {
+  font-size: 14px;
+}
+
+/* --- Navigation Responsiveness */
+#mobile {
+  display: none;
+}
+
+@media screen and (max-width: 676px) {
+  #mobile {
+    display: inline-block;
+  }
+
+  a.navBtn.hideOnMobile, form.hideOnMobile {
+    display: none;
+  }
+}
+
+/* Global Form Styles */
+form {
+  margin: 0 auto;
+  padding-top: 16px;
+}
+
+form label {
+  display: block;
+  padding: 1px;
+  padding-top: 5px;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+form input {
+  border: 2px solid #0059b3;
+  background-color: #eee;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  padding: 3px;
+  font-size: 14px;
+}
+
+form button {
+  background-color: #0059b3;
+  color: #fff;
+  border: 0px solid;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  margin-top: 5px;
+  margin-right: 8px;
+  padding: 1px 8px 2px 8px;
+}
+
+form button:hover {
+  background-color: #f56522;
+}
+
+form a:hover  {
+  color: #f56522;
+}
+
+/* Global Error Styles */
+.alert, .alert li {
+  font-family: 'Open Sans', sans-serif;
+  margin: 3px;
+}
+
+.alert {
+  background-color: rgba(255, 15, 15, .5);
+  text-align: center;
+  font-size: 14px;
+}
+
+.alert ul {
+  margin: 8px;
+  padding: 12px;
+}
+
+.alert li {
+  width: 90%;
+  text-align: left;
+  font-size: 12px;
+}
+
+
+/* Global Buttons */
+button {
+  background-color: #0059b3;
+  color: #fff;
+  border: 0px solid;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  line-height: 20px;
+  margin-top: 5px;
+  margin-right: 8px;
+  padding: 2px 8px 4px 8px;
+  border-radius: 3px;
+
+}
+
+button:hover {
+  background-color: #f56522;
+  color: #fff;
+}

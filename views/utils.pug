@@ -1,0 +1,15 @@
+mixin validationErrorSummary(errors)
+  if errors
+    div(class='alert alert-danger' role='alert')
+      p The following error(s) occurred:
+      ul
+        each error in errors
+          li= error
+
+mixin field(labelText, fieldName, fieldValue, fieldType = 'text', placeholder = null)
+  div(class='form-group')
+    label(for=fieldName)= labelText
+    if fieldType === 'textarea'
+      textarea(id=fieldName name=fieldName class='form-control' rows='5')= fieldValue
+    else
+      input(type=fieldType id=fieldName name=fieldName value=fieldValue placeholder=placeholder class='form-control')
