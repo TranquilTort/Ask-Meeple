@@ -6,17 +6,17 @@ include utils.pug
 
 block content
   +validationErrorSummary(errors)
-  form(action='/posts/new-post' method='post')
+  form(action='/new-post' method='post')
     input(type='hidden' name='_csrf' value=token)
-    +field('Title:', 'title', '', 'text', post.title)
+    +field('Title:', 'title', post.title, 'text', '')
     div(class='') Tags:
       each tag in tags
-        input(type="checkbox" class="" name=`tag-${tag.name}`)
-        label(for=`tag-${tag.name}`)=tag.name
-    +field('Body:', 'body', '', 'textarea', post.body)
-    +field('Add Image URL:', 'image_url', '', 'text', post.image_url)
+        input(type="checkbox" class="" name=`tag-${tag.id}`)
+        label(for=`tag-${tag.id}`)=tag.name
+    +field('Body:', 'body', post.body, 'textarea', '')
+    +field('Add Image URL:', 'image_url', post.image_url, 'text', '')
     div
       //- button(type='button' id='' class='') Delete Post
       button(type='submit' class='') Create Post
-      button(type='submit' class='') Edit Post
+      button(type='submit' class='' hidden) Edit Post
       a(href='/' ) Cancel
