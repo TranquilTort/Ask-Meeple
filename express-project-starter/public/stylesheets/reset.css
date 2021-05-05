@@ -159,6 +159,15 @@ form input {
   font-size: 14px;
 }
 
+textarea {
+  border: 2px solid #0059b3;
+  background-color: #eee;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  padding: 3px;
+  font-size: 14px;
+}
+
 form button {
   background-color: #0059b3;
   color: #fff;

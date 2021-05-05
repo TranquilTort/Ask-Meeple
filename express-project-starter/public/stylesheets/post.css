@@ -27,6 +27,10 @@
     font-size: 11px;
 }
 
+#post-content > img {
+   max-width: 50%;
+}
+
 .new-comment {
     padding-left: 0px;
 }
@@ -66,6 +70,10 @@
     .comments-list, .post-body, .new-comment {
         margin: 2%;
     }
+
+    #post-content > img {
+        max-width: 100%;
+     }
 
     .new-comment {
         padding-left: 0px;

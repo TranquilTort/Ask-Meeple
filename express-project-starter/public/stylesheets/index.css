@@ -65,6 +65,10 @@
     font-size: 11px;
 }
 
+.post-block > img {
+    max-width: 100%;
+}
+
 #no-content {
     padding: 20px;
     border: 1px solid #bbb;
