@@ -1,19 +1,72 @@
+/* Post Styles */
+#content-block {
+   max-width: 80%;
+   margin: 0 auto;
+}
 
+#content-block h2 {
+    font-size: 18px;
+    color: #0059b3;
+    font-weight: 700;
+}
 
 .comments-list, .post-body, .new-comment {
     margin: 20px;
     padding: 15px;
 }
 
-.comment-body{
-    margin: 5px;
-    padding:5px;
-    display:flex;
-    align-content:space-between;
-    border: 2px solid;
-    background-color:beige
+.post-body {
+    border: 1px solid #bbb;
+    background-color: #fff;
+    margin-bottom: 1%;
+    font-size: 14px;
 }
+
+#creater-and-date, #creater-and-date > h3 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 11px;
+}
+
+.new-comment {
+    padding-left: 0px;
+}
+
+.comments-list h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 1%;
+}
+
+.comment-body {
+    padding: 20px;
+    border: 1px solid #bbb;
+    background-color: #fff;
+    margin-bottom: 1%;
+    font-size: 14px;
+}
+
+.comment-body h4 {
+   font-size: 11px;
+   color: #0059b3;
+   font-weight: 700;
+}
+
 
 .delete-comment{
    justify-content: flex-end;
+}
+
+/* --- Responsive Layout */
+@media screen and (max-width: 767px) {
+    #content-block {
+        max-width: 90%;
+    }
+
+    .new-comment {
+        padding-left: 0px;
+    }
+
+    .comments-list, .post-body, .new-comment {
+        margin: 2%;
+    }
 }
