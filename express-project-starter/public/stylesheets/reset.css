@@ -37,7 +37,7 @@ h1 {
 /* Navigation Bar Styles */
 nav {
   z-index: 9999;
-  position: fixed;
+  /* position: fixed; */
   background: #0059b3;
   color: #fff;
   width: 100%;

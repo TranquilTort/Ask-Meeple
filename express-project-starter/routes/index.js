@@ -27,7 +27,7 @@ router.get('/', asyncHandler(async function(req, res) {
     // res.send('wahaoo');
 }));
 
-router.get('/:id',  asyncHandler(async function(req, res) {
+router.get('/:id(\\d)+',  asyncHandler(async function(req, res) {
   const page = parseInt(req.params.id)
   const posts = await db.Post.findAll({order:[['createdAt','DESC']],include:db.User, offset:page*5, limit:5})
   res.render('index', {
@@ -68,6 +68,7 @@ router.get('/new-post', csrfProtection, requireAuth, asyncHandler(async (req, re
     title: 'Post Creation',
     token: req.csrfToken(),
   });
+  // res.send('blah');
 }));
 
 router.post('/new-post', csrfProtection, postValidators, requireAuth, asyncHandler(async (req, res) => {
@@ -97,8 +98,10 @@ router.post('/new-post', csrfProtection, postValidators, requireAuth, asyncHandl
   let errors = [];
 
   if(validatorErrors.isEmpty()) {
-
+    let strTagName;
     for (let i = 0; i < tags.length; i++)
+      strTagName = `tag-${i}`;
+      console.log('i', i, ': ', req.body[strTagName]);
 
     await post.save();
     return res.redirect('/');
