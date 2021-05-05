@@ -38,7 +38,7 @@ const postValidators = [
 ];
 
 
-router.get('/new-post', csrfProtection, asyncHandler(async (req, res) => {
+router.get('/new-post', csrfProtection, requireAuth, asyncHandler(async (req, res) => {
 
   const post = db.Post.build();
 
@@ -55,6 +55,8 @@ router.get('/new-post', csrfProtection, asyncHandler(async (req, res) => {
 
 router.post('/new-post', csrfProtection, postValidators, requireAuth, asyncHandler(async (req, res) => {
   const { title, body, image_url } = req.body;
+
+  //console.log(req.body['title']);
 
   const tags = await db.Tag.findAll({});
 
@@ -78,6 +80,9 @@ router.post('/new-post', csrfProtection, postValidators, requireAuth, asyncHandl
   let errors = [];
 
   if(validatorErrors.isEmpty()) {
+
+    for (let i = 0; i < tags.length; i++)
+
     await post.save();
     return res.redirect('/');
   }
