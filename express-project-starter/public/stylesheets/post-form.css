@@ -28,7 +28,7 @@ form {
     box-shadow: 1px 1px 10px black;
     width: 45%;
     margin: auto;
-    margin-top: 10%;
+    margin-top: 6%;
     border-radius: 3px;
     display: flex;
     flex-direction: column;
@@ -64,7 +64,7 @@ p a:hover {
 /* Responsive Styles */
 @media screen and (max-width: 1024px) {
     #form-body {
-        margin-top: 10%;
+        margin-top: 6%;
         width: 40%;
     }
 }
