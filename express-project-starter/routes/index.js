@@ -11,9 +11,15 @@ const {requireAuth} = require('../auth.js');
 /* GET home page. */
 router.get('/', function(req, res) {
   res.render('index', {
-    title: 'a/A Express Skeleton Home',
+
 
     // authenticated: res.locals.authenticated,
+
+    title: 'Ask Meeple',
+    // authenticated: res.locals.authenticated,
+    // user: res.locals.user
+
+
   });
 
 });
