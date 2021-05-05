@@ -11,7 +11,7 @@ const {requireAuth} = require('../auth.js');
 /* GET home page. */
 router.get('/', function(req, res) {
   res.render('index', {
-    title: 'a/A Express Skeleton Home',
+    title: 'Ask Meeple',
 
     // authenticated: res.locals.authenticated,
   });
