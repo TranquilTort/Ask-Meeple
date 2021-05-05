@@ -180,6 +180,7 @@ router.get('/test',requireAuth,(req,res)=>{
   res.send('test');
 })
 
+
 router.get('/danny-test', csrfProtection, asyncHandler(async (req, res) => {
 
   const post = db.Post.build();
@@ -199,5 +200,6 @@ router.get('/danny-test', csrfProtection, asyncHandler(async (req, res) => {
     token: req.csrfToken(),
   });
 }));
+
 
 module.exports = router;
