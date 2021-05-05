@@ -13,7 +13,14 @@ router.get('/', function(req, res) {
   res.render('index', {
     title: 'Ask Meeple',
 
+
     // authenticated: res.locals.authenticated,
+
+    title: 'Ask Meeple',
+    // authenticated: res.locals.authenticated,
+    // user: res.locals.user
+
+
   });
 
 });
@@ -49,8 +56,8 @@ router.get('/new-post', csrfProtection, asyncHandler(async (req, res) => {
 router.post('/new-post', csrfProtection, postValidators, requireAuth, asyncHandler(async (req, res) => {
   const { title, body, image_url } = req.body
 
-  // const tags = await db.Tag.findAll({})
-  const tags = [{name: 'Ask for Recommendations for Buying'}, {name:'Rules Clarification'},{name:'Review'},{name:'Strategy'}];
+  const tags = await db.Tag.findAll({})
+  // const tags = [{name: 'Ask for Recommendations for Buying'}, {name:'Rules Clarification'},{name:'Review'},{name:'Strategy'}];
 
   const post = db.Post.build(
     {

@@ -13,10 +13,10 @@ module.exports = {
       }], {});
     */
       return queryInterface.bulkInsert('Tags', [
-        {name: 'Ask for Recommendations for Buying'},
-        {name: 'Rules Clarification'},
-        {name: 'Review'},
-        {name: 'Strategy'}
+        {name: 'Ask for Recommendations for Buying', createdAt: new Date(), updatedAt: new Date()},
+        {name: 'Rules Clarification', createdAt: new Date(), updatedAt: new Date()},
+        {name: 'Review', createdAt: new Date(), updatedAt: new Date()},
+        {name: 'Strategy', createdAt: new Date(), updatedAt: new Date()},
         ], {});
   },
 
