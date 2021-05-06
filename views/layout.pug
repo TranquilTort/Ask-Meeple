@@ -12,7 +12,10 @@ html
   body
     nav
       a(href="/"): img(src="/imgs/askMeeple_logo_orange.png" alt="Ask Meeple Logo")
-      a.navBtn.new-post(href="/new-post" title="Create a new post"): i(class="far fa-edit")
+      span
+        a.navBtn.new-post(href="/new-post" title="Create a new post"): i(class="far fa-edit")
+        span#mobile
+          a.navBtn(href="#"): i(class="fas fa-bars")
       form(action="/search" method="get" role="search" class="hideOnMobile")
         input(type="search" name="term" id="search" placeholder="Search")
         button(type="submit"): i(class="fas fa-search")
@@ -27,6 +30,4 @@ html
             button.navBtn.hideOnMobile(type='submit' title="Sign-In as Demo User") Demo User
           a.navBtn.hideOnMobile(href='/users/sign-in' title="Sign-in to an existing account") Sign-In
           a.navBtn.hideOnMobile(href='/users/register' title="Create a new account") Register
-      span#mobile
-        a.navBtn(href="#"): i(class="fas fa-bars")
     block content

@@ -129,7 +129,12 @@ a.navBtn:hover {
 }
 
 .loggedIn span {
-  font-size: 14px;
+  font-size: 12px;
+  margin-right: 5px;
+}
+
+.loggedIn form {
+  display: inline-block;
 }
 
 /* --- Navigation Responsiveness */
@@ -137,7 +142,7 @@ a.navBtn:hover {
   display: none;
 }
 
-@media screen and (max-width: 676px) {
+@media screen and (max-width: 700px) {
   #mobile {
     display: inline-block;
   }
