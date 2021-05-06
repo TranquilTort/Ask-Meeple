@@ -19,7 +19,7 @@ html, body {
 }
 
 /* Form Specific Style */
-form {
+#form-body form {
     padding-bottom: 16px;
 }
 

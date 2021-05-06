@@ -14,26 +14,6 @@ const url = require('url');
 const {loginUser,logoutUser,requireAuth} = require('../auth.js');
 
 /* GET search results */
-// router.get('/', csrfProtection, requireAuth, asyncHandler(async (req, res) => {
-
-//     const { term } = req.body;
-//     console.log('>>>', term);
-
-//     const search = await db.Post.findAll()
-//     const searchResults = search.array().filter((result) => {
-//         console.log('+++', result);
-//     });
-//     res.render('search-results', {
-//       searchResults,
-//       title: `Ask Meeple: ${term}`,
-//     //   posts
-
-
-//     });
-
-//   }));
-
-
 router.get('/', asyncHandler(async function(req, res) {
 
     let { term } = req.query;
@@ -51,13 +31,9 @@ router.get('/', asyncHandler(async function(req, res) {
     console.log('///', searchResults.length)
     res.render('search-results', {
       searchResults,
-      title: `Ask Meeple: ${term}`,
-    //   posts
-
+      term
 
     });
-    // res.send('Working!');
-
   }));
 
 

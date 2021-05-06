@@ -28,15 +28,6 @@
       display: block;
   }
 
-
-  #about {
-      border-top: 1px solid #bbb;
-  }
-
-  #about, #about a, #about span {
-      font-size: 10px;
-  }
-
   #post-area {
       flex-direction: column;
       width: 60%;
