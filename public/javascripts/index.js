@@ -1,10 +1,15 @@
 window.addEventListener("DOMContentLoaded", (event)=>{
     const mobileNav = document.querySelector('.mobile-menu');
     const mobileMenu = document.querySelector('#mobile-navigation');
-    const outsideNav = document.querySelector('.content-block');
+    const outsideNav = document.querySelector('#content-block');
 
     mobileNav.addEventListener('click', (e) => {
-        mobileMenu.style.display = 'block';
+       if (window.getComputedStyle(mobileMenu).display == "none") {
+          mobileMenu.style.display = 'block';
+       } else {
+          mobileMenu.style.display = 'none';
+       }
+
     });
 
     outsideNav.addEventListener('click', (e) => {

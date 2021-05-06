@@ -145,6 +145,24 @@ a.navBtn:hover {
   box-shadow: 1px 1px 10px -5px black;
 }
 
+/* #mobile-navigation a.navBtnMobile {
+    background-color: #0059b3;
+    color: #fff;
+    border: 0px solid;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    line-height: 20px;
+    display: inline-block;
+    margin: 0 auto;
+    padding: 2px 8px 4px 8px;
+    border-radius: 3px;
+  }
+
+#mobile-navigation .navBtnMobile:hover {
+    background-color: #f56522;
+    color: #fff;
+} */
+
 .loggedInMobile {
   text-align: center;
   padding-top: 16px;
@@ -152,6 +170,11 @@ a.navBtn:hover {
 
 .loggedInMobile button {
   margin: 0px;
+}
+
+#mobile-navigation .mobileNotLoggedIn button {
+  display: block;
+  margin: 5px auto;
 }
 
 #mobile-navigation form {
@@ -185,7 +208,7 @@ a.navBtn:hover {
     display: inline-block;
   }
 
-  a.navBtn.hideOnMobile, form.hideOnMobile, .loggedIn,  button.navBtn.hideOnMobile {
+  a.navBtn.hideOnMobile, form.hideOnMobile, .loggedIn, .notLoggedIn, button.navBtn.hideOnMobile {
     display: none;
   }
 }
@@ -280,7 +303,6 @@ button {
   margin-right: 8px;
   padding: 2px 8px 4px 8px;
   border-radius: 3px;
-
 }
 
 button:hover {
