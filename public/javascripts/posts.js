@@ -4,8 +4,7 @@ window.addEventListener('DOMContentLoaded',(event)=>{
         element.style.display='none'
     });
     const newCommentBtn = document.getElementById('create-comment');
-    if(!newCommentBtn===null){
-
+    if(newCommentBtn!==null){
         newCommentBtn.addEventListener('click',(event)=>{
             if(hiddenItems[0].style.display === 'block'){
                 hiddenItems.forEach(element => {
