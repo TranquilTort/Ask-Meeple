@@ -23,6 +23,8 @@ html
             button(type='submit') Sign-Out
       else
         span()
+          form#demoNav(action='/demo-user' method='post')
+            button.navBtn.hideOnMobile(type='submit' title="Sign-In as Demo User") Demo User
           a.navBtn.hideOnMobile(href='/users/sign-in' title="Sign-in to an existing account") Sign-In
           a.navBtn.hideOnMobile(href='/users/register' title="Create a new account") Register
       span#mobile

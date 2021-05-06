@@ -21,3 +21,6 @@ block content
             a(href='/' ) Cancel
         #sign-in-link
           p: a(href='/users/sign-in') Already have an account?
+            form(action='/demo-user' method='post')
+                div
+                  button(type='submit' ) Log In As Demo User
