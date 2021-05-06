@@ -61,6 +61,12 @@
       font-weight: 700;
   }
 
+  .post-block span a {
+      display: inline-block;
+      margin-right: 5px;
+      font-size: 11px;
+  }
+
   .post-block > div {
       font-size: 11px;
   }

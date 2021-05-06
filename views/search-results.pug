@@ -27,22 +27,17 @@ block content
 
     #post-area
       h1='Recently Asked Meeple'
-      if (posts.length)
-        each post in posts
+      if (searchResults.length)
+        each result in searchResults
           div(class='post-block')
-            h2= post.title
-            div By: #{post.User.username}
-            div(class='') Tags: 
-              each tag in post.Tags
-
+            h2= result.title
+            div By: #{result.User.username}
+            div
+              each tag in result.Tags
                 span(class=''): a(href="#") #{tag.name}
-
-            p= post.body
-            img(class='post-img' src=post.image_url)
-            button(class='go-to-post' onclick=`document.location='/posts/${post.id}'`) View Comments
-            if user
-              if (user.username == post.User.username)
-                button(class='edit-post' onclick=`document.location='/posts/${post.id}/edit'`) Edit Your Post
+            p= result.body
+            img(class='post-img' src=result.image_url)
+            button(class='go-to-post' onclick=`document.location='/posts/${result.id}'`) View Comments
       else
         #no-content THERE DOESN'T SEEM TO BE ANYTHING HERE...
 

@@ -13,8 +13,8 @@ html
     nav
       a(href="/"): img(src="../imgs/askMeeple_logo_orange.png" alt="Ask Meeple Logo")
       a.navBtn.new-post(href="/new-post" title="Create a new post"): i(class="far fa-edit")
-      form(action="/search/:search-results" method="get" class="hideOnMobile")
-        input(type="text" name="search" placeholder="Search")
+      form(action="/search" method="get" role="search" class="hideOnMobile")
+        input(type="search" name="term" id="search" placeholder="Search")
         button(type="submit"): i(class="fas fa-search")
       if locals.authenticated
         .loggedIn
