@@ -1,0 +1,32 @@
+extends layout.pug
+
+append head
+  link(rel='stylesheet' href='/stylesheets/register.css')
+
+
+include utils.pug
+
+append head
+    link(rel='stylesheet' href='/stylesheets/post-form.css')
+//- mixin field(labelText, fieldName, fieldValue, fieldType = 'text', placeholder = null)
+block content
+  .full-screen
+    #content-block
+      #form-body
+        +validationErrorSummary(errors)
+        if post
+            form(action=`/posts/${post.id}/edit` method='post')
+            input(type='hidden' name='_csrf' value=token)
+            +field('Title:', 'title', post.title, 'text', '')
+            div(class='tags')
+                p Tags:
+                each tag in tags
+                    .tag-group
+                        input(type="checkbox" class="" name=`tag-${tag.id}`)
+                        label(for=`tag-${tag.id}`)=tag.name
+            +field('Body:', 'body', post.body, 'textarea', '')
+            +field('Add Image URL:', 'image_url', post.image_url, 'text', '')
+            div
+                //- button(type='button' id='' class='') Delete Post
+                button(type='submit' class='' ) Edit Post
+                a(href='/' ) Cancel
