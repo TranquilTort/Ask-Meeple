@@ -14,6 +14,9 @@ block content
         #post-content
             p= post.body
             img(class='post-img' src=post.image_url)
+        if user
+            if (user.username == post.User.username)
+                button(class='edit-post' onclick=`document.location='/posts/${post.id}/edit'`) Edit Your Post
     +validationErrorSummary(errors)
     div(class='new-comment')
         if locals.authenticated
@@ -24,8 +27,6 @@ block content
             input(type='hidden' name='_csrf' value=token)
             label(class='hidden-input') What do you have to say?
             textarea(class='hidden-input' name='body' placeholder="Comment...")
-            if user
-                input(type='hidden' name='user_id' value= user.id)
             div
                 button(id='comment-submit' type='submit' class='hidden-input') Post Comment
     div(class='comments-list')
