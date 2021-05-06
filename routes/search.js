@@ -37,16 +37,18 @@ const {loginUser,logoutUser,requireAuth} = require('../auth.js');
 router.get('/', asyncHandler(async function(req, res) {
 
     let { term } = req.query;
-    const search = await db.Post.findAll()
+    const lowercaseTerm = term.toLowerCase();
+
+    const search = await db.Post.findAll({order:[['createdAt','DESC']],include:[db.User, db.Tag]})
     const searchResults = search.filter((result) => {
         console.log('>>>', result);
 
-        if(result.title.include(term) ||
-        result.body.include(term) ||
-        result.body.include(term)) {
-
+        if(result.dataValues.title.toLowerCase().includes(lowercaseTerm) ||
+        result.dataValues.body.toLowerCase().includes(lowercaseTerm)) {
+            return result;
         }
     });
+    console.log('///', searchResults.length)
     res.render('search-results', {
       searchResults,
       title: `Ask Meeple: ${term}`,

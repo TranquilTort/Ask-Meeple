@@ -30,14 +30,14 @@ block content
       if (searchResults.length)
         each result in searchResults
           div(class='post-block')
-            h2= post.title
-            div By: #{post.User.username}
+            h2= result.title
+            div By: #{result.User.username}
             div
-              each tag in post.Tags
+              each tag in result.Tags
                 span(class=''): a(href="#") #{tag.name}
-            p= post.body
-            img(class='post-img' src=post.image_url)
-            button(class='go-to-post' onclick=`document.location='/posts/${post.id}'`) View Comments
+            p= result.body
+            img(class='post-img' src=result.image_url)
+            button(class='go-to-post' onclick=`document.location='/posts/${result.id}'`) View Comments
       else
         #no-content THERE DOESN'T SEEM TO BE ANYTHING HERE...
 
