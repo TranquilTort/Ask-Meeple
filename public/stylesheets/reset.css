@@ -92,6 +92,13 @@ nav form button:hover {
   background-color: #c75520;
 }
 
+nav form#demoNav {
+  display: inline-block;
+  position: relative;
+  left: 3.5px;
+  bottom: 1px;
+}
+
 /* --- Nav Buttons */
 a.navBtn {
   display: inline-block;

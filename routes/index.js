@@ -40,6 +40,12 @@ router.get('/:id(\\d)+',  asyncHandler(async function(req, res) {
 
 }));
 
+router.post('/demo-user', asyncHandler(async function(req, res) {
+  const demoUser = await db.User.findByPk(1);
+  loginUser(req, res, demoUser);
+  return req.session.save( () => res.redirect("/") );
+}));
+
 
 //Validators
 

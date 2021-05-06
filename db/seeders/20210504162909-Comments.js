@@ -6,7 +6,7 @@ module.exports = {
       return queryInterface.bulkInsert('Comments', [
 
         {
-        user_id: 1,
+        user_id: 3,
         body: "COMMENT 1 ",
         post_id: 2,
         createdAt: new Date(),
