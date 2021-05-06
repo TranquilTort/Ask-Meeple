@@ -38,8 +38,10 @@ const postValidators = [
 
 router.post('/:id(\\d+)/edit',postValidators,csrfProtection,requireAuth,asyncHandler(async(req,res)=>{
     const { title, body, image_url } = req.body;
-    const user_id = req.session.auth.userId;
+    // const user_id = req.session.auth.userId;
     const post_id = parseInt(req.params.id);
+    const samePost = await db.Post.findByPk(post_id);
+    const tags = await db.Tag.findAll({});
 
     const validatorErrors = validationResult(req);
     let errors = [];
@@ -53,10 +55,7 @@ router.post('/:id(\\d+)/edit',postValidators,csrfProtection,requireAuth,asyncHan
         }
 
         //destroy old TAG ASSOCIATIONS
-        const currentTags = await Array.from(db.Post_tag.findAll({where:{post_id:post_id}}));
-        currentTags.forEach(async(element) => {
-            await element.destroy();
-        });
+        await db.Post_Tag.destroy({where:{post_id:post_id}});
 
         //make new TAG ASSOCIATIONS
         for (let i = 0; i < arrTags.length; i++) {
@@ -65,8 +64,14 @@ router.post('/:id(\\d+)/edit',postValidators,csrfProtection,requireAuth,asyncHan
               post_id: samePost.id,
             });
             await postTag.save();
-          }
-        return req.session.save( () => res.redirect("/") );
+        }
+        //update post
+        samePost.update({
+            body:body,
+            title:title,
+            image_url:image_url
+        })
+        return req.session.save( () => res.redirect(`/posts/${post_id}`) );
     }else {
         errors = validatorErrors.array().map((error) => error.msg);
     }
@@ -97,22 +102,12 @@ commentValidators = [
     check('body')
         .exists({checkFalsy:true})
         .withMessage('Please fill out the body of your comment before submitting it.'),
-    check('user_id')
-        .exists({checkFalsy:true})
-        .withMessage('User does not exist')
-        .custom((value) => {
-            return db.User.findByPk(value)
-              .then((user) => {
-                if (!user) {
-                  return Promise.reject('User does not exist!');
-                }
-              })
-          }),
 ];
 
 router.post('/:id/new-comment', csrfProtection, requireAuth, commentValidators, asyncHandler(async(req,res)=>{
     const post_id = req.params.id;
-    const {body,user_id} = req.body;
+    const {body} = req.body;
+    user_id = req.session.auth.userId;
     const comment = db.Comment.build({body,post_id,user_id})
     const validatorErrors = validationResult(req);
     const post= await db.Post.findByPk(post_id,{include: db.User});
