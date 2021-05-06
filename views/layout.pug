@@ -15,7 +15,8 @@ html
       span
         a.navBtn.new-post(href="/new-post" title="Create a new post"): i(class="far fa-edit")
         span#mobile
-          a.navBtn(href="#"): i(class="fas fa-bars")
+          //- a.navBtn(href="#"): i(class="fas fa-bars")
+          button(onclick="" class="mobile-menu"): i(class="fas fa-bars")
       form(action="/search" method="get" role="search" class="hideOnMobile")
         input(type="search" name="term" id="search" placeholder="Search")
         button(type="submit"): i(class="fas fa-search")
@@ -30,4 +31,21 @@ html
             button.navBtn.hideOnMobile(type='submit' title="Sign-In as Demo User") Demo User
           a.navBtn.hideOnMobile(href='/users/sign-in' title="Sign-in to an existing account") Sign-In
           a.navBtn.hideOnMobile(href='/users/register' title="Create a new account") Register
+
+    #mobile-navigation
+      if locals.authenticated
+        .loggedInMobile
+          span Welcome, #{user.username}!
+          form(action='/users/sign-out' method='post')
+            button(type='submit') Sign-Out
+      else
+        span()
+          form#demoNav(action='/demo-user' method='post')
+            button.navBtn(type='submit' title="Sign-In as Demo User") Demo User
+          a.navBtn(href='/users/sign-in' title="Sign-in to an existing account") Sign-In
+          a.navBtn(href='/users/register' title="Create a new account") Register
+      form(action="/search" method="get" role="search")
+          input(type="search" name="term" id="search" placeholder="Search")
+          button(type="submit"): i(class="fas fa-search")
+
     block content

@@ -45,8 +45,7 @@ h1 {
 
 /* Navigation Bar Styles */
 nav {
-  z-index: 9999;
-
+  z-index: 4;
   background: #0059b3;
   color: #fff;
   width: 100%;
@@ -77,9 +76,9 @@ nav form {
 }
 
 nav form input {
-  padding: 2px;
   border-radius: 3px;
   padding: 3px;
+  margin-right: 3px;
   font-size: 14px;
 }
 
@@ -137,17 +136,56 @@ a.navBtn:hover {
   display: inline-block;
 }
 
-/* --- Navigation Responsiveness */
+
+/* --- Navigation Responsive Style */
+#mobile-navigation {
+  z-index: 3;
+  display: none;
+  background-color: #fff;
+  box-shadow: 1px 1px 10px -5px black;
+}
+
+.loggedInMobile {
+  text-align: center;
+  padding-top: 16px;
+}
+
+.loggedInMobile button {
+  margin: 0px;
+}
+
+#mobile-navigation form {
+  text-align: center;
+  padding-top: 8px;
+}
+
+#mobile-navigation form input {
+  border-radius: 3px;
+  padding: 3px;
+  margin-right: 3px;
+  font-size: 14px;
+}
+
 #mobile {
   display: none;
 }
 
-@media screen and (max-width: 700px) {
+#mobile button {
+  background-color: #f56522;
+  border-radius: 3px;
+  max-height: 24px;
+}
+
+#mobile button:hover {
+  background-color:  #c75520;
+}
+
+@media screen and (max-width: 750px) {
   #mobile {
     display: inline-block;
   }
 
-  a.navBtn.hideOnMobile, form.hideOnMobile, .loggedIn {
+  a.navBtn.hideOnMobile, form.hideOnMobile, .loggedIn,  button.navBtn.hideOnMobile {
     display: none;
   }
 }
