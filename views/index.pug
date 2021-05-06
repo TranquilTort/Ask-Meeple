@@ -32,6 +32,9 @@ block content
           div(class='post-block')
             h2= post.title
             div By: #{post.User.username}
+            div
+              each tag in post.Tags
+                span(class='')= tag.name
             p= post.body
             img(class='post-img' src=post.image_url)
             button(class='go-to-post' onclick=`document.location='/posts/${post.id}'`) View Comments
