@@ -3,9 +3,9 @@ window.addEventListener("DOMContentLoaded", (event)=>{
     const mobileMenu = document.querySelector('#mobile-navigation');
     const outsideNav = document.querySelector('#content-block');
 
-    // if (window.screen.width >= 750) {
-    //     mobileMenu.style.display = 'none';
-    // }
+    window.addEventListener('resize', (e) => {
+        mobileMenu.style.display = 'none';
+    });
 
     mobileNav.addEventListener('click', (e) => {
        if (window.getComputedStyle(mobileMenu).display == "none") {
