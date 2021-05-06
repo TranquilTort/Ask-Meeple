@@ -10,6 +10,9 @@ block content
         h2(class='post-title') #{post.title}
         #creater-and-date
           h3 By: #{post.User.username} • #{post.createdAt}
+        //-   #tags
+        //-     each tag in post.Tags
+        //-       span(class=''): a(href="#") #{tag.name}
         //-   div= post.createdAt
         #post-content
             p= post.body

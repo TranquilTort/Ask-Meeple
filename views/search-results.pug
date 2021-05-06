@@ -27,8 +27,8 @@ block content
 
     #post-area
       h1='Recently Asked Meeple'
-      if (posts.length)
-        each post in posts
+      if (searchResults.length)
+        each result in searchResults
           div(class='post-block')
             h2= post.title
             div By: #{post.User.username}
