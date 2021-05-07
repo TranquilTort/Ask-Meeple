@@ -14,6 +14,14 @@ const Op = Sequelize.Op;
 router.get('/', asyncHandler(async function(req, res) {
     let { term } = req.query;
 
+    const tags = await db.Tag.findAll();
+
+    tags.forEach((tag) => {
+      let searchFor = tag.name;
+      let searchSplit = searchFor.split(' ');
+      tag.searchTerm = searchSplit.join('+');
+    });
+
     //query for post ids matching body or title
     const matchingPost = await db.Post.findAll({where: {[Op.or]: [
       {title:{[Op.iLike]: `%${term}%`}},
@@ -41,9 +49,10 @@ router.get('/', asyncHandler(async function(req, res) {
     const searchResults = await db.Post.findAll({order:[['createdAt','DESC']], include:[db.User,db.Tag], where:{id:{ [Op.in]: idsOfSearchResults}}})
 
     res.render('search-results', {
-      searchResults,      title: `Ask Meeple: ${term}`,
-
-      term
+      searchResults,
+      title: `Ask Meeple: ${term}`,
+      term,
+      tags
 
 
     });

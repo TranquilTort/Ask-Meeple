@@ -140,6 +140,7 @@ a.navBtn:hover {
 #mobile-navigation {
   z-index: 3;
   display: none;
+  transition: ease-in;
   background-color: #fff;
   box-shadow: 1px 1px 10px -5px black;
 }
@@ -299,7 +300,7 @@ button:hover {
 }
 
 #about, #about a, #about span {
-  font-size: 11px;
+  font-size: 13px;
 }
 
 #about p {
@@ -308,6 +309,6 @@ button:hover {
 }
 
 #about p a {
-  font-size: 14px;
+  font-size: 16px;
   margin-left: 5px;
 }

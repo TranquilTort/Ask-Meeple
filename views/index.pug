@@ -12,10 +12,8 @@ block content
       div
        h3 Search Tags
        #search-tags
-         a(href="/search/?term=Strategy") Strategy
-         a(href="/search/?term=Review") Review
-         a(href="/search/?term=Rules+Clarification") Rules Clarification
-         a(href="/search/?term=Recommendations") Recommendations
+         each tag in tags
+             a(href=`/search?term=${tag.searchTerm}`)= tag.name
 
       #about
         p: strong Site by
@@ -40,10 +38,10 @@ block content
               .post-tags
                 each tag in post.Tags
                   if (post.Tags.indexOf(tag) !== post.Tags.length - 1)
-                    span: a(href="#") #{tag.name}
+                    span: a(href=`/search?term=${tag.searchTerm}` onclick=`document.location='/search?term=${tag.searchTerm}'`)= tag.name
                     | | &nbsp;
                   else
-                    span: a(href="#") #{tag.name}
+                    span: a(href=`/search?term=${tag.searchTerm}` onclick=`document.location='/search?term=${tag.searchTerm}'`)= tag.name
 
               p= post.body
               img(class='post-img' src=post.image_url)
@@ -51,14 +49,14 @@ block content
                 div(id=`score-${post.id}`) Score: #{post.score}
                 if user
                   if (post.alreadyVoted == -1)
-                    button(class='vote-button' id=`up-${post.id}`) Up Vote
-                    button(class='vote-button' id=`down-${post.id}` disabled) Down Vote
+                    button(class='vote-button' id=`up-${post.id}`): i(class="fas fa-thumbs-up")
+                    button(class='vote-button' id=`down-${post.id}` disabled): i(class="fas fa-thumbs-down")
                   else if (post.alreadyVoted == 1)
-                    button(class='vote-button' id=`up-${post.id}` disabled) Up Vote
-                    button(class='vote-button' id=`down-${post.id}` ) Down Vote
+                    button(class='vote-button' id=`up-${post.id}` disabled): i(class="fas fa-thumbs-up")
+                    button(class='vote-button' id=`down-${post.id}` ): i(class="fas fa-thumbs-down")
                   else
-                    button(class='vote-button' id=`up-${post.id}`) Up Vote
-                    button(class='vote-button' id=`down-${post.id}`) Down Vote
+                    button(class='vote-button' id=`up-${post.id}`): i(class="fas fa-thumbs-up")
+                    button(class='vote-button' id=`down-${post.id}`): i(class="fas fa-thumbs-down")
               button(class='go-to-post' onclick=`document.location='/posts/${post.id}'`) View Comments
               if user
                 if (user.username == post.User.username)

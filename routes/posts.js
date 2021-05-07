@@ -18,6 +18,7 @@ router.get('/:id(\\d+)/edit',csrfProtection,requireAuth,asyncHandler(async(req,r
         res.send("Hey! You aren't supposed to be here!");
     }
     const tags = await db.Tag.findAll({});
+
     res.render('edit-post-form',{
         post,
         tags,
@@ -45,6 +46,7 @@ router.post('/:id(\\d+)/edit',postValidators,csrfProtection,requireAuth,asyncHan
 
     const validatorErrors = validationResult(req);
     let errors = [];
+
     if(validatorErrors.isEmpty()) {
         //Gather ALL TAG ASSOCIATIONS
         const arrTags = [];
@@ -90,6 +92,15 @@ router.get('/:id', csrfProtection, asyncHandler(async(req,res)=>{
     const post = await db.Post.findByPk(post_id,{include:[db.User, db.Tag]});
     //potential route for a post that doesnt exist?
     const comments = await db.Comment.findAll({where: {post_id:{[Op.eq]:post.id}},include:db.User,order:[['createdAt','DESC']]})
+
+
+    post.Tags.forEach((tag) => {
+      let searchFor = tag.dataValues.name;
+      let searchSplit = searchFor.split(" ");
+      let searchJoin = searchSplit.join("+");
+      tag.searchTerm = searchJoin;
+    });
+
     res.render('post',{
         token:req.csrfToken(),
         post,
