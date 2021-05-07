@@ -131,10 +131,6 @@ router.post('/:id/new-comment', requireAuth, commentValidators, asyncHandler(asy
     }
 }));
 
-router.post('/test-route', asyncHandler(async(req, res)=> {
-    console.log('hit the test route');
-    res.json({});
-}));
 
 // router.post('/:id/comment/:commentid/delete', csrfProtection, requireAuth,asyncHandler(async(req,res)=>{
 router.post('/:id/comment/:commentid/delete', requireAuth,asyncHandler(async(req,res)=>{
