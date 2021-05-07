@@ -18,23 +18,32 @@ block content
          a(href="#") Recommendations
 
       #about
-        p Site by &nbsp;
-          a(href="https://github.com/TranquilTort" target="_blank") Chris Regan
-          |, &nbsp;
-          a(href="https://github.com/dchen284" target="_blank") Danny Chen
-          | &nbsp; & &nbsp;
-          a(href="https://github.com/jacobleonhardt" target="_blank") Jacob Leonhardt
+        p: strong Site by
+        p Chris Regan
+          a(href="https://github.com/TranquilTort" target="_blank"): i(class="fab fa-github-square")
+          a(href="https://github.com/TranquilTort" target="_blank"): i(class="fab fa-linkedin")
+        p Danny Chen
+          a(href="https://github.com/dchen284" target="_blank"): i(class="fab fa-github-square")
+          a(href="https://github.com/TranquilTort" target="_blank"): i(class="fab fa-linkedin")
+        p Jacob Leonhardt
+          a(href="https://github.com/jacobleonhardt" target="_blank"): i(class="fab fa-github-square")
+          a(href="https://www.linkedin.com/in/jacob-leonhardt-b19067ba/" target="_blank"): i(class="fab fa-linkedin")
 
     #post-area
-      h1='Recently Asked Meeple'
+      h1=`Searched: "${term}"`
       if (searchResults.length)
         each result in searchResults
           div(class='post-block')
             h2= result.title
             div By: #{result.User.username}
-            div
+            .post-tags
               each tag in result.Tags
-                span(class=''): a(href="#") #{tag.name}
+                if (result.Tags.indexOf(tag) !== result.Tags.length - 1)
+                  span: a(href="#") #{tag.name}
+                  | | &nbsp;
+                else
+                  span: a(href="#") #{tag.name}
+
             p= result.body
             img(class='post-img' src=result.image_url)
             button(class='go-to-post' onclick=`document.location='/posts/${result.id}'`) View Comments

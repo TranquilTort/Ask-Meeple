@@ -1,13 +1,14 @@
 extends layout.pug
 
 append head
-  link(rel='stylesheet' href='/stylesheets/register.css')
+  link(rel='stylesheet' href='/stylesheets/post-form.css')
+  link(rel='stylesheet' href='/stylesheets/edit-post-form.css')
 
+//- append head
+//-   link(rel='stylesheet' href='/stylesheets/register.css')
 
 include utils.pug
 
-append head
-    link(rel='stylesheet' href='/stylesheets/post-form.css')
 //- mixin field(labelText, fieldName, fieldValue, fieldType = 'text', placeholder = null)
 block content
   .full-screen

@@ -4,6 +4,7 @@ html
       block head
         title="Ask Meeple"
         link(rel="icon" type="image/ico" href="/favicon.ico")
+        script(src="/javascripts/index.js" type="module")
         script(src="https://kit.fontawesome.com/783707dd26.js" crossorigin="anonymous")
         link(rel="stylesheet" href="/stylesheets/reset.css")
         link(rel="preconnect" href="https://fonts.gstatic.com")
@@ -11,8 +12,12 @@ html
         meta(content="width=device-width, initial-scale=1" name="viewport")
   body
     nav
-      a(href="/"): img(src="../imgs/askMeeple_logo_orange.png" alt="Ask Meeple Logo")
-      a.navBtn.new-post(href="/new-post" title="Create a new post"): i(class="far fa-edit")
+      a(href="/"): img(src="/imgs/askMeeple_logo_orange.png" alt="Ask Meeple Logo")
+      span
+        a.navBtn.new-post(href="/new-post" title="Create a new post"): i(class="far fa-edit")
+        span#mobile
+          //- a.navBtn(href="#"): i(class="fas fa-bars")
+          button(onclick="" class="mobile-menu"): i(class="fas fa-bars")
       form(action="/search" method="get" role="search" class="hideOnMobile")
         input(type="search" name="term" id="search" placeholder="Search")
         button(type="submit"): i(class="fas fa-search")
@@ -22,11 +27,26 @@ html
           form(action='/users/sign-out' method='post')
             button(type='submit') Sign-Out
       else
-        span()
+        .notLoggedIn
           form#demoNav(action='/demo-user' method='post')
             button.navBtn.hideOnMobile(type='submit' title="Sign-In as Demo User") Demo User
           a.navBtn.hideOnMobile(href='/users/sign-in' title="Sign-in to an existing account") Sign-In
           a.navBtn.hideOnMobile(href='/users/register' title="Create a new account") Register
-      span#mobile
-        a.navBtn(href="#"): i(class="fas fa-bars")
+
+    #mobile-navigation
+      if locals.authenticated
+        .loggedInMobile
+          span Welcome, #{user.username}!
+          form(action='/users/sign-out' method='post')
+            button(type='submit') Sign-Out
+      else
+        .mobileNotLoggedIn
+          form#demoNav(action='/demo-user' method='post')
+            button.navBtnMobile(type='submit' title="Sign-In as Demo User") Demo User
+          button.navBtnMobile(onclick="window.location.href='/users/sign-in'" title="Sign-in to an existing account") Sign-In
+          button.navBtnMobile(onclick="window.location.href='/users/register'" title="Create a new account") Register
+      form(action="/search" method="get" role="search")
+          input(type="search" name="term" id="search" placeholder="Search")
+          button(type="submit"): i(class="fas fa-search")
+
     block content
