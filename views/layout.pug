@@ -41,12 +41,12 @@ html
             button(type='submit') Sign-Out
       else
         .mobileNotLoggedIn
-          form#demoNav(action='/demo-user' method='post')
+          form#demoNav-mobile(action='/demo-user' method='post')
             button.navBtnMobile(type='submit' title="Sign-In as Demo User") Demo User
           button.navBtnMobile(onclick="window.location.href='/users/sign-in'" title="Sign-in to an existing account") Sign-In
           button.navBtnMobile(onclick="window.location.href='/users/register'" title="Create a new account") Register
       form(action="/search" method="get" role="search")
-          input(type="search" name="term" id="search" placeholder="Search")
+          input(type="search" name="term" id="search-mobile" placeholder="Search")
           button(type="submit"): i(class="fas fa-search")
 
     block content

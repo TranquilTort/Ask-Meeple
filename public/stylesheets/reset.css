@@ -97,7 +97,7 @@ nav form button:hover {
   background-color: #c75520;
 }
 
-nav form#demoNav {
+nav form#demoNav,  nav form#demoNav-mobile {
   display: inline-block;
   position: relative;
   left: 3.5px;

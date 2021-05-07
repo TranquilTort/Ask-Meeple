@@ -24,6 +24,8 @@ block content
         if user
             if (user.username == post.User.username)
                 button(class='edit-post' onclick=`document.location='/posts/${post.id}/edit'`) Edit Your Post
+                form(id='delete-post-form' action=`/posts/${post_id}/delete`,method='post')
+                    button(class='edit-post' id=`delete-post-btn`) Delete Your Post
     +validationErrorSummary(errors)
     div(class='new-comment')
         if locals.authenticated
