@@ -43,7 +43,7 @@ module.exports = {
         {
           title: 'Is there going to be a Catan Movie?',
           user_id:4,
-          body: 'Was browsing IMDb the other day, and found a page for a Settlers of Catan Movie... Is this a thing? Here\'s the link <a href="https://www.imdb.com/title/tt4481574/?ref_=fn_al_tt_1" target="_blank">The Settlers of Catan</a>. I can\'t decide if I want this to be legit or not... ',
+          body: 'Was browsing IMDb the other day, and found a page for a Settlers of Catan Movie... Is this a thing? Here\'s the link: https://www.imdb.com/title/tt4481574/?ref_=fn_al_tt_1 I can\'t decide if I want this to be legit or not... ',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
