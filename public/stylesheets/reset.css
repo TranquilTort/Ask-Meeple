@@ -140,6 +140,7 @@ a.navBtn:hover {
 #mobile-navigation {
   z-index: 3;
   display: none;
+  transition: ease-in;
   background-color: #fff;
   box-shadow: 1px 1px 10px -5px black;
 }
