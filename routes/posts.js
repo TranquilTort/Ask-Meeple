@@ -118,7 +118,7 @@ commentValidators = [
 router.post('/:id/new-comment', requireAuth, commentValidators, asyncHandler(async(req,res)=>{
     const post_id = req.params.id;
     const {body} = req.body;
-    user_id = req.session.auth.userId;
+    const user_id = req.session.auth.userId;
     const comment = db.Comment.build({body,post_id,user_id})
     const validatorErrors = validationResult(req);
     const post= await db.Post.findByPk(post_id,{include: db.User});
@@ -126,9 +126,9 @@ router.post('/:id/new-comment', requireAuth, commentValidators, asyncHandler(asy
     let errors =[];
     if(validatorErrors.isEmpty()) {
         await comment.save();
-        let updatedComments = await db.Comment.findAll({where: {post_id:{[Op.eq]:post.id}},include:db.User, order:[['createdAt','DESC']]})
+        let fetchedComments = await db.Comment.findAll({where: {post_id:{[Op.eq]:post.id}},include:db.User, order:[['createdAt','DESC']]})
         // console.log(JSON.stringify(updatedComments, null, 4));
-        return req.session.save( () => res.json(updatedComments) );
+        return req.session.save( () => res.json({user_id,fetchedComments}) );
         // res.save(res.redirect(`/posts/${post_id}`));
     }else{
         errors = validatorErrors.array().map((error) => error.msg);
@@ -137,7 +137,8 @@ router.post('/:id/new-comment', requireAuth, commentValidators, asyncHandler(asy
             token: req.csrfToken(),
             post,
             comments,
-            post_id
+            post_id,
+
         })
     }
 }));
@@ -161,9 +162,9 @@ router.post('/:id/comment/:commentid/delete', requireAuth,asyncHandler(async(req
     // res.save(res.redirect(`/posts/${post_id}`));
     const post_id = req.params.id;
     const post= await db.Post.findByPk(post_id,{include: db.User});
-    let updatedComments = await db.Comment.findAll({where: {post_id:{[Op.eq]:post.id}},include:db.User, order:[['createdAt','DESC']]})
+    let fetchedComments = await db.Comment.findAll({where: {post_id:{[Op.eq]:post.id}},include:db.User, order:[['createdAt','DESC']]})
 
-    return req.session.save( () => res.json(updatedComments) );
+    return req.session.save( () => res.json({fetchedComments, user_id:req.session.auth.userId}) );
 
 }));
 

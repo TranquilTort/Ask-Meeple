@@ -50,8 +50,5 @@ block content
                 div= comment.dataValues.body
                 if user
                     if (user.username == comment.User.username)
-                        //- form(action=`/posts/${post_id}/comment/${comment.id}/delete` method='post')
-                        //-     input(type='hidden' name='_csrf' value=token)
-                        //-     button(class='delete-comment' type='submit') Delete Comment
                         form()
                             button(class='delete-comment' id=`delete-button-${comment.id}`) Delete Comment

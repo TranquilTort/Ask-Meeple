@@ -5,7 +5,7 @@ window.addEventListener('DOMContentLoaded',(event)=>{
     const commentsListDiv = document.querySelector('.comments-list');
     const commentFormBtn = document.getElementById('comment-submit');
 
-    function replaceCommentsHelperFunction(fetchedComments) {
+    function replaceCommentsHelperFunction(fetchedComments,user_id) {
 
         //erase existing children of comments list
         commentsListDiv.innerHTML = "";
@@ -18,6 +18,7 @@ window.addEventListener('DOMContentLoaded',(event)=>{
         newCommentBtn.innerText= 'Post New Comment'
 
         if (fetchedComments.length > 0) {
+            console.log('CREATING NEW LIST')
             //replace the H3 in the comments list
             const commentsH3 = document.createElement('h3');
             commentsH3.innerText = 'Comments:';
@@ -37,6 +38,8 @@ window.addEventListener('DOMContentLoaded',(event)=>{
                 const commentDataValuesBodyDiv = document.createElement('div');
                 commentDataValuesBodyDiv.innerText = fetchedComment.body;
 
+
+
                 const commentDeleteForm = document.createElement('form');
 
                 const commentDeleteBtn = document.createElement('button');
@@ -46,8 +49,15 @@ window.addEventListener('DOMContentLoaded',(event)=>{
 
                 commentBodyDiv.append(usernameSpan, commentDataValuesBodyDiv, commentDeleteForm);
                 usernameSpan.append(usernameH4);
-                commentDeleteForm.append(commentDeleteBtn);
 
+                console.log('user then comment')
+                console.log(user_id)
+                console.log(fetchedComment.User.id)
+
+                if(user_id === fetchedComment.User.id){
+                    console.log('DELETE BUTTON SHOULD DISPLAY')
+                    commentDeleteForm.append(commentDeleteBtn);
+                }
                 commentsListDiv.append(commentBodyDiv);
 
             });
@@ -90,10 +100,10 @@ window.addEventListener('DOMContentLoaded',(event)=>{
             body: JSON.stringify( {body: commentTextarea.value} ),
         });
 
-        const fetchedComments = await res.json();
+        const {fetchedComments,user_id} = await res.json();
 
         //repopulate children of comments list
-        replaceCommentsHelperFunction(fetchedComments);
+        replaceCommentsHelperFunction(fetchedComments,user_id);
 
     });
 
@@ -121,10 +131,10 @@ window.addEventListener('DOMContentLoaded',(event)=>{
                     body: JSON.stringify( {} ),
                 });
 
-                const fetchedComments = await res.json();
+                const {fetchedComments,user_id} = await res.json();
 
                 //repopulate children of comments list
-                replaceCommentsHelperFunction(fetchedComments);
+                replaceCommentsHelperFunction(fetchedComments,user_id);
 
             }
         }
