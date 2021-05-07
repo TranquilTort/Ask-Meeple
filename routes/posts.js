@@ -104,7 +104,7 @@ commentValidators = [
         .withMessage('Please fill out the body of your comment before submitting it.'),
 ];
 
-router.post('/:id/new-comment', csrfProtection, requireAuth, commentValidators, asyncHandler(async(req,res)=>{
+router.post('/:id/new-comment', requireAuth, commentValidators, asyncHandler(async(req,res)=>{
     const post_id = req.params.id;
     const {body} = req.body;
     user_id = req.session.auth.userId;
@@ -115,7 +115,10 @@ router.post('/:id/new-comment', csrfProtection, requireAuth, commentValidators, 
     let errors =[];
     if(validatorErrors.isEmpty()) {
         await comment.save();
-        res.save(res.redirect(`/posts/${post_id}`));
+        let updatedComments = await db.Comment.findAll({where: {post_id:{[Op.eq]:post.id}},include:db.User, order:[['createdAt','DESC']]})
+        // console.log(JSON.stringify(updatedComments, null, 4));
+        return req.session.save( () => res.json(updatedComments) );
+        // res.save(res.redirect(`/posts/${post_id}`));
     }else{
         errors = validatorErrors.array().map((error) => error.msg);
         res.render('post',{
@@ -128,7 +131,13 @@ router.post('/:id/new-comment', csrfProtection, requireAuth, commentValidators, 
     }
 }));
 
-router.post('/:id/comment/:commentid/delete', csrfProtection, requireAuth,asyncHandler(async(req,res)=>{
+router.post('/test-route', asyncHandler(async(req, res)=> {
+    console.log('hit the test route');
+    res.json({});
+}));
+
+// router.post('/:id/comment/:commentid/delete', csrfProtection, requireAuth,asyncHandler(async(req,res)=>{
+router.post('/:id/comment/:commentid/delete', requireAuth,asyncHandler(async(req,res)=>{
     let comment = await db.Comment.findByPk(req.params.commentid);
     try{
         await comment.destroy();
@@ -136,9 +145,15 @@ router.post('/:id/comment/:commentid/delete', csrfProtection, requireAuth,asyncH
     }catch{
 
     }
-    console.log('comment destroyed')
+    console.log('comment destroyed');
+    // const post_id = req.params.id;
+    // res.save(res.redirect(`/posts/${post_id}`));
     const post_id = req.params.id;
-    res.save(res.redirect(`/posts/${post_id}`));
+    const post= await db.Post.findByPk(post_id,{include: db.User});
+    let updatedComments = await db.Comment.findAll({where: {post_id:{[Op.eq]:post.id}},include:db.User, order:[['createdAt','DESC']]})
+
+    return req.session.save( () => res.json(updatedComments) );
+
 }));
 
 
