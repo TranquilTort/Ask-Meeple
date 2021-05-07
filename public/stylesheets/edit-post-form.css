@@ -1,0 +1,6 @@
+#content-block {
+    background:linear-gradient(0deg, rgba(0,0,0,1), rgba(0,0,0,.3)), url('../imgs/askMeeple-editPostForm-background.jpg');
+    background-position: center center;
+    background-size: cover;
+}
+

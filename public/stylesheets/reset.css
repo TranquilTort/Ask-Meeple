@@ -19,6 +19,10 @@ a:hover {
   box-sizing: border-box;
 }
 
+p {
+  overflow-wrap: break-word;
+}
+
 h1, h2, h3 {
   font-family: 'Josefin Sans', sans-serif;
 }
@@ -41,8 +45,7 @@ h1 {
 
 /* Navigation Bar Styles */
 nav {
-  z-index: 9999;
-
+  z-index: 4;
   background: #0059b3;
   color: #fff;
   width: 100%;
@@ -73,9 +76,10 @@ nav form {
 }
 
 nav form input {
-  padding: 2px;
   border-radius: 3px;
   padding: 3px;
+  margin-right: 3px;
+  margin-bottom: 0px;
   font-size: 14px;
 }
 
@@ -108,7 +112,6 @@ a.navBtn {
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
   padding: 2px 5px;
-  margin-bottom: 5px;
   margin-right: 5px;
   border-radius: 3px;
   max-height: 25px;
@@ -125,20 +128,69 @@ a.navBtn:hover {
 }
 
 .loggedIn span {
+  font-size: 12px;
+  margin-right: 5px;
+}
+
+.loggedIn form {
+  display: inline-block;
+}
+
+/* --- Navigation Responsive Style */
+#mobile-navigation {
+  z-index: 3;
+  display: none;
+  background-color: #fff;
+  box-shadow: 1px 1px 10px -5px black;
+}
+
+.loggedInMobile {
+  text-align: center;
+  padding-top: 16px;
+}
+
+.loggedInMobile button {
+  margin: 0px;
+}
+
+#mobile-navigation .mobileNotLoggedIn button {
+  display: block;
+  margin: 5px auto;
+}
+
+#mobile-navigation form {
+  text-align: center;
+  padding-top: 8px;
+}
+
+#mobile-navigation form input {
+  border-radius: 3px;
+  padding: 3px;
+  margin-right: 3px;
   font-size: 14px;
 }
 
-/* --- Navigation Responsiveness */
 #mobile {
   display: none;
 }
 
-@media screen and (max-width: 676px) {
+#mobile button {
+  background-color: #f56522;
+  border-radius: 3px;
+  max-height: 24px;
+}
+
+#mobile button:hover {
+  background-color:  #c75520;
+}
+
+@media screen and (max-width: 750px) {
   #mobile {
     display: inline-block;
   }
 
-  a.navBtn.hideOnMobile, form.hideOnMobile, .loggedIn {
+  a.navBtn.hideOnMobile, form.hideOnMobile, .loggedIn,
+  .notLoggedIn, button.navBtn.hideOnMobile {
     display: none;
   }
 }
@@ -220,7 +272,6 @@ form a:hover  {
   font-size: 12px;
 }
 
-
 /* Global Buttons */
 button {
   background-color: #0059b3;
@@ -233,10 +284,30 @@ button {
   margin-right: 8px;
   padding: 2px 8px 4px 8px;
   border-radius: 3px;
-
 }
 
 button:hover {
   background-color: #f56522;
   color: #fff;
+}
+
+/* About Section Persistant Style */
+#about {
+  border-top: 1px solid #bbb;
+  margin-bottom: 16px;
+  padding-top: 16px;
+}
+
+#about, #about a, #about span {
+  font-size: 11px;
+}
+
+#about p {
+  margin-top: 3px;
+  margin-bottom: 0px;
+}
+
+#about p a {
+  font-size: 14px;
+  margin-left: 5px;
 }

@@ -5,6 +5,12 @@ const db = require('../db/models');
 const { Sequelize } = require('sequelize');
 const Op = Sequelize.Op;
 
+
+
+
+
+/* GET search results */
+
 router.get('/', asyncHandler(async function(req, res) {
     let { term } = req.query;
 
@@ -23,6 +29,7 @@ router.get('/', asyncHandler(async function(req, res) {
         tag.Posts.forEach(post=>{
           matchingTagPostIds.push(post.id);
         })
+
     });
 
     //add ids to one array and get rid of duplicates
@@ -34,8 +41,10 @@ router.get('/', asyncHandler(async function(req, res) {
     const searchResults = await db.Post.findAll({order:[['createdAt','DESC']], include:[db.User,db.Tag], where:{id:{ [Op.in]: idsOfSearchResults}}})
 
     res.render('search-results', {
-      searchResults,
-      title: `Ask Meeple: ${term}`,
+      searchResults,      title: `Ask Meeple: ${term}`,
+
+      term
+
 
     });
   }));
