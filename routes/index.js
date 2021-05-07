@@ -14,7 +14,8 @@ const {loginUser,logoutUser,requireAuth} = require('../auth.js');
 /* GET home page. */
 
 router.get('/', asyncHandler(async function(req, res) {
-  const posts = await db.Post.findAll({order:[['createdAt','DESC']],include:[db.User, db.Tag], limit:5})
+  const posts = await db.Post.findAll({order:[['createdAt','DESC']],include:[db.User, db.Tag, db.Vote], limit:5});
+
   const tags = await db.Tag.findAll();
 
   const searchTags = tags.map((tag) => {
@@ -27,7 +28,22 @@ router.get('/', asyncHandler(async function(req, res) {
   tags.forEach((tag, i) => {
     tag.searchTerm = searchTags[i];
   });
-
+  if(req.session.auth){
+    const currentUser = req.session.auth.userId;
+    posts.forEach(post=>{
+      let score = 0;
+      let alreadyVoted = 0;
+      post.Votes.forEach(vote=>{
+        score+=vote.value;
+        if(vote.user_id === currentUser){
+          alreadyVoted = vote.value;
+        }
+      });
+      post.alreadyVoted = alreadyVoted;
+      console.log('previous vote:',post.alreadyVoted)
+      post.score=score;
+    });
+  }
   res.render('index', {
     page: 1,
     title: 'Ask Meeple',
@@ -35,7 +51,25 @@ router.get('/', asyncHandler(async function(req, res) {
     tags
   });
 
+}));
 
+router.post('/vote/:id',requireAuth,asyncHandler(async(req,res)=>{
+  const postId = parseInt(req.params.id);
+  const currentUser = req.session.auth.userId;
+  const {value} = req.body;
+  const usersVote = await db.Vote.findOne({where:{post_id:postId,user_id:currentUser}});
+  if(usersVote!==null){
+    await usersVote.update({value:value})
+  }else{
+    const newVote = db.Vote.build({user_id:currentUser, post_id:postId, value:value});
+    await newVote.save();
+  }
+  const post = await db.Post.findByPk(postId,{include:db.Vote});
+  let newScore = 0;
+  post.Votes.forEach(vote=>{
+    newScore+=vote.value;
+  });
+  return req.session.save( () => res.json({newScore}));
 }));
 
 router.get('/:id(\\d)+',  asyncHandler(async function(req, res) {
@@ -59,9 +93,7 @@ router.get('/:id(\\d)+',  asyncHandler(async function(req, res) {
     title: 'Ask Meeple',
     posts,
     tags
-
   });
-
 }));
 
 router.post('/demo-user', asyncHandler(async function(req, res) {

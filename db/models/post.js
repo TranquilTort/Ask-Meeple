@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
     Post.belongsTo(models.User,{foreignKey:'user_id'});
     const throughObj = {foreignKey:'post_id',through:'Post_Tags',otherKey:'tag_id'}
     Post.belongsToMany(models.Tag,throughObj);
+    Post.hasMany(models.Vote,{foreignKey:'post_id'});
   };
   return Post;
 };
