@@ -306,6 +306,7 @@ button:hover {
 
 #about {
   border-top: 1px solid #bbb;
+  margin-bottom: 16px;
 }
 
 #about, #about a, #about span {
