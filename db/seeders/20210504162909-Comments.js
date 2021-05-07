@@ -40,7 +40,62 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date()
       },
-
+      {
+        user_id: 2,
+        body: "I don't know about the version, but I'm not sure those are windmills haha. I think they're just funky houses.",
+        post_id: 8,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        user_id: 2,
+        body: "This is probably not a helpful answer, but it totally depends. I really enjoy legacy games cause each game you play effects the next game. You're right that some of them you only get to play through once, but some of them can be played a few times through. If you're interested in trying one out, I may suggest Risk Legacy. Or, you could try out a campaign game instead? They're sorta like legacy games in my opinion but don't necessarily invovle destroy pieces or altering the board.",
+        post_id: 7,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        user_id: 8,
+        body: "I feel like this is probably some sort of marketing play. Not sure it'll work.",
+        post_id: 6,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        user_id: 8,
+        body: "Only Abbots can go on flower gardens. Carts can work like regular meeples in most cases, except carts can't be used as farmers.",
+        post_id: 1,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        user_id: 4,
+        body: "I might add Brass: Birmingham onto that list.",
+        post_id: 4,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        user_id: 1,
+        body: "Forbidden Island is also a good one! And Forbidden Dessert.",
+        post_id: 4,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        user_id: 7,
+        body: "Perfect! How about Friday @ 7:30?",
+        post_id: 9,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        user_id: 3,
+        body: "Hey! I'm not too far away. Do you know where 'Hobby Town' is? They have some tables set up. Could meet up there?",
+        post_id: 9,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
 
 
     ], {});
