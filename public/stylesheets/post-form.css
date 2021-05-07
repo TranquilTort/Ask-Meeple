@@ -4,7 +4,6 @@ html, body {
     background-color: #000;
 }
 
-
 .full-screen {
     height: 100%;
   }
@@ -21,12 +20,13 @@ html, body {
 /* Form Specific Style */
 #form-body form {
     padding-bottom: 16px;
+    width: 80%;
 }
 
 #form-body {
     background: #fff;
     box-shadow: 1px 1px 10px black;
-    width: 45%;
+    width: 60%;
     margin: auto;
     margin-top: 6%;
     border-radius: 3px;
@@ -65,13 +65,13 @@ p a:hover {
 @media screen and (max-width: 1024px) {
     #form-body {
         margin-top: 6%;
-        width: 40%;
+        /* width: 40%; */
     }
 }
 
 @media screen and (max-width: 767px) {
     #form-body {
         margin-top: 15%;
-        width: 80%;
+        /* width: 80%; */
     }
 }

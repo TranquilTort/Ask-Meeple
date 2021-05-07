@@ -36,10 +36,13 @@ block content
           div(class='post-block')
             h2= post.title
             div By: #{post.User.username}
-            div(class='') Tags:
+            .post-tags
               each tag in post.Tags
-
-                span(class=''): a(href="#") #{tag.name}
+                if (post.Tags.indexOf(tag) !== post.Tags.length - 1)
+                  span: a(href="#") #{tag.name}
+                  | | &nbsp;
+                else
+                  span: a(href="#") #{tag.name}
 
             p= post.body
             img(class='post-img' src=post.image_url)

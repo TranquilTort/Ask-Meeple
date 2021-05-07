@@ -36,9 +36,14 @@ block content
           div(class='post-block')
             h2= result.title
             div By: #{result.User.username}
-            div
+            .post-tags
               each tag in result.Tags
-                span(class=''): a(href="#") #{tag.name}
+                if (result.Tags.indexOf(tag) !== result.Tags.length - 1)
+                  span: a(href="#") #{tag.name}
+                  | | &nbsp;
+                else
+                  span: a(href="#") #{tag.name}
+
             p= result.body
             img(class='post-img' src=result.image_url)
             button(class='go-to-post' onclick=`document.location='/posts/${result.id}'`) View Comments

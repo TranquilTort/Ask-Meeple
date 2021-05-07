@@ -10,10 +10,14 @@ block content
         h2(class='post-title') #{post.title}
         #creater-and-date
           h3 By: #{post.User.username} • #{post.createdAt}
-        //-   #tags
-        //-     each tag in post.Tags
-        //-       span(class=''): a(href="#") #{tag.name}
-        //-   div= post.createdAt
+          .post-tags
+            each tag in post.Tags
+              if (post.Tags.indexOf(tag) !== post.Tags.length - 1)
+                span: a(href="#") #{tag.name}
+                | | &nbsp;
+              else
+                span: a(href="#") #{tag.name}
+
         #post-content
             p= post.body
             img(class='post-img' src=post.image_url)

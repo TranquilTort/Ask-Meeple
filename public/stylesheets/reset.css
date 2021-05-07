@@ -79,6 +79,7 @@ nav form input {
   border-radius: 3px;
   padding: 3px;
   margin-right: 3px;
+  margin-bottom: 0px;
   font-size: 14px;
 }
 
@@ -111,7 +112,6 @@ a.navBtn {
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
   padding: 2px 5px;
-  margin-bottom: 5px;
   margin-right: 5px;
   border-radius: 3px;
   max-height: 25px;
@@ -136,17 +136,7 @@ a.navBtn:hover {
   display: inline-block;
 }
 
-
 /* --- Navigation Responsive Style */
-
-.hide {
-  display: none;
-}
-
-.show {
-  display: block;
-}
-
 #mobile-navigation {
   z-index: 3;
   display: none;
@@ -282,7 +272,6 @@ form a:hover  {
   font-size: 12px;
 }
 
-
 /* Global Buttons */
 button {
   background-color: #0059b3;
@@ -303,10 +292,10 @@ button:hover {
 }
 
 /* About Section Persistant Style */
-
 #about {
   border-top: 1px solid #bbb;
   margin-bottom: 16px;
+  padding-top: 16px;
 }
 
 #about, #about a, #about span {

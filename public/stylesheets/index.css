@@ -1,8 +1,10 @@
 /* Layout Styles */
 #content-block {
+    margin: 0 auto;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    max-width: 80%;
   }
 
   #side-bar {
@@ -60,10 +62,11 @@
 
   .post-block > div {
       font-size: 11px;
+      margin-bottom: 14px;
   }
 
   .post-block > img {
-      max-width: 50%;
+      max-width: 100%;
   }
 
   .post-block > button {
@@ -86,7 +89,7 @@
       }
 
       #side-bar, #post-area {
-          width: 90%;
+          width: 98%;
           margin: 0 auto;
       }
 
@@ -94,12 +97,7 @@
           margin-top: 20px;
       }
 
-      .post-block > img {
-          max-width: 100%;
-      }
-
       #side-bar {
           margin-top: 40px;
       }
-
   }

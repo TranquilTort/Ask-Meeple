@@ -1,6 +1,6 @@
 /* Post Styles */
 #content-block {
-    max-width: 80%;
+    max-width: 60%;
     margin: 0 auto;
  }
 
@@ -22,18 +22,30 @@
      font-size: 14px;
  }
 
+ .post-tags span a {
+    display: inline-block;
+    margin-right: 5px;
+    font-size: 11px;
+}
+
  #creater-and-date, #creater-and-date > h3 {
      font-family: 'Open Sans', sans-serif;
      font-size: 11px;
+     margin-bottom: 14px;
  }
 
  #post-content > img {
-    max-width: 50%;
+    max-width: 100%;
  }
 
  .new-comment {
      padding-left: 0px;
  }
+
+.new-comment textarea {
+    background: #fff;
+    width: 100%;
+}
 
  .comments-list h3 {
      font-size: 16px;

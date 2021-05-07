@@ -87,7 +87,7 @@ router.post('/:id(\\d+)/edit',postValidators,csrfProtection,requireAuth,asyncHan
 
 router.get('/:id', csrfProtection, asyncHandler(async(req,res)=>{
     const post_id = req.params.id;
-    const post = await db.Post.findByPk(post_id,{include: db.User});
+    const post = await db.Post.findByPk(post_id,{include:[db.User, db.Tag]});
     //potential route for a post that doesnt exist?
     const comments = await db.Comment.findAll({where: {post_id:{[Op.eq]:post.id}},include:db.User,order:[['createdAt','DESC']]})
     res.render('post',{

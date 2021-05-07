@@ -21,8 +21,6 @@ router.get('/', asyncHandler(async function(req, res) {
 
     const search = await db.Post.findAll({order:[['createdAt','DESC']],include:[db.User, db.Tag]})
     const searchResults = search.filter((result) => {
-        console.log('>>>', result);
-
         if(result.dataValues.title.toLowerCase().includes(lowercaseTerm) ||
         result.dataValues.body.toLowerCase().includes(lowercaseTerm)) {
             return result;
