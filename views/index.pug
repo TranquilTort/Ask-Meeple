@@ -32,24 +32,37 @@ block content
     #post-area
       h1='Recently Asked Meeple'
       if (posts.length)
-        each post in posts
-          div(class='post-block')
-            h2= post.title
-            div By: #{post.User.username}
-            .post-tags
-              each tag in post.Tags
-                if (post.Tags.indexOf(tag) !== post.Tags.length - 1)
-                  span: a(href="#") #{tag.name}
-                  | | &nbsp;
-                else
-                  span: a(href="#") #{tag.name}
+        div(id= 'all-posts')
+          each post in posts
+            div( class='post-block')
+              h2= post.title
+              div By: #{post.User.username}
+              .post-tags
+                each tag in post.Tags
+                  if (post.Tags.indexOf(tag) !== post.Tags.length - 1)
+                    span: a(href="#") #{tag.name}
+                    | | &nbsp;
+                  else
+                    span: a(href="#") #{tag.name}
 
-            p= post.body
-            img(class='post-img' src=post.image_url)
-            button(class='go-to-post' onclick=`document.location='/posts/${post.id}'`) View Comments
-            if user
-              if (user.username == post.User.username)
-                button(class='edit-post' onclick=`document.location='/posts/${post.id}/edit'`) Edit Your Post
+              p= post.body
+              img(class='post-img' src=post.image_url)
+              div(class='voting')
+                div(id=`score-${post.id}`) Score: #{post.score}
+                if user
+                  if (post.alreadyVoted == -1)
+                    button(class='vote-button' id=`up-${post.id}`) Up Vote
+                    button(class='vote-button' id=`down-${post.id}` disabled) Down Vote
+                  else if (post.alreadyVoted == 1)
+                    button(class='vote-button' id=`up-${post.id}` disabled) Up Vote
+                    button(class='vote-button' id=`down-${post.id}` ) Down Vote
+                  else
+                    button(class='vote-button' id=`up-${post.id}`) Up Vote
+                    button(class='vote-button' id=`down-${post.id}`) Down Vote
+              button(class='go-to-post' onclick=`document.location='/posts/${post.id}'`) View Comments
+              if user
+                if (user.username == post.User.username)
+                  button(class='edit-post' onclick=`document.location='/posts/${post.id}/edit'`) Edit Your Post
       else
         #no-content THERE DOESN'T SEEM TO BE ANYTHING HERE...
 
