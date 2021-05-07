@@ -156,6 +156,42 @@ router.post('/:id/comment/:commentid/delete', requireAuth,asyncHandler(async(req
 
 }));
 
+router.delete('/:id', requireAuth, asyncHandler(async(req,res)=>{
 
+    const post = await db.Post.findByPk(req.params.id);
+    const post_tags = await db.Post_Tag.findAll({where: {post_id: req.params.id}});
+    const comments = await db.Comment.findAll({where: {post_id: req.params.id}});
+
+    comments.forEach( async (comment) => {
+        await comment.destroy();
+    });
+
+    post_tags.forEach( async (post_tag) => {
+        await post_tag.destroy();
+    });
+
+    await post.destroy();
+
+    return req.session.save( () => res.json(post) );
+}));
+
+router.post('/:id/delete', requireAuth, asyncHandler(async(req,res)=>{
+
+    const post = await db.Post.findByPk(req.params.id);
+    const post_tags = await db.Post_Tag.findAll({where: {post_id: req.params.id}});
+    const comments = await db.Comment.findAll({where: {post_id: req.params.id}});
+
+    comments.forEach( async (comment) => {
+        await comment.destroy();
+    });
+
+    post_tags.forEach( async (post_tag) => {
+        await post_tag.destroy();
+    });
+
+    await post.destroy();
+
+    return req.session.save( () => res.redirect('/') );
+}));
 
 module.exports = router;

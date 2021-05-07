@@ -12,10 +12,10 @@ block content
       div
        h3 Search Tags
        #search-tags
-         a(href="#") Strategy
-         a(href="#") Review
-         a(href="#") Rules Clarification
-         a(href="#") Recommendations
+         a(href="/search/?term=Strategy") Strategy
+         a(href="/search/?term=Review") Review
+         a(href="/search/?term=Rules+Clarification") Rules Clarification
+         a(href="/search/?term=Recommendations") Recommendations
 
       #about
         p: strong Site by
@@ -33,7 +33,7 @@ block content
       h1='Recently Asked Meeple'
       if (posts.length)
         each post in posts
-          div(class='post-block')
+          div(class='post-block' id=`post-${post.id}`)
             h2= post.title
             div By: #{post.User.username}
             .post-tags
@@ -50,6 +50,7 @@ block content
             if user
               if (user.username == post.User.username)
                 button(class='edit-post' onclick=`document.location='/posts/${post.id}/edit'`) Edit Your Post
+                button(class='edit-post' id=`delete-post-btn-${post.id}`) Delete Your Post
       else
         #no-content THERE DOESN'T SEEM TO BE ANYTHING HERE...
 

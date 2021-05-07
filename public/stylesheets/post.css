@@ -68,8 +68,17 @@
  }
 
 
- .delete-comment{
+ .delete-comment {
     justify-content: flex-end;
+ }
+
+ #delete-post-form {
+     display: inline;
+ }
+
+ #delete-post-btn {
+    padding: 3px 7px;
+    position: relative;
  }
 
  /* --- Responsive Layout */
