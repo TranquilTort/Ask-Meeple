@@ -15,25 +15,50 @@ const {loginUser,logoutUser,requireAuth} = require('../auth.js');
 
 router.get('/', asyncHandler(async function(req, res) {
   const posts = await db.Post.findAll({order:[['createdAt','DESC']],include:[db.User, db.Tag], limit:5})
-  res.render('index', {
+  const tags = await db.Tag.findAll();
 
+  const searchTags = tags.map((tag) => {
+    let searchFor = tag.dataValues.name;
+    let searchSplit = searchFor.split(" ");
+    let searchJoin = searchSplit.join("+");
+    return searchJoin;
+  });
+
+  tags.forEach((tag, i) => {
+    tag.searchTerm = searchTags[i];
+  });
+
+  res.render('index', {
     page: 1,
     title: 'Ask Meeple',
-    posts
-
-
+    posts,
+    tags
   });
+
 
 }));
 
 router.get('/:id(\\d)+',  asyncHandler(async function(req, res) {
   const page = parseInt(req.params.id)
   const posts = await db.Post.findAll({order:[['createdAt','DESC']],include:[db.User, db.Tag], offset:(page-1)*5, limit:5})
+  const tags = await db.Tag.findAll();
+
+  const searchTags = tags.map((tag) => {
+    let searchFor = tag.dataValues.name;
+    let searchSplit = searchFor.split(" ");
+    let searchJoin = searchSplit.join("+");
+    return searchJoin;
+  });
+
+  tags.forEach((tag, i) => {
+    tag.searchTerm = searchTags[i];
+  });
+
   res.render('index', {
     page:page,
     title: 'Ask Meeple',
-    posts
-
+    posts,
+    tags
 
   });
 

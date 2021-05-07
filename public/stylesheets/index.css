@@ -16,6 +16,7 @@
       color: #0059b3;
       font-weight: 700;
       border-bottom: 1px solid #000;
+      font-size: 21px;
   }
 
   #search-tags {
@@ -33,11 +34,12 @@
   #post-area {
       flex-direction: column;
       width: 60%;
+      padding-top: 8px;
       margin: 1%;
   }
 
   #post-area h1 {
-      font-size: 16px;
+      font-size: 21px;
   }
 
   .post-block {
@@ -49,7 +51,7 @@
   }
 
   .post-block > h2 {
-      font-size: 18px;
+      font-size: 21px;
       color: #0059b3;
       font-weight: 700;
   }
@@ -57,11 +59,11 @@
   .post-block span a {
       display: inline-block;
       margin-right: 5px;
-      font-size: 11px;
+      font-size: 13px;
   }
 
   .post-block > div {
-      font-size: 11px;
+      font-size: 13px;
       margin-bottom: 14px;
   }
 

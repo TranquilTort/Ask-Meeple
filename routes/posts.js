@@ -90,11 +90,27 @@ router.get('/:id', csrfProtection, asyncHandler(async(req,res)=>{
     const post = await db.Post.findByPk(post_id,{include:[db.User, db.Tag]});
     //potential route for a post that doesnt exist?
     const comments = await db.Comment.findAll({where: {post_id:{[Op.eq]:post.id}},include:db.User,order:[['createdAt','DESC']]})
+
+    const tags = await db.Tag.findAll();
+
+    const searchTags = tags.map((tag) => {
+      let searchFor = tag.dataValues.name;
+      let searchSplit = searchFor.split(" ");
+      let searchJoin = searchSplit.join("+");
+      return searchJoin;
+    });
+
+    tags.forEach((tag, i) => {
+      tag.searchTerm = searchTags[i];
+    });
+
+
     res.render('post',{
         token:req.csrfToken(),
         post,
         comments,
-        post_id:post_id
+        post_id:post_id,
+        tags
     });
 }));
 

@@ -300,7 +300,7 @@ button:hover {
 }
 
 #about, #about a, #about span {
-  font-size: 11px;
+  font-size: 13px;
 }
 
 #about p {
@@ -309,6 +309,6 @@ button:hover {
 }
 
 #about p a {
-  font-size: 14px;
+  font-size: 16px;
   margin-left: 5px;
 }

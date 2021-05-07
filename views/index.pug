@@ -12,10 +12,8 @@ block content
       div
        h3 Search Tags
        #search-tags
-         a(href="#") Strategy
-         a(href="#") Review
-         a(href="#") Rules Clarification
-         a(href="#") Recommendations
+         each tag in tags
+             a(href=`/search?term=${tag.searchTerm}`)= tag.name
 
       #about
         p: strong Site by
