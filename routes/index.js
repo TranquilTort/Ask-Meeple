@@ -18,7 +18,11 @@ router.get('/', asyncHandler(async function(req, res) {
 
   const tags = await db.Tag.findAll();
 
-  //  console.log('>>>', JSON.stringify(posts[0], null, 4))
+  tags.forEach((tag) => {
+    let searchFor = tag.name;
+    let searchSplit = searchFor.split(' ');
+    tag.searchTerm = searchSplit.join('+');
+  });
 
    posts.forEach((post) => {
      post.Tags.forEach(tag => {

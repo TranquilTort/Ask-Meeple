@@ -12,10 +12,8 @@ block content
       div
        h3 Search Tags
        #search-tags
-         a(href="/search/?term=Strategy") Strategy
-         a(href="/search/?term=Review") Review
-         a(href="/search/?term=Rules+Clarification") Rules Clarification
-         a(href="/search/?term=Recommendations") Recommendations
+         each tag in tags
+             a(href=`/search?term=${tag.searchTerm}`)= tag.name
 
       #about
         p: strong Site by
@@ -37,12 +35,13 @@ block content
             h2= result.title
             div By: #{result.User.username}
             .post-tags
-              each tag in result.Tags
-                if (result.Tags.indexOf(tag) !== result.Tags.length - 1)
-                  span: a(href="#") #{tag.name}
-                  | | &nbsp;
-                else
-                  span: a(href="#") #{tag.name}
+                each tag in result.Tags
+                  if (result.Tags.indexOf(tag) !== result.Tags.length - 1)
+                    span: a(href=`/search?term=${tag.searchTerm}` onclick=`document.location='/search?term=${tag.searchTerm}'`)= tag.name
+                    | | &nbsp;
+                  else
+                    span: a(href=`/search?term=${tag.searchTerm}` onclick=`document.location='/search?term=${tag.searchTerm}'`)= tag.name
+
 
             p= result.body
             img(class='post-img' src=result.image_url)

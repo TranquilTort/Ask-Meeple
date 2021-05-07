@@ -38,10 +38,10 @@ block content
               .post-tags
                 each tag in post.Tags
                   if (post.Tags.indexOf(tag) !== post.Tags.length - 1)
-                    span: a(href=`/search?term=${tag.searchTerm}`)= tag.name
+                    span: a(href=`/search?term=${tag.searchTerm}` onclick=`document.location='/search?term=${tag.searchTerm}'`)= tag.name
                     | | &nbsp;
                   else
-                    span: a(href=`/search?term=${tag.searchTerm}`)= tag.name
+                    span: a(href=`/search?term=${tag.searchTerm}` onclick=`document.location='/search?term=${tag.searchTerm}'`)= tag.name
 
               p= post.body
               img(class='post-img' src=post.image_url)
