@@ -28,7 +28,7 @@ router.get('/', asyncHandler(async function(req, res) {
 
 router.get('/:id(\\d)+',  asyncHandler(async function(req, res) {
   const page = parseInt(req.params.id)
-  const posts = await db.Post.findAll({order:[['createdAt','DESC']],include:[db.User, db.Tag], offset:page*5, limit:5})
+  const posts = await db.Post.findAll({order:[['createdAt','DESC']],include:[db.User, db.Tag], offset:(page-1)*5, limit:5})
   res.render('index', {
     page:page,
     title: 'Ask Meeple',
