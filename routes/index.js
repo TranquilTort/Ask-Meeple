@@ -18,16 +18,16 @@ router.get('/', asyncHandler(async function(req, res) {
 
   const tags = await db.Tag.findAll();
 
-  const searchTags = tags.map((tag) => {
-    let searchFor = tag.dataValues.name;
-    let searchSplit = searchFor.split(" ");
-    let searchJoin = searchSplit.join("+");
-    return searchJoin;
+  //  console.log('>>>', JSON.stringify(posts[0], null, 4))
+
+   posts.forEach((post) => {
+     post.Tags.forEach(tag => {
+       let searchFor = tag.name;
+       let searchSplit = searchFor.split(' ');
+       tag.searchTerm = searchSplit.join('+');
+     })
   });
 
-  tags.forEach((tag, i) => {
-    tag.searchTerm = searchTags[i];
-  });
   if(req.session.auth){
     const currentUser = req.session.auth.userId;
     posts.forEach(post=>{
@@ -75,17 +75,12 @@ router.post('/vote/:id',requireAuth,asyncHandler(async(req,res)=>{
 router.get('/:id(\\d)+',  asyncHandler(async function(req, res) {
   const page = parseInt(req.params.id)
   const posts = await db.Post.findAll({order:[['createdAt','DESC']],include:[db.User, db.Tag], offset:(page-1)*5, limit:5})
-  const tags = await db.Tag.findAll();
 
-  const searchTags = tags.map((tag) => {
+  posts.Tags.forEach((tag) => {
     let searchFor = tag.dataValues.name;
     let searchSplit = searchFor.split(" ");
     let searchJoin = searchSplit.join("+");
-    return searchJoin;
-  });
-
-  tags.forEach((tag, i) => {
-    tag.searchTerm = searchTags[i];
+    tag.searchTerm = searchJoin;
   });
 
   res.render('index', {
