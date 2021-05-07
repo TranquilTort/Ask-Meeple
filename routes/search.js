@@ -1,63 +1,43 @@
 const express = require('express');
 const router = express.Router();
-const { csrfProtection, asyncHandler } = require('./utils');
-const {sessionSecret} = require('../config');
-
+const {asyncHandler } = require('./utils');
 const db = require('../db/models');
-const {check,validationResult} = require('express-validator')
-const bcrypt = require('bcryptjs');
 const { Sequelize } = require('sequelize');
 const Op = Sequelize.Op;
 
-const url = require('url');
-
-const {loginUser,logoutUser,requireAuth} = require('../auth.js');
-
-/* GET search results */
-// router.get('/', csrfProtection, requireAuth, asyncHandler(async (req, res) => {
-
-//     const { term } = req.body;
-//     console.log('>>>', term);
-
-//     const search = await db.Post.findAll()
-//     const searchResults = search.array().filter((result) => {
-//         console.log('+++', result);
-//     });
-//     res.render('search-results', {
-//       searchResults,
-//       title: `Ask Meeple: ${term}`,
-//     //   posts
-
-
-//     });
-
-//   }));
-
-
 router.get('/', asyncHandler(async function(req, res) {
-
     let { term } = req.query;
-    const lowercaseTerm = term.toLowerCase();
 
-    const search = await db.Post.findAll({order:[['createdAt','DESC']],include:[db.User, db.Tag]})
-    const searchResults = search.filter((result) => {
-        console.log('>>>', result);
+    //query for post ids matching body or title
+    const matchingPost = await db.Post.findAll({where: {[Op.or]: [
+      {title:{[Op.iLike]: `%${term}%`}},
+      {body:{[Op.iLike]: `%${term}%`}}]}});
+      const matchingPostIds = matchingPost.map(el=>{
+        return el.id;
+      });
 
-        if(result.dataValues.title.toLowerCase().includes(lowercaseTerm) ||
-        result.dataValues.body.toLowerCase().includes(lowercaseTerm)) {
-            return result;
-        }
+    //query for post ids matching tag name
+    const matchingTags = await db.Tag.findAll({where:{name:{[Op.iLike]:`%${term}%`}},include:[{model:db.Post}]})
+    let matchingTagPostIds =[];
+    matchingTags.forEach(tag => {
+        tag.Posts.forEach(post=>{
+          matchingTagPostIds.push(post.id);
+        })
     });
-    console.log('///', searchResults.length)
+
+    //add ids to one array and get rid of duplicates
+    let together = matchingPostIds.concat(matchingTagPostIds);
+    const set = new Set(together);
+    const idsOfSearchResults = Array.from(set);
+
+    //query for posts matching post id including tags and users
+    const searchResults = await db.Post.findAll({order:[['createdAt','DESC']], include:[db.User,db.Tag], where:{id:{ [Op.in]: idsOfSearchResults}}})
+
     res.render('search-results', {
       searchResults,
       title: `Ask Meeple: ${term}`,
-    //   posts
-
 
     });
-    // res.send('Working!');
-
   }));
 
 
