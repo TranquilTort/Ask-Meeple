@@ -48,12 +48,22 @@ router.get('/', asyncHandler(async function(req, res) {
     //query for posts matching post id including tags and users
     const searchResults = await db.Post.findAll({order:[['createdAt','DESC']], include:[db.User,db.Tag], where:{id:{ [Op.in]: idsOfSearchResults}}})
 
+    console.log('>>>', searchResults[0])
+
+    searchResults.forEach((result) => {
+      let tags = result.Tags;
+      tags.forEach((tag) => {
+        let searchFor = tag.name;
+        let searchSplit = searchFor.split(' ');
+        tag.searchTerm = searchSplit.join('+');
+      })
+    });
+
     res.render('search-results', {
       searchResults,
       title: `Ask Meeple: ${term}`,
       term,
       tags
-
 
     });
   }));
