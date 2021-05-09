@@ -5,32 +5,33 @@
  }
 
  #content-block h2 {
-     font-size: 18px;
+     font-size: 21px;
      color: #0059b3;
      font-weight: 700;
  }
 
  .comments-list, .post-body, .new-comment {
      margin: 20px;
-     padding: 15px;
  }
 
  .post-body {
      border: 1px solid #bbb;
+     border-radius: 3px;
      background-color: #fff;
      margin-bottom: 1%;
-     font-size: 14px;
+     padding: 30px;
+     font-size: 16px;
  }
 
  .post-tags span a {
     display: inline-block;
     margin-right: 5px;
-    font-size: 11px;
+    font-size: 13px;
 }
 
  #creater-and-date, #creater-and-date > h3 {
      font-family: 'Open Sans', sans-serif;
-     font-size: 11px;
+     font-size: 13px;
      margin-bottom: 14px;
  }
 
@@ -45,24 +46,27 @@
 .new-comment textarea {
     background: #fff;
     width: 100%;
+    padding: 8px;
 }
 
  .comments-list h3 {
-     font-size: 16px;
+     font-size: 18px;
      font-weight: 700;
      margin-bottom: 1%;
  }
 
  .comment-body {
-     padding: 20px;
+     padding: 30px;
      border: 1px solid #bbb;
+     border-radius: 3px;
      background-color: #fff;
      margin-bottom: 5px;
-     font-size: 14px;
+     font-size: 16px;
  }
 
  .comment-body h4 {
-    font-size: 11px;
+    font-size: 14px;
+    margin-bottom: 16px;
     color: #0059b3;
     font-weight: 700;
  }
