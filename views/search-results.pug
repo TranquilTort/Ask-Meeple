@@ -30,30 +30,45 @@ block content
     #post-area
       h1=`Searched: "${term}"`
       if (searchResults.length)
-        each result in searchResults
-          div(class='post-block' id=`post-${result.id}`)
-            h2= result.title
-            div By: #{result.User.username}
-            .post-tags
-              each tag in result.Tags
-                if (result.Tags.indexOf(tag) !== result.Tags.length - 1)
-                  span: a(href=`/search?term=${tag.searchTerm}` onclick=`document.location='/search?term=${tag.searchTerm}'`)= tag.name
-                  | | &nbsp;
-                else
-                  span: a(href=`/search?term=${tag.searchTerm}` onclick=`document.location='/search?term=${tag.searchTerm}'`)= tag.name
+        div(id= 'all-posts')
+          each result in searchResults
+            div(class='post-block' id=`post-${result.id}`)
+              h2= result.title
+              div By: #{result.User.username}
+              .post-tags
+                each tag in result.Tags
+                  if (result.Tags.indexOf(tag) !== result.Tags.length - 1)
+                    span: a(href=`/search?term=${tag.searchTerm}` onclick=`document.location='/search?term=${tag.searchTerm}'`)= tag.name
+                    | | &nbsp;
+                  else
+                    span: a(href=`/search?term=${tag.searchTerm}` onclick=`document.location='/search?term=${tag.searchTerm}'`)= tag.name
 
-            p= result.body
-            img(class='post-img' src=result.image_url)
-            button(class='go-to-post' onclick=`document.location='/posts/${result.id}'`) View Comments
-            if user
-              if (user.username == result.User.username)
-                button(class='edit-post' onclick=`document.location='/posts/${result.id}/edit'`) Edit Your Post
-                button(class='edit-post' id=`delete-post-btn-${result.id}`) Delete Your Post
+              p= result.body
+              img(class='post-img' src=result.image_url)
+              div(class='voting')
+                  div(id=`score-${result.id}`) Score: #{result.score}
+                  if user
+                    if (result.alreadyVoted == -1)
+                      button(class='vote-button' id=`up-${result.id}`): i(id=`upthumb-${result.id}` class="fas fa-thumbs-up")
+                      button(class='vote-button' id=`down-${result.id}` disabled): i(id=`downthumb-${result.id}` class="fas fa-thumbs-down")
+                    else if (result.alreadyVoted == 1)
+                      button(class='vote-button' id=`up-${result.id}` disabled): i(id=`upthumb-${result.id}` class="fas fa-thumbs-up")
+                      button(class='vote-button' id=`down-${result.id}` ): i(id=`downthumb-${result.id}` class="fas fa-thumbs-down")
+                    else
+                      button(class='vote-button' id=`up-${result.id}`): i(id=`upthumb-${result.id}` class="fas fa-thumbs-up")
+                      button(class='vote-button' id=`down-${result.id}`): i(id=`downthumb-${result.id}` class="fas fa-thumbs-down")
+
+
+              button(class='go-to-post' onclick=`document.location='/posts/${result.id}'`) View Comments
+              if user
+                if (user.username == result.User.username)
+                  button(class='edit-post' onclick=`document.location='/posts/${result.id}/edit'`) Edit Your Post
+                  button(class='edit-post' id=`delete-post-btn-${result.id}`) Delete Your Post
       else
         #no-content THERE DOESN'T SEEM TO BE ANYTHING HERE...
 
       if (page == 2)
-        button(class='next/prev' onclick=`document.location='/'`) Previous Page
+        button(class='next/prev' onclick=`document.location='/search/?term=${term}'`) Previous Page
       else if (page > 2)
-        button(class='next/prev' onclick=`document.location='/${page-1}'`) Previous Page
-      button(class='next/prev' onclick=`document.location='/${page+1}'`) Next Page
+        button(class='next/prev' onclick=`document.location='/${page-1}/?term=${term}'`) Previous Page
+      button(class='next/prev' onclick=`document.location='search/${page+1}/?term=${term}'`) Next Page

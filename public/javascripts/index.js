@@ -27,9 +27,8 @@ window.addEventListener("DOMContentLoaded", (event)=>{
     if(allPosts){
         allPosts.addEventListener('click', async (event)=>{
             event.preventDefault();
-
             if(event.target.id.includes('up') || event.target.id.includes('down')){
-                const postId = event.target.id.slice(event.target.id.length-1);
+                const postId = event.target.id.split('-')[1];
                 console.log('POSTID:',postId)
 
                 let value= 0;

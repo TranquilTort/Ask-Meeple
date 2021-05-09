@@ -49,14 +49,14 @@ block content
                 div(id=`score-${post.id}`) Score: #{post.score}
                 if user
                   if (post.alreadyVoted == -1)
-                    button(class='vote-button' id=`up-${post.id}`): i(class="fas fa-thumbs-up")
-                    button(class='vote-button' id=`down-${post.id}` disabled): i(class="fas fa-thumbs-down")
+                    button(class='vote-button' id=`up-${post.id}`): i(id=`upthumb-${post.id}` class="fas fa-thumbs-up")
+                    button(class='vote-button' id=`down-${post.id}` disabled): i(id=`downthumb-${post.id}` class="fas fa-thumbs-down")
                   else if (post.alreadyVoted == 1)
-                    button(class='vote-button' id=`up-${post.id}` disabled): i(class="fas fa-thumbs-up")
-                    button(class='vote-button' id=`down-${post.id}` ): i(class="fas fa-thumbs-down")
+                    button(class='vote-button' id=`up-${post.id}` disabled): i(id=`upthumb-${post.id}` class="fas fa-thumbs-up")
+                    button(class='vote-button' id=`down-${post.id}` ): i(id=`downthumb-${post.id}` class="fas fa-thumbs-down")
                   else
-                    button(class='vote-button' id=`up-${post.id}`): i(class="fas fa-thumbs-up")
-                    button(class='vote-button' id=`down-${post.id}`): i(class="fas fa-thumbs-down")
+                    button(class='vote-button' id=`up-${post.id}`): i(id=`upthumb-${post.id}` class="fas fa-thumbs-up")
+                    button(class='vote-button' id=`down-${post.id}`): i(id=`downthumb-${post.id}` class="fas fa-thumbs-down")
               button(class='go-to-post' onclick=`document.location='/posts/${post.id}'`) View Comments
               if user
                 if (user.username == post.User.username)
