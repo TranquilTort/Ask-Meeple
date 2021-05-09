@@ -80,11 +80,20 @@ router.get('/:id(\\d)+',  asyncHandler(async function(req, res) {
   const page = parseInt(req.params.id)
   const posts = await db.Post.findAll({order:[['createdAt','DESC']],include:[db.User, db.Tag], offset:(page-1)*5, limit:5})
 
-  posts.Tags.forEach((tag) => {
-    let searchFor = tag.dataValues.name;
-    let searchSplit = searchFor.split(" ");
-    let searchJoin = searchSplit.join("+");
-    tag.searchTerm = searchJoin;
+  const tags = await db.Tag.findAll();
+
+  tags.forEach((tag) => {
+    let searchFor = tag.name;
+    let searchSplit = searchFor.split(' ');
+    tag.searchTerm = searchSplit.join('+');
+  });
+
+   posts.forEach((post) => {
+     post.Tags.forEach(tag => {
+       let searchFor = tag.name;
+       let searchSplit = searchFor.split(' ');
+       tag.searchTerm = searchSplit.join('+');
+     })
   });
 
   res.render('index', {
