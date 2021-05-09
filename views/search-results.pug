@@ -68,7 +68,7 @@ block content
         #no-content THERE DOESN'T SEEM TO BE ANYTHING HERE...
 
       if (page == 2)
-        button(class='next/prev' onclick=`document.location='/search/?term=${term}'`) Previous Page
+        button(class='next/prev' onclick=`document.location='/search?term=${term}'`) Previous Page
       else if (page > 2)
-        button(class='next/prev' onclick=`document.location='/${page-1}/?term=${term}'`) Previous Page
+        button(class='next/prev' onclick=`document.location='search/${page-1}/?term=${term}'`) Previous Page
       button(class='next/prev' onclick=`document.location='search/${page+1}/?term=${term}'`) Next Page

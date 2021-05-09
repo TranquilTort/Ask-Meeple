@@ -156,7 +156,8 @@ router.get('/', asyncHandler(async function(req, res) {
       searchResults,
       title: `Ask Meeple: ${term}`,
       term,
-      tags
+      tags,
+      page
 
     });
 
