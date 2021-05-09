@@ -91,7 +91,20 @@ router.delete('/:id', requireAuth, asyncHandler(async(req,res)=>{
 }));
 ```
 
-###### Search queries
+###### Search Tag URL Formatting
+
+* In order to make sure that the search function works correctly when an user clicks on a searchable tag, we had to make sure the anchor tag was correctly formatted. This mean finding the tag name, which was a string, spliting it on empty spaces, and then rejoining it with a + sign. Then we saved the new, properly formatted string as a new key-value pair inside of the tag object, called "searchTerm". Then in our pug files, we populated our anchor tag with searchTerm.
+
+```javascript
+ const tags = await db.Tag.findAll();
+
+  tags.forEach((tag) => {
+    let searchFor = tag.name;
+    let searchSplit = searchFor.split(' ');
+    tag.searchTerm = searchSplit.join('+');
+  });
+```
+
 
 ###### Upvoting
 
