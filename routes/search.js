@@ -6,9 +6,6 @@ const { Sequelize } = require('sequelize');
 const Op = Sequelize.Op;
 
 
-
-
-
 /* GET search results */
 
 router.get('/', asyncHandler(async function(req, res) {

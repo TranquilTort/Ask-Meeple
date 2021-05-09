@@ -70,6 +70,7 @@
   .fas{
     z-index: 0;
   }
+
   .post-block > div {
       font-size: 13px;
       margin-bottom: 14px;
@@ -90,9 +91,24 @@
       margin-bottom: 1%;
       font-size: 14px;
   }
+/* Voting Buttons and Score Style */
+button:disabled {
+    background-color: #477cb4;
+}
+
+.score {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.score-num {
+  color: #f56522;
+  font-weight: 500;
+}
 
 
-  /* --- Responsive Layout */
+/* --- Responsive Layout */
   @media screen and (max-width: 767px) {
       #content-block {
           flex-direction: column-reverse;

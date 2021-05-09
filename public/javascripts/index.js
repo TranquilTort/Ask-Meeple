@@ -49,7 +49,7 @@ window.addEventListener("DOMContentLoaded", (event)=>{
                 });
                 const {newScore} = await res.json();
                 const scoreDisplay = document.getElementById(`score-${postId}`);
-                scoreDisplay.innerHTML=`Score: ${newScore}`;
+                scoreDisplay.innerHTML=`Score:  <span class='score-num'>${newScore}</span>`;
             }
         })
     }

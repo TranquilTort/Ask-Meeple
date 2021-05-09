@@ -46,17 +46,18 @@ block content
               p= result.body
               img(class='post-img' src=result.image_url)
               div(class='voting')
-                  div(id=`score-${result.id}`) Score: #{result.score}
-                  if user
-                    if (result.alreadyVoted == -1)
-                      button(class='vote-button' id=`up-${result.id}`): i(id=`upthumb-${result.id}` class="fas fa-thumbs-up")
-                      button(class='vote-button' id=`down-${result.id}` disabled): i(id=`downthumb-${result.id}` class="fas fa-thumbs-down")
-                    else if (result.alreadyVoted == 1)
-                      button(class='vote-button' id=`up-${result.id}` disabled): i(id=`upthumb-${result.id}` class="fas fa-thumbs-up")
-                      button(class='vote-button' id=`down-${result.id}` ): i(id=`downthumb-${result.id}` class="fas fa-thumbs-down")
-                    else
-                      button(class='vote-button' id=`up-${result.id}`): i(id=`upthumb-${result.id}` class="fas fa-thumbs-up")
-                      button(class='vote-button' id=`down-${result.id}`): i(id=`downthumb-${result.id}` class="fas fa-thumbs-down")
+                div(id=`score-${result.id}` class='score') Score:
+                  span(class='score-num')= ` ${result.score}`
+                if user
+                  if (result.alreadyVoted == -1)
+                    button(class='vote-button' id=`up-${result.id}`): i(id=`upthumb-${result.id}` class="fas fa-thumbs-up")
+                    button(class='vote-button' id=`down-${result.id}` disabled): i(id=`downthumb-${result.id}` class="fas fa-thumbs-down")
+                  else if (result.alreadyVoted == 1)
+                    button(class='vote-button' id=`up-${result.id}` disabled): i(id=`upthumb-${result.id}` class="fas fa-thumbs-up")
+                    button(class='vote-button' id=`down-${result.id}` ): i(id=`downthumb-${result.id}` class="fas fa-thumbs-down")
+                  else
+                    button(class='vote-button' id=`up-${result.id}`): i(id=`upthumb-${result.id}` class="fas fa-thumbs-up")
+                    button(class='vote-button' id=`down-${result.id}`): i(id=`downthumb-${result.id}` class="fas fa-thumbs-down")
 
 
               button(class='go-to-post' onclick=`document.location='/posts/${result.id}'`) View Comments
