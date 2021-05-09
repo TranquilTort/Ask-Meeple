@@ -38,9 +38,18 @@ html, body {
     width: 100%;
 }
 
+.tags {
+    margin-bottom: 10px;
+}
+
 .tags p {
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 700;
+}
+
+.tag-selection {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
 .tag-group input {
@@ -72,6 +81,10 @@ p a:hover {
 @media screen and (max-width: 767px) {
     #form-body {
         margin-top: 15%;
-        /* width: 80%; */
     }
+
+
+   .tag-selection {
+      display: block;
+   }
 }

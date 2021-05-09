@@ -34,7 +34,7 @@
   #post-area {
       flex-direction: column;
       width: 60%;
-      padding-top: 8px;
+      padding: 8px;
       margin: 1%;
   }
 
@@ -43,11 +43,12 @@
   }
 
   .post-block {
-      padding: 20px;
+      padding: 30px;
       border: 1px solid #bbb;
+      border-radius: 3px;
       background-color: #fff;
       margin-bottom: 5px;
-      font-size: 14px;
+      font-size: 16px;
   }
 
   .post-block > h2 {
@@ -91,7 +92,7 @@
       }
 
       #side-bar, #post-area {
-          width: 98%;
+          width: 100%;
           margin: 0 auto;
       }
 
