@@ -73,6 +73,7 @@ a.new-post {
 /* --- Nav Form */
 nav form {
   padding-top: 0px;
+  padding-bottom: 0px;
 }
 
 nav form input {
@@ -199,7 +200,7 @@ a.navBtn:hover {
 /* Global Form Styles */
 form {
   margin: 0 auto;
-  padding-top: 16px;
+  padding: 32px 0;
 }
 
 form label {
