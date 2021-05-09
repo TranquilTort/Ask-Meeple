@@ -32,22 +32,25 @@ router.get('/', asyncHandler(async function(req, res) {
      })
   });
 
+  let currentUser = 'notloggedin';
   if(req.session.auth){
-    const currentUser = req.session.auth.userId;
-    posts.forEach(post=>{
-      let score = 0;
-      let alreadyVoted = 0;
-      post.Votes.forEach(vote=>{
-        score+=vote.value;
-        if(vote.user_id === currentUser){
-          alreadyVoted = vote.value;
-        }
-      });
-      post.alreadyVoted = alreadyVoted;
-      console.log('previous vote:',post.alreadyVoted)
-      post.score=score;
-    });
+    currentUser = req.session.auth.userId;
   }
+  posts.forEach(post=>{
+    let score = 0;
+    let alreadyVoted = 0;
+    post.Votes.forEach(vote=>{
+      score+=vote.value;
+      if(vote.user_id === currentUser){
+        alreadyVoted = vote.value;
+      }
+    });
+    post.alreadyVoted = alreadyVoted;
+    console.log('previous vote:',post.alreadyVoted)
+    post.score=score;
+  });
+
+
   res.render('index', {
     page: 1,
     title: 'Ask Meeple',
@@ -78,7 +81,7 @@ router.post('/vote/:id',requireAuth,asyncHandler(async(req,res)=>{
 
 router.get('/:id(\\d)+',  asyncHandler(async function(req, res) {
   const page = parseInt(req.params.id)
-  const posts = await db.Post.findAll({order:[['createdAt','DESC']],include:[db.User, db.Tag], offset:(page-1)*5, limit:5})
+  const posts = await db.Post.findAll({order:[['createdAt','DESC']],include:[db.Vote,db.User, db.Tag], offset:(page-1)*5, limit:5})
 
   const tags = await db.Tag.findAll();
 
@@ -95,6 +98,28 @@ router.get('/:id(\\d)+',  asyncHandler(async function(req, res) {
        tag.searchTerm = searchSplit.join('+');
      })
   });
+
+
+  let currentUser = 'notloggedin';
+  if(req.session.auth){
+    currentUser = req.session.auth.userId;
+  }
+  posts.forEach(post=>{
+    let score = 0;
+    let alreadyVoted = 0;
+    post.Votes.forEach(vote=>{
+      score+=vote.value;
+      if(vote.user_id === currentUser){
+        alreadyVoted = vote.value;
+      }
+    });
+    post.alreadyVoted = alreadyVoted;
+    console.log('previous vote:',post.alreadyVoted)
+    post.score=score;
+  });
+
+
+
 
   res.render('index', {
     page:page,
