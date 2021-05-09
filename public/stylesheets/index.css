@@ -63,6 +63,13 @@
       font-size: 13px;
   }
 
+  .vote-button{
+      z-index: 10;
+  }
+
+  .fas{
+    z-index: 0;
+  }
   .post-block > div {
       font-size: 13px;
       margin-bottom: 14px;
