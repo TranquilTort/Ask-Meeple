@@ -45,8 +45,6 @@ router.get('/', asyncHandler(async function(req, res) {
   //query for posts matching post id including tags and users
   const searchResults = await db.Post.findAll({order:[['createdAt','DESC']], include:[db.Vote,db.User,db.Tag], where:{id:{ [Op.in]: idsOfSearchResults}},limit:5})
 
-  console.log('>>>', searchResults[0])
-
   searchResults.forEach((result) => {
     let tags = result.Tags;
     tags.forEach((tag) => {
@@ -71,7 +69,6 @@ router.get('/', asyncHandler(async function(req, res) {
       }
     });
     post.alreadyVoted = alreadyVoted;
-    console.log('previous vote:',post.alreadyVoted)
     post.score=score;
   });
     res.render('search-results', {
@@ -122,7 +119,6 @@ router.get('/:id(\\d)+',  asyncHandler(async function(req, res) {
   //query for posts matching post id including tags and users
   const searchResults = await db.Post.findAll({order:[['createdAt','DESC']], include:[db.Vote,db.User,db.Tag], where:{id:{ [Op.in]: idsOfSearchResults}},offset:(page-1)*5,limit:5})
 
-  console.log('>>>', searchResults[0])
 
   searchResults.forEach((result) => {
     let tags = result.Tags;
@@ -147,7 +143,7 @@ searchResults.forEach(post=>{
     }
   });
   post.alreadyVoted = alreadyVoted;
-  console.log('previous vote:',post.alreadyVoted)
+
   post.score=score;
 });
 

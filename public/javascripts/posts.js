@@ -18,7 +18,6 @@ window.addEventListener('DOMContentLoaded',(event)=>{
         newCommentBtn.innerText= 'Post New Comment'
 
         if (fetchedComments.length > 0) {
-            console.log('CREATING NEW LIST')
             //replace the H3 in the comments list
             const commentsH3 = document.createElement('h3');
             commentsH3.innerText = 'Comments:';
@@ -49,13 +48,7 @@ window.addEventListener('DOMContentLoaded',(event)=>{
 
                 commentBodyDiv.append(usernameSpan, commentDataValuesBodyDiv, commentDeleteForm);
                 usernameSpan.append(usernameH4);
-
-                console.log('user then comment')
-                console.log(user_id)
-                console.log(fetchedComment.User.id)
-
                 if(user_id === fetchedComment.User.id){
-                    console.log('DELETE BUTTON SHOULD DISPLAY')
                     commentDeleteForm.append(commentDeleteBtn);
                 }
                 commentsListDiv.append(commentBodyDiv);

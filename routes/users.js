@@ -77,16 +77,12 @@ router.post('/register',  csrfProtection, userValidators, asyncHandler(async(req
     const hashedPassword = await bcrypt.hash(password,10);
     user.hashedPassword = hashedPassword;
     await user.save();
-    // console.log('>>>>>>>> User is OK, start authorization')
-    // console.log('before logIn, req.session.auth', req.session.auth);
     loginUser(req, res, user);
-    // console.log('after logIn, req.session.auth', req.session.auth);
-    // return res.redirect('/');
     return req.session.save( () => res.redirect("/") );
     // return;
   }else{
     const errors = validatorErrors.array().map((error) => error.msg);
-    
+
     res.render('register', {
       title: 'User Registration',
       user,
@@ -146,11 +142,9 @@ router.post('/sign-in', csrfProtection, signInValidators, async (req, res) => {
   if(validatorErrors.isEmpty()) {
     const matchesPassword = await bcrypt.compare(password, user.hashedPassword.toString());
     if(matchesPassword) {
-      // console.log('>>>>>>>> Password is OK, start authorization')
-      // console.log('before logIn, req.session.auth', req.session.auth);
+
       loginUser(req, res, user);
-      // console.log('after logIn, req.session.auth', req.session.auth);
-      // return res.redirect('/');
+
       return req.session.save( () => res.redirect("/") );
       // return;
     } else {
@@ -172,9 +166,6 @@ router.post('/sign-in', csrfProtection, signInValidators, async (req, res) => {
 router.post('/sign-out', (req, res) => {
   logoutUser(req, res);
   return req.session.save( () => res.redirect("/") );
-  // return;
-  // res.redirect('/');
-  console.log('THIS SHOULD BE LAST');
 });
 router.get('/test',requireAuth,(req,res)=>{
   res.send('test');

@@ -29,7 +29,7 @@ window.addEventListener("DOMContentLoaded", (event)=>{
             event.preventDefault();
             if(event.target.id.includes('up') || event.target.id.includes('down')){
                 const postId = event.target.id.split('-')[1];
-                console.log('POSTID:',postId)
+
 
                 let value= 0;
                 if(event.target.id.includes('up')){

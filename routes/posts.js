@@ -127,9 +127,7 @@ router.post('/:id/new-comment', requireAuth, commentValidators, asyncHandler(asy
     if(validatorErrors.isEmpty()) {
         await comment.save();
         let fetchedComments = await db.Comment.findAll({where: {post_id:{[Op.eq]:post.id}},include:db.User, order:[['createdAt','DESC']]})
-        // console.log(JSON.stringify(updatedComments, null, 4));
         return req.session.save( () => res.json({user_id,fetchedComments}) );
-        // res.save(res.redirect(`/posts/${post_id}`));
     }else{
         errors = validatorErrors.array().map((error) => error.msg);
         res.render('post',{
@@ -143,10 +141,6 @@ router.post('/:id/new-comment', requireAuth, commentValidators, asyncHandler(asy
     }
 }));
 
-router.post('/test-route', asyncHandler(async(req, res)=> {
-    console.log('hit the test route');
-    res.json({});
-}));
 
 // router.post('/:id/comment/:commentid/delete', csrfProtection, requireAuth,asyncHandler(async(req,res)=>{
 router.post('/:id/comment/:commentid/delete', requireAuth,asyncHandler(async(req,res)=>{
@@ -157,7 +151,6 @@ router.post('/:id/comment/:commentid/delete', requireAuth,asyncHandler(async(req
     }catch{
 
     }
-    console.log('comment destroyed');
     // const post_id = req.params.id;
     // res.save(res.redirect(`/posts/${post_id}`));
     const post_id = req.params.id;

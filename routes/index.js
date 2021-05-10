@@ -46,7 +46,6 @@ router.get('/', asyncHandler(async function(req, res) {
       }
     });
     post.alreadyVoted = alreadyVoted;
-    console.log('previous vote:',post.alreadyVoted)
     post.score=score;
   });
 
@@ -114,7 +113,6 @@ router.get('/:id(\\d)+',  asyncHandler(async function(req, res) {
       }
     });
     post.alreadyVoted = alreadyVoted;
-    console.log('previous vote:',post.alreadyVoted)
     post.score=score;
   });
 
@@ -150,7 +148,6 @@ const postValidators = [
 
 
 router.get('/new-post', csrfProtection, requireAuth, asyncHandler(async (req, res) => {
-  console.log(res.socket.parser.socket.parser.incoming.url);
   const post = db.Post.build();
   const tags = await db.Tag.findAll({});
 
