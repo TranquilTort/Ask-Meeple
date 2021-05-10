@@ -19,6 +19,7 @@ router.get('/', asyncHandler(async function(req, res) {
     tag.searchTerm = searchSplit.join('+');
   });
 
+
   //query for post ids matching body or title
   const matchingPost = await db.Post.findAll({where: {[Op.or]: [
     {title:{[Op.iLike]: `%${term}%`}},

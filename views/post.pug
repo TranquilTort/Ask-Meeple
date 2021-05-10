@@ -9,7 +9,7 @@ block content
     div(class='post-body')
         h2(class='post-title') #{post.title}
         #creater-and-date
-          h3 By: #{post.User.username} • #{post.createdAt}
+          h3 By: #{post.User.username} • #{post.date}
           .post-tags
             each tag in post.Tags
               if (post.Tags.indexOf(tag) !== post.Tags.length - 1)
