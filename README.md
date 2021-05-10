@@ -13,8 +13,7 @@
 
 #### Home Page
 
-(placeholder)
-![Image of Homepage](https://i.imgur.com/vED3cTK.gif)
+![Image of Homepage](https://i.imgur.com/qocOeQS.png)
 
 Without logging in, users can:
 * Read posts on the homepage, which shows the five most recent posts, sorted by post creation time.
@@ -41,7 +40,7 @@ After signing in, users can:
 * To create a post, there is a "Create Post" button provided on the left side of the navigation bar.
   * A form is provided for creating a post.  Users may optionally assign tags and/or an image to go with the post.
  
-![Image of Post Form](https://i.imgur.com/vED3cTK.gif)
+![Image of Post Form](https://i.imgur.com/79Tw3JR.png)
 
 * A user may edit or delete their posts:
   * If the post is showing on the homepage, using the provided buttons
@@ -62,9 +61,13 @@ After signing in, users can:
 
 (description)
 
+![Image of Search](https://i.imgur.com/sA1cR7s.png)
+
 #### Voting
 
 (description)
+
+![Image of Voting](https://i.imgur.com/Oszjcs0.png)
 
 ### Database Schema
 ![Database Structure](https://i.imgur.com/tEJNiRK.png)
