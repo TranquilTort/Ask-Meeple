@@ -58,15 +58,13 @@ After signing in, users can:
 ![Image of Comments with AJAX](https://i.imgur.com/vED3cTK.gif)
 
 #### Search
-
-(description)
+Users have the ability to search through posts with a string that can match either the post body, post title, or a tage name. The posts are then displayed in order of the most recent.
 
 ![Image of Search](https://i.imgur.com/sA1cR7s.png)
 
 #### Voting
 
-(description)
-
+Users who have authenticated will have the ability to vote on a post. All users votes on an indiviudual posts are tallied together and displayed without a page refreash. 
 ![Image of Voting](https://i.imgur.com/Oszjcs0.png)
 
 ### Database Schema
@@ -109,7 +107,53 @@ router.delete('/:id', requireAuth, asyncHandler(async(req,res)=>{
 ```
 
 
-###### Upvoting
+###### Search Querying
+Building the object that contains all the relevant information for the search query is a complex and interesting process! First the unique primary keys of post bodies or titles that match the search term are found. Next another array of post primary keys is created this time with posts that have tag names that match the search term. These id-keys are concatenated together and then added to a set to create one array without duplicates. The final database query is then performed to extract all posts that have a primary key id that matches an element in the array of ids. The object is not done however! Before the posts are sent to the front-end they need to have a score attribute attached to them. This can be done by iterating through all of the posts and all of its votes and tallying up a total score for each post.
+
+```javascript
+let { term } = req.query;
+const matchingPost = await db.Post.findAll({where: {[Op.or]: [
+    {title:{[Op.iLike]: `%${term}%`}},
+    {body:{[Op.iLike]: `%${term}%`}}]}});
+    const matchingPostIds = matchingPost.map(el=>{
+      return el.id;
+    });
+
+  //query for post ids matching tag name
+  const matchingTags = await db.Tag.findAll({where:{name:{[Op.iLike]:`%${term}%`}},include:[{model:db.Post}]})
+  let matchingTagPostIds =[];
+  matchingTags.forEach(tag => {
+      tag.Posts.forEach(post=>{
+        matchingTagPostIds.push(post.id);
+      })
+
+  });
+
+  //add ids to one array and get rid of duplicates
+  let together = matchingPostIds.concat(matchingTagPostIds);
+  const set = new Set(together);
+  const idsOfSearchResults = Array.from(set);
+
+  //query for posts matching post id including tags and users
+  const searchResults = await db.Post.findAll({order:[['createdAt','DESC']], include:[db.Vote,db.User,db.Tag], where:{id:{ [Op.in]: idsOfSearchResults}},limit:5})
+
+  let currentUser = 'notloggedin';
+  if(req.session.auth){
+    currentUser = req.session.auth.userId;
+  }
+  searchResults.forEach(post=>{
+    let score = 0;
+    let alreadyVoted = 0;
+    post.Votes.forEach(vote=>{
+      score+=vote.value;
+      if(vote.user_id === currentUser){
+        alreadyVoted = vote.value;
+      }
+    });
+    post.alreadyVoted = alreadyVoted;
+    post.score=score;
+  });
+```
 
 ### To-dos/Future Features
 * Transition messages/features when a post or comment is deleted
