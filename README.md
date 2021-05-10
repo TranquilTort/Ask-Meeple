@@ -113,46 +113,47 @@ Building the object that contains all the relevant information for the search qu
 ```javascript
 let { term } = req.query;
 const matchingPost = await db.Post.findAll({where: {[Op.or]: [
-    {title:{[Op.iLike]: `%${term}%`}},
-    {body:{[Op.iLike]: `%${term}%`}}]}});
-    const matchingPostIds = matchingPost.map(el=>{
-      return el.id;
-    });
+ {title:{[Op.iLike]: `%${term}%`}},
+ {body:{[Op.iLike]: `%${term}%`}}]}});
+ const matchingPostIds = matchingPost.map(el=>{
+   return el.id;
+ });
 
-  //query for post ids matching tag name
-  const matchingTags = await db.Tag.findAll({where:{name:{[Op.iLike]:`%${term}%`}},include:[{model:db.Post}]})
-  let matchingTagPostIds =[];
-  matchingTags.forEach(tag => {
-      tag.Posts.forEach(post=>{
-        matchingTagPostIds.push(post.id);
-      })
+//query for post ids matching tag name
+const matchingTags = await db.Tag.findAll({where:{name:{[Op.iLike]:`%${term}%`}},include:[{model:db.Post}]})
+let matchingTagPostIds =[];
+matchingTags.forEach(tag => {
+  tag.Posts.forEach(post=>{
+     matchingTagPostIds.push(post.id);
+   })
 
-  });
+});
 
-  //add ids to one array and get rid of duplicates
-  let together = matchingPostIds.concat(matchingTagPostIds);
-  const set = new Set(together);
-  const idsOfSearchResults = Array.from(set);
+//add ids to one array and get rid of duplicates
+let together = matchingPostIds.concat(matchingTagPostIds);
+const set = new Set(together);
+const idsOfSearchResults = Array.from(set);
 
-  //query for posts matching post id including tags and users
-  const searchResults = await db.Post.findAll({order:[['createdAt','DESC']], include:[db.Vote,db.User,db.Tag], where:{id:{ [Op.in]: idsOfSearchResults}},limit:5})
+//query for posts matching post id including tags and users
+const searchResults = await db.Post.findAll({order:[['createdAt','DESC']], include:[db.Vote,db.User,db.Tag], 
+where:{id:{ [Op.in]: idsOfSearchResults}},limit:5})
 
-  let currentUser = 'notloggedin';
-  if(req.session.auth){
-    currentUser = req.session.auth.userId;
-  }
-  searchResults.forEach(post=>{
-    let score = 0;
-    let alreadyVoted = 0;
-    post.Votes.forEach(vote=>{
-      score+=vote.value;
-      if(vote.user_id === currentUser){
-        alreadyVoted = vote.value;
-      }
-    });
-    post.alreadyVoted = alreadyVoted;
-    post.score=score;
-  });
+let currentUser = 'notloggedin';
+if(req.session.auth){
+ currentUser = req.session.auth.userId;
+}
+searchResults.forEach(post=>{
+ let score = 0;
+ let alreadyVoted = 0;
+ post.Votes.forEach(vote=>{
+   score+=vote.value;
+   if(vote.user_id === currentUser){
+     alreadyVoted = vote.value;
+   }
+ });
+ post.alreadyVoted = alreadyVoted;
+ post.score=score;
+});
 ```
 
 ### To-dos/Future Features
