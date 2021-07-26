@@ -53,6 +53,7 @@ window.addEventListener('DOMContentLoaded',(event)=>{
 
 
                 const commentDeleteForm = document.createElement('form');
+                commentDeleteForm.classList.add('delete-comment-form');
 
                 const commentDeleteBtn = document.createElement('button');
                 commentDeleteBtn.setAttribute('id', `delete-button-${fetchedComment.id}`);

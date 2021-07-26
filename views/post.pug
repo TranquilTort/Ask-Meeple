@@ -51,5 +51,5 @@ block content
                 div= comment.dataValues.body
                 if user
                     if (user.username == comment.User.username)
-                        form()
+                        form(class='delete-comment-form')
                             button(class='delete-comment' id=`delete-button-${comment.id}`) Delete Comment
