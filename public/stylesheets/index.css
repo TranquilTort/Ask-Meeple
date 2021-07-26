@@ -63,6 +63,18 @@
       font-size: 13px;
   }
 
+  /* .post-title {
+    font-size: 21px;
+    color: #0059b3;
+    font-weight: 700;
+    font-family: 'Josefin Sans', sans-serif;
+  } */
+
+  .post-title:hover {
+      cursor: pointer;
+      color: #f56522;
+  }
+
   .vote-button{
       z-index: 10;
   }
