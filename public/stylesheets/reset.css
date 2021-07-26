@@ -108,7 +108,7 @@ nav form button:hover {
 } */
 
 /* --- Nav Buttons */
-a.navBtn, button.navBtn {
+a.navBtn {
   display: inline-block;
   background-color: #f56522;
   text-decoration: none;
@@ -120,7 +120,7 @@ a.navBtn, button.navBtn {
   max-height: 25px;
 }
 
-a.navBtn:hover, button.navBtn:hover {
+a.navBtn:hover {
   background-color: #c75520;
   color: #fff;
   cursor: pointer;

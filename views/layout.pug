@@ -14,7 +14,7 @@ html
     nav
       a(href="/"): img(src="/imgs/askMeeple_logo_orange.png" alt="Ask Meeple Logo")
       span
-        a.navBtn.new-post(href="/new-post" title="Create a new post"): i(class="far fa-edit")
+        a.navBtn.new-post(href="/new-post" title="Create a new post"): i(class="far fa-edit") Create Post
         span#mobile
           //- a.navBtn(href="#"): i(class="fas fa-bars")
           button(onclick="" class="mobile-menu"): i(class="fas fa-bars")
@@ -30,7 +30,7 @@ html
         .notLoggedIn
           //- form#demoNav(action='/demo-user' method='post')
           //-   button.navBtn.hideOnMobile(type='submit' title="Sign-In as Demo User") Demo User
-          button#demoBtn.navBtn.hideOnMobile(type='button' title="Sign-in as Demo User") Demo User
+          a#demoBtn.navBtn.hideOnMobile(type='button' title="Sign-in as Demo User") Demo User
           a.navBtn.hideOnMobile(href='/users/sign-in' title="Sign-in to an existing account") Sign-In
           a.navBtn.hideOnMobile(href='/users/register' title="Create a new account") Register
 
