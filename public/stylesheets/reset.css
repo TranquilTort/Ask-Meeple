@@ -96,6 +96,7 @@ nav form button {
 
 nav form button:hover {
   background-color: #c75520;
+  cursor: pointer;
 }
 
 /* nav form#demoNav,  nav form#demoNav-mobile {
@@ -184,6 +185,7 @@ a.navBtn:hover, button.navBtn:hover {
 
 #mobile button:hover {
   background-color:  #c75520;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 750px) {
@@ -245,6 +247,7 @@ form button {
 
 form button:hover {
   background-color: #f56522;
+  cursor: pointer;
 }
 
 form a:hover  {
@@ -291,6 +294,7 @@ button {
 button:hover {
   background-color: #f56522;
   color: #fff;
+  cursor: pointer;
 }
 
 /* About Section Persistant Style */
