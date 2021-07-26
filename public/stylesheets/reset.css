@@ -13,6 +13,7 @@ a {
 
 a:hover {
   color: #f56522;
+  cursor: pointer;
 }
 
 * {
@@ -122,6 +123,7 @@ a.navBtn, button.navBtn {
 a.navBtn:hover, button.navBtn:hover {
   background-color: #c75520;
   color: #fff;
+  cursor: pointer;
 }
 
 .loggedIn {
@@ -252,6 +254,7 @@ form button:hover {
 
 form a:hover  {
   color: #f56522;
+  cursor: pointer;
 }
 
 /* Global Error Styles */

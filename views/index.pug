@@ -33,8 +33,8 @@ block content
         div(id= 'all-posts')
           each post in posts
             div(class='post-block'  id=`post-${post.id}`)
-              //- h2= post.title
-              h2(class='post-title' onclick=`document.location='/posts/${post.id}'`)= post.title
+              h2
+                a(class='post-title' onclick=`document.location='/posts/${post.id}'`)= post.title
               div By: #{post.User.username}
               .post-tags
                 each tag in post.Tags

@@ -51,7 +51,7 @@
       font-size: 16px;
   }
 
-  .post-block > h2 {
+  .post-block > h2 > a {
       font-size: 21px;
       color: #0059b3;
       font-weight: 700;
