@@ -98,15 +98,15 @@ nav form button:hover {
   background-color: #c75520;
 }
 
-nav form#demoNav,  nav form#demoNav-mobile {
+/* nav form#demoNav,  nav form#demoNav-mobile {
   display: inline-block;
   position: relative;
   left: 3.5px;
   bottom: 1px;
-}
+} */
 
 /* --- Nav Buttons */
-a.navBtn {
+a.navBtn, button.navBtn {
   display: inline-block;
   background-color: #f56522;
   text-decoration: none;
@@ -118,7 +118,7 @@ a.navBtn {
   max-height: 25px;
 }
 
-a.navBtn:hover {
+a.navBtn:hover, button.navBtn:hover {
   background-color: #c75520;
   color: #fff;
 }

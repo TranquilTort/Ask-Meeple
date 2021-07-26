@@ -28,8 +28,9 @@ html
             button(type='submit') Sign-Out
       else
         .notLoggedIn
-          form#demoNav(action='/demo-user' method='post')
-            button.navBtn.hideOnMobile(type='submit' title="Sign-In as Demo User") Demo User
+          //- form#demoNav(action='/demo-user' method='post')
+          //-   button.navBtn.hideOnMobile(type='submit' title="Sign-In as Demo User") Demo User
+          button#demoBtn.navBtn.hideOnMobile(type='button' title="Sign-in as Demo User") Demo User
           a.navBtn.hideOnMobile(href='/users/sign-in' title="Sign-in to an existing account") Sign-In
           a.navBtn.hideOnMobile(href='/users/register' title="Create a new account") Register
 
@@ -41,8 +42,9 @@ html
             button(type='submit') Sign-Out
       else
         .mobileNotLoggedIn
-          form#demoNav-mobile(action='/demo-user' method='post')
-            button.navBtnMobile(type='submit' title="Sign-In as Demo User") Demo User
+          //- form#demoNav-mobile(action='/demo-user' method='post')
+          //-   button.navBtnMobile(type='submit' title="Sign-In as Demo User") Demo User
+          button#demoBtn.navBtn.hideOnMobile(type='button' title="Sign-in as Demo User") Demo User
           button.navBtnMobile(onclick="window.location.href='/users/sign-in'" title="Sign-in to an existing account") Sign-In
           button.navBtnMobile(onclick="window.location.href='/users/register'" title="Create a new account") Register
       form(action="/search" method="get" role="search")
