@@ -72,6 +72,13 @@
       z-index: 10;
   }
 
+  .vote-button:disabled{
+    color: #f56522;
+    background-color: #0059b3;
+    cursor: not-allowed;
+    z-index: 10;
+}
+
   .fas{
     z-index: 0;
   }
