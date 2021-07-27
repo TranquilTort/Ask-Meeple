@@ -60,14 +60,14 @@ p a:hover {
 /* Responsive Styles */
 @media screen and (max-width: 1024px) {
     #form-body {
-        margin-top: 5%;
+        /* margin-top: 5%; */
         width: 40%;
     }
 }
 
 @media screen and (max-width: 767px) {
     #form-body {
-        margin-top: 12%;
+        /* margin-top: 12%; */
         width: 80%;
     }
 }
