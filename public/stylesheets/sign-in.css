@@ -4,11 +4,6 @@ html, body {
     background-color: #000;
 }
 
-
-.full-screen {
-    height: 100%;
-  }
-
 #content-block {
     background:linear-gradient(0deg, rgba(0,0,0,1), rgba(0,0,0,.3)), url('../imgs/askMeeple-signIn-background.jpg');
     background-position: center center;
@@ -24,7 +19,7 @@ html, body {
     box-shadow: 1px 1px 10px black;
     width: 25%;
     margin: auto;
-    margin-top: 10%;
+    margin-top: 5%;
     border-radius: 3px;
     display: flex;
     flex-direction: column;

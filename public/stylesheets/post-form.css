@@ -27,7 +27,7 @@ html, body {
     box-shadow: 1px 1px 10px black;
     width: 60%;
     margin: auto;
-    margin-top: 6%;
+    margin-top: 4%;
     border-radius: 3px;
     display: flex;
     flex-direction: column;
@@ -70,18 +70,20 @@ p a:hover {
 }
 
 /* Responsive Styles */
-@media screen and (max-width: 1024px) {
-    #form-body {
-        margin-top: 6%;
-        /* width: 40%; */
-    }
-}
-
 @media screen and (max-width: 767px) {
-    #form-body {
-        margin-top: 15%;
+    .full-screen {
+        height: auto;
     }
 
+    #form-body {
+        width: 80%;
+        margin-top: 6%;
+        margin-bottom: 10%;
+    }
+
+    #form-body form {
+        width: 90%;
+    }
 
    .tag-selection {
       display: block;
