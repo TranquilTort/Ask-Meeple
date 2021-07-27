@@ -7,16 +7,19 @@ window.addEventListener('DOMContentLoaded',(event)=>{
     const delPostBtn = document.querySelector('.delete-post-button');
 
     //delete post button
-    delPostBtn.addEventListener('click', async (e) => {
-        const buttonId = e.target.id;
-        const postId = buttonId.slice(buttonId.indexOf(':')+1);
-        await fetch(`/posts/${postId}/delete`, {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({}),
+    if (delPostBtn) {
+        delPostBtn.addEventListener('click', async (e) => {
+            const buttonId = e.target.id;
+            const postId = buttonId.slice(buttonId.indexOf(':')+1);
+            await fetch(`/posts/${postId}/delete`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({}),
+            });
+            window.location = '/';
         });
-        window.location = '/';
-    });
+    }
+
 
     function replaceCommentsHelperFunction(fetchedComments,user_id) {
 
