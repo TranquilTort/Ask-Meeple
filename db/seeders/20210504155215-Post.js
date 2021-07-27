@@ -1,7 +1,140 @@
 'use strict';
 
-const postCount = 50;
-for(let i )
+const postCount = 25;
+const postContent =
+[
+  {
+    title:"Settle an argument, in Carcassonne, can the cart be placed on flower gardens?",
+    body:"'Ok, so we have the expansion for Carcassonne that comes with carts. Love the carts, great addition. But there\'s a disagreement that keeps coming up where a friend I play with keeps placing the carts on the flower garden as if they were abbots. I\'m pretty sure only abbots can go on the flower gardens. Of course, I\'ve looked up the rules, but could others tell me if that\'s right.",
+    image_url:"https://www.creme-de-languedoc.com/_images/tourism/carcassonne/2.jpg"
+  },
+  {
+    title:"I REALLY need a good adventure game. Recommendations?!?!",
+    body:"Note: I enjoy fantasy, sci-fi, pirates, pretty much anything haha.",
+    image_url:"https://pyxis.nymag.com/v1/imgs/2c7/0cc/7e0a0ec0b953d33edbc370f56494231f4d-07-four-player-board-game-lede.rhorizontal.w700.jpg"
+  },
+  {
+    title:"What games can I get my parents into?",
+    body:"My brothers have all moved out, and so there\'s not a lot of people left to play board games with. Any suggestions of games I can maybe convince my parents to play?",
+    image_url:"https://mk0gamingweekenv48ev.kinstacdn.com/wp-content/uploads/2019/07/best-2-player-board-games.jpg"
+  },
+  {
+    title:"",
+    body:"",
+    image_url:""
+  },
+  {
+    title:"",
+    body:"",
+    image_url:""
+  },
+  {
+    title:"",
+    body:"",
+    image_url:""
+  },
+  {
+    title:"",
+    body:"",
+    image_url:""
+  },
+  {
+    title:"",
+    body:"",
+    image_url:""
+  },
+  {
+    title:"",
+    body:"",
+    image_url:""
+  },
+  {
+    title:"",
+    body:"",
+    image_url:""
+  },
+  {
+    title:"",
+    body:"",
+    image_url:""
+  },
+  {
+    title:"",
+    body:"",
+    image_url:""
+  },
+  {
+    title:"",
+    body:"",
+    image_url:""
+  },
+  {
+    title:"",
+    body:"",
+    image_url:""
+  },
+  {
+    title:"",
+    body:"",
+    image_url:""
+  },
+  {
+    title:"",
+    body:"",
+    image_url:""
+  },
+  {
+    title:"",
+    body:"",
+    image_url:""
+  },
+  {
+    title:"",
+    body:"",
+    image_url:""
+  },
+  {
+    title:"",
+    body:"",
+    image_url:""
+  },
+  {
+    title:"",
+    body:"",
+    image_url:""
+  },
+  {
+    title:"",
+    body:"",
+    image_url:""
+  },
+  {
+    title:"",
+    body:"",
+    image_url:""
+  },
+  {
+    title:"",
+    body:"",
+    image_url:""
+  },
+  {
+    title:"",
+    body:"",
+    image_url:""
+  },
+  {
+    title:"",
+    body:"",
+    image_url:""
+  },
+]
+
+
+let insertArray =[];
+for(let i =1; i<=postCount; i++){
+
+}
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
