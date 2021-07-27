@@ -1,0 +1,39 @@
+html, body {
+    height: 100%;
+    background-color: #000;
+}
+
+#content-block {
+    background:linear-gradient(0deg, rgba(0,0,0,1), rgba(0,0,0,.3)), url('../imgs/askMeeple-404.jpg');
+    background-position: center center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    height: 80%;
+}
+
+#not-found {
+    background: #fff;
+    box-shadow: 1px 1px 10px black;
+    width: 60%;
+    padding: 32px;
+    margin: 0 auto;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+}
+
+#not-found h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1%;
+}
+
+#not-found h2 {
+    margin-bottom: 1%;
+}
+
+button.back-home {
+    max-width: 250px;
+    margin: 0 auto;
+}
