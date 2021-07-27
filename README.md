@@ -1,6 +1,6 @@
 # Ask-Meeple
 ### Summary
-* Ask-Meeple is a clone of Quora, a website for users to post questions and answers.  Ask-Meeple is themed around boardgame-related topics, and hosted on Heroku.
+* Ask-Meeple is a Quora clone, themed on Q&As for board games.
 * Live Link: [Ask-Meeple](https://ask-meeple.herokuapp.com/)
 
 ### Technologies 
