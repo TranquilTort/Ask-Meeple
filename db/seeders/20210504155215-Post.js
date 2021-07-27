@@ -19,33 +19,33 @@ const postContent =
     image_url:"https://mk0gamingweekenv48ev.kinstacdn.com/wp-content/uploads/2019/07/best-2-player-board-games.jpg"
   },
   {
-    title:"",
-    body:"",
-    image_url:""
+    title:"The 5 Best Games I Played Recently",
+    body:"If you\'re wanting some recommendations, here are 5 games I played recently that were TOTALLY worth it. Some of these are old, so maybe I\'m just now getting on the bandwagon. 1. Horrified - based on the old universal monsters movies, a small town is under attack by Dracula, Wolfman and others. You all play as different characters to defent the villagers and defeat the monsters before time runs out! 2. Carcassonne - ok, so I KNOW that I\'m like 20 years behind the curb on this one, but I got a copy of this for Christmas and it deserves it\'s status as a class game. A lot of replay value. I\'ve already gotten three expansions for it. 3. Godzilla: Tokyo Class - you play as monsters and throw tanks at each other. That\'s about it! But the quality of the pieces is superb! Funko Games did good with that one! 4. Pit - so this is another old one, however, it is a great game for playing with groups! It can handle 8 or 9 players. So if you\'re having a game night and a lot of people show up, it\'s a good one to have on hand. 5. Ticket to Ride: United Kingdom - so, pretty much just Ticket to Ride, but I love Britain, so this map is more fun for me.",
+    image_url:"https://cdn.pixabay.com/photo/2017/04/18/02/13/board-game-2237460_1280.jpg"
   },
   {
-    title:"",
-    body:"",
-    image_url:""
+    title:"Forming a gaming group (a fellowship if you will), any suggestions on what makes a good group?",
+    body:"If you are in my area feel free to reach out!",
+    image_url:"https://am22.mediaite.com/tms/cnt/uploads/2020/04/lord-of-the-rings-fellowship-of-the-ring.jpg"
   },
   {
-    title:"",
-    body:"",
-    image_url:""
+    title:"Is there going to be a Catan Movie?",
+    body:"Was browsing IMDb the other day, and found a page for a Settlers of Catan Movie... Is this a thing? Here\'s the link: https://www.imdb.com/title/tt4481574/?ref_=fn_al_tt_1 I can\'t decide if I want this to be legit or not... ",
+    image_url:"https://business.uni.edu/sites/default/files/news/a_game_of_settlers_of_catan2.jpg"
   },
   {
-    title:"",
-    body:"",
-    image_url:""
+    title:"Are Legacy Games Worth It?",
+    body:"So I\'ve watched a couple of videos on Legacy-style board games like Pandemic Legacy and Risk Legacy. While I\'m interested in the concept, some of these games are EXPENSIVE! And since the whole point of a Legacy game is that you kinda play through it once and alter the game as you go, I\'m wondering if the experince is worth it? Also, any recommendations on good Legacy games to try out? (Preferable not costing an arm and a leg.)",
+    image_url:"http://armchairgeneral.com/wp-content/image/2011/Games/Risk-Legacy-Boardgame-Review/RiskLegacy-Image3.jpg"
   },
   {
-    title:"",
-    body:"",
-    image_url:""
+    title:"Any Idea What Version of Catan this Is?",
+    body:"Saw this pic online. Any idea what version of Catan this is? Never seen windmills before!",
+    image_url:"https://cdn.pixabay.com/photo/2019/09/21/14/57/catan-4494043_1280.jpg"
   },
   {
-    title:"",
-    body:"",
+    title:"Live in MN, anyone want to play?",
+    body:"Yo, I\'m in the St. Paul area; anyone nearby wanna get together for some games?",
     image_url:""
   },
   {
