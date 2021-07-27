@@ -13,6 +13,7 @@ a {
 
 a:hover {
   color: #f56522;
+  cursor: pointer;
 }
 
 * {
@@ -96,14 +97,15 @@ nav form button {
 
 nav form button:hover {
   background-color: #c75520;
+  cursor: pointer;
 }
 
-nav form#demoNav,  nav form#demoNav-mobile {
+/* nav form#demoNav,  nav form#demoNav-mobile {
   display: inline-block;
   position: relative;
   left: 3.5px;
   bottom: 1px;
-}
+} */
 
 /* --- Nav Buttons */
 a.navBtn {
@@ -121,6 +123,7 @@ a.navBtn {
 a.navBtn:hover {
   background-color: #c75520;
   color: #fff;
+  cursor: pointer;
 }
 
 .loggedIn {
@@ -184,6 +187,7 @@ a.navBtn:hover {
 
 #mobile button:hover {
   background-color:  #c75520;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 750px) {
@@ -245,10 +249,12 @@ form button {
 
 form button:hover {
   background-color: #f56522;
+  cursor: pointer;
 }
 
 form a:hover  {
   color: #f56522;
+  cursor: pointer;
 }
 
 /* Global Error Styles */
@@ -291,6 +297,7 @@ button {
 button:hover {
   background-color: #f56522;
   color: #fff;
+  cursor: pointer;
 }
 
 /* About Section Persistant Style */

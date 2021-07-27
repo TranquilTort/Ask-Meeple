@@ -76,6 +76,10 @@
     justify-content: flex-end;
  }
 
+ .delete-comment-form {
+     padding: 5px 0px 0px 0px;
+ }
+
  #delete-post-form {
      display: inline;
  }

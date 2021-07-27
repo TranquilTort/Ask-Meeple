@@ -75,7 +75,23 @@ module.exports = {
           body: 'You can now pre-order your copy of Chronicles of Crime: 1900, from Lucky Duck Games. The game should be available April 29th!',
           createdAt: new Date(),
           updatedAt: new Date(),
-        }
+        },
+        {
+          title: 'Kingdomino: Set-Up for Two Players?',
+          user_id:3,
+          body: 'I bought a second-hand copy of Kingdomino, so I don\'t have the instruction manual.  I enjoyed playing this as a four-player game, and wanted to play a few games as a two-player game with my spouse.  However, the game felt really clunky, as only one player really got to choose a tile, while the other player was forced into one tile.  The box says this game is playable with 2 players, are there additional set-up rules that are unique to a two-player game?',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          image_url: 'https://i.imgur.com/xUAJVKO.jpg',
+        },
+        {
+          title: 'Tammany Hall: Starting Cubes',
+          user_id:3,
+          body: 'I\'m having trouble with the rules for Tammany Hall.  I\'ve placed the cubes in the Set-Up spot on the board, but how are they moved to the precincts?',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          image_url: 'https://i.imgur.com/krJCuxJ.jpg',
+        },
 
     ], {});
 

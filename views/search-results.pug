@@ -33,7 +33,8 @@ block content
         div(id= 'all-posts')
           each result in searchResults
             div(class='post-block' id=`post-${result.id}`)
-              h2= result.title
+              h2
+                a(class='post-title' onclick=`document.location='/posts/${result.id}'`)= result.title
               div By: #{result.User.username}
               .post-tags
                 each tag in result.Tags

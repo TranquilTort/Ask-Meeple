@@ -1,4 +1,5 @@
 window.addEventListener("DOMContentLoaded", (event)=>{
+    const demoBtn = document.querySelector('#demoBtn');
     const mobileNav = document.querySelector('.mobile-menu');
     const mobileMenu = document.querySelector('#mobile-navigation');
     const outsideNav = document.querySelector('#content-block');
@@ -20,7 +21,17 @@ window.addEventListener("DOMContentLoaded", (event)=>{
         mobileMenu.style.display = 'none';
     });
 
-
+    //demo button
+    if (demoBtn) {
+        demoBtn.addEventListener('click', async (e) => {
+            await fetch('/demo-user', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify( {} ),
+            });
+            window.location.reload();
+        });
+    }
 
     //voting buttons
     const allPosts = document.getElementById('all-posts');
