@@ -1,6 +1,14 @@
 extends layout
 
+append head
+    link(rel='stylesheet' href='/stylesheets/404.css')
+
 block content
-  h1= message
-  h2= error.status
-  pre #{error.stack}
+  #content-block
+    #not-found
+      if (error.status)
+        h1= error.status
+      else
+        h1= "404"
+      h2= "Whoops! Looks like there's nothing here."
+      button(class='back-home' onclick=`document.location='/'`) Back to Home
