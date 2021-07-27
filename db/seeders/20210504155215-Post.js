@@ -1,5 +1,8 @@
 'use strict';
 
+const postCount = 50;
+for(let i )
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
 
