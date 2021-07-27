@@ -17,7 +17,9 @@ module.exports = {
       {tag_id: 8, post_id: 6, createdAt: new Date(), updatedAt: new Date(),},
       {tag_id: 3, post_id: 9, createdAt: new Date(), updatedAt: new Date(),},
       {tag_id: 8, post_id: 7, createdAt: new Date(), updatedAt: new Date(),},
-      {tag_id: 5, post_id: 7, createdAt: new Date(), updatedAt: new Date(),}
+      {tag_id: 5, post_id: 7, createdAt: new Date(), updatedAt: new Date(),},
+      {tag_id: 1, post_id: 11, createdAt: new Date(), updatedAt: new Date(),},
+      {tag_id: 1, post_id: 12, createdAt: new Date(), updatedAt: new Date(),},
 
     ], {});
   },

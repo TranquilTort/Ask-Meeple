@@ -14,7 +14,8 @@ html
     nav
       a(href="/"): img(src="/imgs/askMeeple_logo_orange.png" alt="Ask Meeple Logo")
       span
-        a.navBtn.new-post(href="/new-post" title="Create a new post"): i(class="far fa-edit") Create Post
+        a.navBtn.new-post(href="/new-post" title="Post a New Question") Post a New Question&nbsp;
+          i(class="far fa-edit")
         span#mobile
           //- a.navBtn(href="#"): i(class="fas fa-bars")
           button(onclick="" class="mobile-menu"): i(class="fas fa-bars")
@@ -23,6 +24,8 @@ html
         button(type="submit"): i(class="fas fa-search")
       if locals.authenticated
         .loggedIn
+          a.navBtn.new-post(href="/new-post" title="Post a New Question") Post a New Question&nbsp;
+            i(class="far fa-edit")
           span Welcome, #{user.username}!
           form(action='/users/sign-out' method='post')
             button(type='submit') Sign-Out
