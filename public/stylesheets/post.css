@@ -56,16 +56,18 @@
  }
 
  .comment-body {
-     padding: 30px;
+     padding: 15px;
      border: 1px solid #bbb;
      border-radius: 3px;
      background-color: #fff;
-     margin-bottom: 5px;
+     margin-bottom: 15px;
      font-size: 16px;
  }
 
  .comment-body h4 {
     font-size: 14px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #bbb;
     margin-bottom: 16px;
     color: #0059b3;
     font-weight: 700;
