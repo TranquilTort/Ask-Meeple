@@ -6,21 +6,20 @@ append head
 include utils.pug
 
 block content
-  .full-screen
-    #content-block
-      #form-body
-        +validationErrorSummary(errors)
-        form(action='/users/register' method='post')
-          input(type='hidden' name='_csrf' value=token)
-          +field('Username', 'username', user.username)
-          +field('Email Address', 'email', user.email)
-          +field('Password', 'password', '', 'password')
-          +field('Confirm Password', 'confirmPassword', '', 'password')
-          div
-            button(type='submit' ) Register
-            a(href='/' ) Cancel
-        #sign-in-link
-          p: a(href='/users/sign-in') Already have an account?
-            form(action='/demo-user' method='post')
-                div
-                  button(type='submit' ) Log In As Demo User
+  #content-block
+    #form-body
+      +validationErrorSummary(errors)
+      form(action='/users/register' method='post')
+        input(type='hidden' name='_csrf' value=token)
+        +field('Username', 'username', user.username)
+        +field('Email Address', 'email', user.email)
+        +field('Password', 'password', '', 'password')
+        +field('Confirm Password', 'confirmPassword', '', 'password')
+        div
+          button(type='submit' ) Register
+          a(href='/' ) Cancel
+      #sign-in-link
+        p: a(href='/users/sign-in') Already have an account?
+          form(action='/demo-user' method='post')
+              div
+                button(type='submit' ) Log In As Demo User
