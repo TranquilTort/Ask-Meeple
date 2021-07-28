@@ -1,21 +1,14 @@
 /* Post Form Page Specific Styles */
 html, body {
-    /* height: 100%; */
     background-color: #000;
 }
 
-/* .full-screen {
-    height: 100%;
-  } */
 
 #content-block {
     background:linear-gradient(0deg, rgba(0,0,0,1), rgba(0,0,0,.3)), url('../imgs/askMeeple-newPost-background.jpg');
     background-position: center center;
     background-size: cover;
     padding: 5%;
-    /* height: 100%;
-    width: 100%;
-    display: flex; */
 }
 
 /* Form Specific Style */
@@ -28,7 +21,6 @@ html, body {
     box-shadow: 1px 1px 10px black;
     width: 60%;
     margin: auto;
-    /* margin-top: 4%; */
     border-radius: 3px;
     display: flex;
     flex-direction: column;
@@ -78,8 +70,6 @@ p a:hover {
 
     #form-body {
         width: 90%;
-        /* margin-top: 6%; */
-        /* margin-bottom: 10%; */
     }
 
     #form-body form {

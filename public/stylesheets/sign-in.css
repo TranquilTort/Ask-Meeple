@@ -1,6 +1,5 @@
 /* Page Specific Styles */
 html, body {
-    /* height: 100vh; */
     background-color: #000;
 }
 
@@ -9,9 +8,6 @@ html, body {
     background-position: center center;
     background-size: cover;
     padding: 5%;
-    /* height: 100vh; */
-    /* width: 100%; */
-    /* display: flex; */
 }
 
 /* Form Specific Style */
@@ -20,7 +16,6 @@ html, body {
     box-shadow: 1px 1px 10px black;
     width: 25%;
     margin: auto;
-    /* margin-top: 5%; */
     border-radius: 3px;
     display: flex;
     flex-direction: column;
@@ -54,14 +49,12 @@ p a:hover {
 /* Responsive Styles */
 @media screen and (max-width: 1024px) {
     #form-body {
-        /* margin-top: 10%; */
         width: 40%;
     }
 }
 
 @media screen and (max-width: 767px) {
     #form-body {
-        /* margin-top: 15%; */
         width: 80%;
     }
 }
