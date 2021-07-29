@@ -1,5 +1,8 @@
 'use strict';
 
+let insertArray = [];
+for(let i =0; )
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
 
