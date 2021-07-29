@@ -13,7 +13,9 @@
  .comments-list, .post-body, .new-comment {
      margin: 20px;
  }
-
+ .post-img{
+    border-radius: 4px;
+}
  .post-body {
      border: 1px solid #bbb;
      border-radius: 3px;
