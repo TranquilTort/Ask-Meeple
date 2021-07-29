@@ -1,31 +1,20 @@
 'use strict';
 
+let insertArray = [];
+for(let i = 1; i <=25; i++){
+  insertArray.push({value:(Math.floor(Math.random()*200)+15), user_id:25,post_id: i,createdAt: new Date(), updatedAt: new Date()})
+}
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    /*
-      Add altering commands here.
-      Return a promise to correctly handle asynchronicity.
 
-      Example:
-      return queryInterface.bulkInsert('People', [{
-        name: 'John Doe',
-        isBetaMember: false
-      }], {});
-    */
     return queryInterface.bulkInsert('Votes',
-    [
-      {value: 3, user_id: 2, post_id: 2, createdAt: new Date(), updatedAt: new Date(),},
-    ], {});
+    insertArray
+    , {});
   },
 
   down: (queryInterface, Sequelize) => {
-    /*
-      Add reverting commands here.
-      Return a promise to correctly handle asynchronicity.
 
-      Example:
-      return queryInterface.bulkDelete('People', null, {});
-    */
     return queryInterface.bulkDelete('Votes', null, {});
   }
 };
