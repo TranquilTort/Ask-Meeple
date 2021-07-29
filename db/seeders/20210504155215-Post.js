@@ -133,7 +133,7 @@ const postContent =
 
 let insertArray =[];
 for(let i =0; i<postContent.length; i++){
-  insertArray.push({title:postContent[i].title,user_id:(i+1),body:postContent[i].body,createdAt: new Date(), updatedAt: new Date()})
+  insertArray.push({title:postContent[i].title,user_id:(i+1),body:postContent[i].body,createdAt: new Date(), updatedAt: new Date(), image_url: postContent[i].image_url})
 }
 
 module.exports = {
