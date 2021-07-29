@@ -109,24 +109,24 @@ const postContent =
     image_url:"https://images.thdstatic.com/productImages/2359194e-b3fa-492c-8d79-fbbc8026e715/svn/best-redwood-patio-dining-tables-fdt-31h38w96l-1910-64_1000.jpg"
   },
   {
-    title:"",
-    body:"",
-    image_url:""
+    title:"What is your single most beautiful game component?",
+    body:"There are a lot of beautiful game components, like the berries of Everdell, the wooden meeples of Root, or the metal coins of Scythe, but there’s one thing that’s my absolute favourite: the turn marker of Eclipse Second Dawn:",
+    image_url:"https://cf.geekdo-images.com/iEwU60b4-S7aZhlYF0aedg__imagepage/img/xYmGQHmeS-U-Hhggrl_v98zDxdA=/fit-in/900x600/filters:no_upscale():strip_icc()/pic6295964.jpg"
   },
   {
-    title:"",
-    body:"",
-    image_url:""
+    title:"Shipping and Manufacturing",
+    body:"Open ended question to game publishers and crowd-funding designers with the shipping/production issues I am wondering what options are open to publishers to publish more games locally - either in the EU or US. Seems like more and more games are being delayed 6/9/12 months. I know some publishers have used local printing in the EU and US to produce some games but majority are produced in China. Seems like the demand is there for more localized publishing as the cost savings of overseas publishing with shipping costs rising exponentially, it may no longer be as viable as it once was for cost effectiveness. Just wondering if publishers using more local manufacturing is due for a comeback or has there been an uptick in more local manufacturing?",
+    image_url:"https://h7f7z2r7.stackpathcdn.com/sites/default/files/images/articles/decadereview.jpg"
   },
   {
-    title:"",
-    body:"",
-    image_url:""
+    title:"App for your game collection",
+    body:"Greetings everyone! Do you use some (Android) app for your board games collection? With a big collection it would be handy to have, also for instance to sometimes decide what game to pick up (like, filter by complexity, players count and so on). I currently use a manually-modified list created by the BGG collection export file, but it's a static list and cannot filter, not handy at all. Thanks a lot!",
+    image_url:"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Android_robot.svg/1200px-Android_robot.svg.png"
   },
   {
-    title:"",
-    body:"",
-    image_url:""
+    title:"IP games",
+    body:"What is your favourite board game based on an established IP (Book, movie, videogame…)? For me it's WolfWalkers, because I get to play it with my young nieces and I really think they did the animation quality justice.",
+    image_url:"https://cf.geekdo-images.com/camo/f6756c2bab802c5b6c6c4e9d10ce022bf892cf2a/68747470733a2f2f692e696d6775722e636f6d2f49614a54637a362e6a7067"
   },
 ]
 
