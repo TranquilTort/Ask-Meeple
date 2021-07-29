@@ -95,8 +95,8 @@ const commentsArray =
 ]
 
 let insertArray = [];
-for(let i =i; i<=25; i++){
-  insertArray.push({user_id:(Math.floor(Math.random()*25)), body:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", post_id:i,createdAt: new Date(), updatedAt: new Date() })
+for(let i =1; i<=25; i++){
+  insertArray.push({user_id:(Math.ceil(Math.random()*25)), body:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", post_id:i,createdAt: new Date(), updatedAt: new Date() })
 }
 
 module.exports = {
