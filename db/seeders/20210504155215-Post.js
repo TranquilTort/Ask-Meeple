@@ -30,13 +30,13 @@ const postContent =
   },
   {
     title:"Is there going to be a Catan Movie?",
-    body:"Was browsing IMDb the other day, and found a page for a Settlers of Catan Movie... Is this a thing? Here\'s the link: https://www.imdb.com/title/tt4481574/?ref_=fn_al_tt_1 I can\'t decide if I want this to be legit or not... ",
+    body:"Was browsing IMDb the other day, and found a page for a Settlers of Catan Movie... Is this a thing?  I can\'t decide if I want this to be legit or not... ",
     image_url:"https://business.uni.edu/sites/default/files/news/a_game_of_settlers_of_catan2.jpg"
   },
   {
     title:"Are Legacy Games Worth It?",
     body:"So I\'ve watched a couple of videos on Legacy-style board games like Pandemic Legacy and Risk Legacy. While I\'m interested in the concept, some of these games are EXPENSIVE! And since the whole point of a Legacy game is that you kinda play through it once and alter the game as you go, I\'m wondering if the experince is worth it? Also, any recommendations on good Legacy games to try out? (Preferable not costing an arm and a leg.)",
-    image_url:"http://armchairgeneral.com/wp-content/image/2011/Games/Risk-Legacy-Boardgame-Review/RiskLegacy-Image3.jpg"
+    image_url:"https://i.imgur.com/2CqVetZ.jpg"
   },
   {
     title:"Any Idea What Version of Catan this Is?",
