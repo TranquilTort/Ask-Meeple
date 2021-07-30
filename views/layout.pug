@@ -24,8 +24,8 @@ html
         button(type="submit"): i(class="fas fa-search")
       if locals.authenticated
         .loggedIn
-          a.navBtn.new-post(href="/new-post" title="Post a New Question") Post a New Question&nbsp;
-            i(class="far fa-edit")
+          //- a.navBtn.new-post(href="/new-post" title="Post a New Question") Post a New Question&nbsp;
+          //-   i(class="far fa-edit")
           span Welcome, #{user.username}!
           form(action='/users/sign-out' method='post')
             button(type='submit') Sign-Out
