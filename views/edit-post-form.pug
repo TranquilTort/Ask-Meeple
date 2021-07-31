@@ -19,8 +19,6 @@ block content
             form(action=`/posts/${post.id}/edit` method='post')
                 input(type='hidden' name='_csrf' value=token)
                 +field('Title:', 'title', post.title, 'text', '')
-                //- each el in post.Tags
-                //-   div=el.id
                 div(class='tags')
                     p Tags:
                     div(class='tag-selection')
