@@ -19,16 +19,18 @@ block content
             form(action=`/posts/${post.id}/edit` method='post')
                 input(type='hidden' name='_csrf' value=token)
                 +field('Title:', 'title', post.title, 'text', '')
+                //- each el in post.Tags
+                //-   div=el.id
                 div(class='tags')
                     p Tags:
                     div(class='tag-selection')
                       each tag in tags
                           .tag-group
-                              input(type="checkbox" class="" name=`tag-${tag.id}`)
+                              input(type="checkbox" class="" name=`tag-${tag.id}` checked=objTagChecks[tag.id])
                               label(for=`tag-${tag.id}`)=tag.name
                 +field('Body:', 'body', post.body, 'textarea', '')
                 +field('Add Image URL:', 'image_url', post.image_url, 'text', '')
                 div
                     //- button(type='button' id='' class='') Delete Post
-                    button(type='submit' class='' ) Edit Post
+                    button(type='submit' class='' ) Save Changes
                     a(href='/' ) Cancel

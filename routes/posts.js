@@ -13,17 +13,35 @@ const {loginUser,logoutUser,requireAuth} = require('../auth.js');
 
 router.get('/:id(\\d+)/edit',csrfProtection,requireAuth,asyncHandler(async(req,res)=>{
     const post_id = parseInt(req.params.id);
-    const post = await db.Post.findByPk(post_id,{include:db.User});
+    const post = await db.Post.findByPk(post_id,{include:[db.User, db.Tag]});
     if (post.User.id !== req.session.auth.userId){
         res.send("Hey! You aren't supposed to be here!");
     }
     const tags = await db.Tag.findAll({});
+
+    //carrying over checkmarks to the pug template
+    //make an array of postTagIds
+    const arrPostTagIds = post.Tags.map(tag => tag.id);
+
+    //make a tag checks object
+    const objTagChecks = {};
+    tags.forEach(tag => {
+        if (arrPostTagIds.includes(tag.id)) {objTagChecks[tag.id] = true}
+        else {objTagChecks[tag.id] = false}
+    });
+
+    /*
+    objTagChecks contains pairs of tag.id: true/false.
+    objTagChecks is used in the edit-post-form.
+    For each tag, its checkbox is checked=true/false, based on objTagChecks
+    */
 
     res.render('edit-post-form',{
         post,
         tags,
         title: 'Edit Post',
         token: req.csrfToken(),
+        objTagChecks,
     });
 }));
 
