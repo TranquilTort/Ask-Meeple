@@ -29,7 +29,15 @@ window.addEventListener("DOMContentLoaded", (event)=>{
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify( {} ),
             });
-            window.location.reload();
+            //if the demo user button is clicked on the login page,
+            //logging as demo user moves to home page;
+            //otherwise refresh the current page
+            if (window.location.pathname === '/users/sign-in') {
+                window.location.assign('/');
+            }
+            else {
+                window.location.reload();
+            }
         });
     }
 
